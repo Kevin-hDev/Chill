@@ -19,12 +19,6 @@ export default function SectionPerspective({
   // Split title into words for staggered animation
   const titleWords = title.split(' ');
 
-  // Perspective transform based on side (desktop only via CSS media query)
-  const perspectiveTransform =
-    side === 'left'
-      ? 'perspective(1000px) rotateY(-8deg)'
-      : 'perspective(1000px) rotateY(8deg)';
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -49,45 +43,25 @@ export default function SectionPerspective({
     }),
   };
 
-  // Shape-outside polygon for text wrapping (desktop only)
-  const shapeOutsideStyle =
-    side === 'left'
-      ? {
-          float: 'left' as const,
-          shapeOutside: 'polygon(0 0, 100% 5%, 100% 95%, 0 100%)',
-          width: '20%',
-          height: '100%',
-        }
-      : {
-          float: 'right' as const,
-          shapeOutside: 'polygon(0 5%, 100% 0, 100% 100%, 0 95%)',
-          width: '20%',
-          height: '100%',
-        };
+  const perspectiveClass = side === 'left' ? 'perspective-right' : 'perspective-left';
 
   const ImageColumn = (
-    <div className="relative">
-      {/* perspective-container class: transform applied only on md+ screens */}
+    <div className="perspective-wrapper overflow-visible flex justify-center">
       <div
-        className="rounded-chill-xl overflow-hidden border border-chill-border shadow-lg perspective-container"
-        data-transform={perspectiveTransform}
+        className={`rounded-chill-xl overflow-hidden border border-chill-border shadow-2xl max-h-[600px] w-auto ${perspectiveClass}`}
+        style={{ aspectRatio: '1344/2992' }}
       >
-        <Carousel images={images} aspectRatio="9/16" />
+        <Carousel images={images} aspectRatio="1344/2992" />
       </div>
-      {/* Inline style for md+ perspective via media query */}
-      <style>{`
-        @media (min-width: 768px) {
-          .perspective-container[data-transform="${perspectiveTransform}"] {
-            transform: ${perspectiveTransform};
-          }
-        }
-      `}</style>
     </div>
   );
 
+  const titleShift = side === 'left' ? 'md:-ml-24' : 'md:-mr-24';
+  const descShift = side === 'left' ? 'md:-ml-14' : 'md:-mr-14';
+
   const TextColumn = (
     <div className="flex flex-col justify-center">
-      <h2 className="text-h2 font-heading font-bold text-chill-text mb-4 md:mb-6">
+      <h2 className={`text-h2 font-heading font-bold text-chill-text mb-4 md:mb-6 ${titleShift}`}>
         {titleWords.map((word, index) => (
           <motion.span
             key={index}
@@ -103,17 +77,9 @@ export default function SectionPerspective({
           </motion.span>
         ))}
       </h2>
-      <div className="relative">
-        {/* Invisible shape element for text wrapping (hidden on mobile) */}
-        <div
-          style={shapeOutsideStyle}
-          aria-hidden="true"
-          className="pointer-events-none hidden md:block"
-        />
-        <p className="text-body text-chill-text-secondary mt-4">
-          {description}
-        </p>
-      </div>
+      <p className={`text-body text-chill-text-secondary mt-4 ${descShift}`}>
+        {description}
+      </p>
     </div>
   );
 
@@ -123,13 +89,13 @@ export default function SectionPerspective({
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={containerVariants}
-      className="py-12 md:py-20"
+      className="py-12 md:py-20 overflow-visible"
     >
       <div
-        className={`grid grid-cols-1 gap-8 md:gap-12 items-center ${
+        className={`grid grid-cols-1 gap-8 md:gap-0 items-center overflow-visible ${
           side === 'left'
-            ? 'md:grid-cols-[40%_60%]'
-            : 'md:grid-cols-[60%_40%]'
+            ? 'md:grid-cols-[50%_50%]'
+            : 'md:grid-cols-[50%_50%]'
         }`}
       >
         {side === 'left' ? (

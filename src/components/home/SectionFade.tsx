@@ -16,36 +16,34 @@ export default function SectionFade({
 }: SectionFadeProps) {
   const isImageLeft = side === 'left';
 
+  const perspectiveClass = isImageLeft ? 'perspective-right' : 'perspective-left';
+
   return (
-    <section className="py-20">
+    <section className="py-20 overflow-visible">
       <div
-        className={`flex flex-col ${
-          isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-        } gap-12 items-center`}
+        className={`grid grid-cols-1 md:grid-cols-[50%_50%] gap-8 md:gap-0 items-center overflow-visible ${
+          !isImageLeft ? 'direction-rtl' : ''
+        }`}
       >
-        {/* Image carousel with fade effect */}
+        {/* Image carousel with perspective */}
         <motion.div
-          className="w-full md:w-2/5"
+          className={`overflow-visible perspective-wrapper flex justify-center ${!isImageLeft ? 'md:order-2' : ''}`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div
-            style={{
-              maskImage:
-                'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-              WebkitMaskImage:
-                'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-            }}
+            className={`rounded-chill-xl overflow-hidden border border-chill-border shadow-2xl max-h-[600px] w-auto ${perspectiveClass}`}
+            style={{ aspectRatio: '1344/2992' }}
           >
-            <Carousel images={images} aspectRatio="9/16" />
+            <Carousel images={images} aspectRatio="1344/2992" />
           </div>
         </motion.div>
 
         {/* Text content */}
         <motion.div
-          className="w-full md:w-3/5"
+          className={`${!isImageLeft ? 'md:order-1' : ''}`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

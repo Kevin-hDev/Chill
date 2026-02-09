@@ -36,7 +36,7 @@ const navItems = [
     />
 
     <!-- Logo (centered, bigger with halo) -->
-    <a href={getLocalePath(lang, '/')} class="flex flex-col items-center gap-2 md:gap-3 group relative">
+    <a href={getLocalePath(lang, '/')} class="flex flex-col items-center gap-2 md:gap-3 group relative animate-fade-in-up">
       <div class="relative">
         <div
           class="absolute inset-0 w-32 h-32 md:w-40 md:h-40 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
@@ -64,7 +64,7 @@ const navItems = [
   </div>
 
   <!-- Desktop Navbar (hidden on mobile) -->
-  <nav class="hidden md:flex items-center justify-center gap-8 py-4 border-b border-chill-border">
+  <nav class="hidden md:flex items-center justify-center gap-8 py-4 border-b border-chill-border animate-fade-in-up" style="animation-delay: 0.15s;">
     <NavDropdown label={t(lang, 'nav.tutos')} items={tutoItems} client:load />
     <a href={getLocalePath(lang, '/securite')} class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
       {t(lang, 'nav.security')}

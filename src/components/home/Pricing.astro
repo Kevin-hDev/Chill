@@ -9,44 +9,46 @@ const lang = getLangFromUrl(Astro.url);
     {t(lang, 'pricing.title')}
   </h2>
 
-  <div class="flex flex-col md:flex-row gap-6 mt-12 justify-center items-stretch">
+  <div class="flex flex-col sm:flex-row gap-4 mt-10 justify-center items-stretch max-w-lg mx-auto">
     <!-- Card 1: Free trial -->
-    <div class="bg-chill-elevated border border-chill-border rounded-chill-xl p-6 md:p-8 text-center w-full md:max-w-sm">
+    <div class="bg-chill-elevated border border-chill-border rounded-chill-xl px-5 py-6 text-center w-full flex flex-col items-center justify-center">
       <h3 class="text-h3 font-heading font-semibold text-chill-text">
         {t(lang, 'pricing.free')}
       </h3>
-      <p class="text-body-sm text-chill-text-secondary mt-2">
+      <p class="text-body-sm text-chill-text-secondary mt-1">
         {t(lang, 'pricing.freeDesc')}
       </p>
     </div>
 
     <!-- Card 2: One-time purchase (featured) -->
-    <div class="bg-chill-elevated border-2 border-chill-accent rounded-chill-xl p-6 md:p-8 text-center w-full md:max-w-sm">
+    <div class="bg-chill-elevated border-2 border-chill-accent rounded-chill-xl px-5 py-6 text-center w-full">
       <h3 class="text-h3 font-heading font-semibold text-chill-text">
         {t(lang, 'pricing.price')}
       </h3>
-      <p class="text-hero-h1 font-heading font-bold text-chill-accent mt-4">
+      <p class="text-h2 font-heading font-bold text-chill-accent mt-2">
         {t(lang, 'pricing.priceAmount')}
       </p>
-      <p class="text-body-sm text-chill-text-secondary mt-2">
+      <p class="text-body-sm text-chill-text-secondary mt-1">
         {t(lang, 'pricing.priceDesc')}
       </p>
     </div>
   </div>
 
-  <!-- CTA buttons -->
+  <!-- CTA buttons — Official store badges -->
   <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-    <a
-      href="https://play.google.com"
-      class="bg-chill-accent text-white px-6 py-3 rounded-chill-xl hover:opacity-90 transition-opacity font-medium w-full sm:w-auto text-center"
-    >
-      {t(lang, 'hero.playStore')}
+    <a href="https://play.google.com" class="inline-block hover:opacity-80 transition-opacity">
+      <img
+        src="/images/badges/google-play-badge.png"
+        alt="Get it on Google Play"
+        class="h-[52px] w-auto"
+      />
     </a>
-    <a
-      href="https://apps.apple.com"
-      class="border border-chill-border text-chill-text px-6 py-3 rounded-chill-xl hover:bg-chill-surface transition-colors font-medium w-full sm:w-auto text-center"
-    >
-      {t(lang, 'hero.appStore')}
+    <a href="https://apps.apple.com" class="inline-block hover:opacity-80 transition-opacity">
+      <img
+        src="/images/badges/app-store-badge.svg"
+        alt="Download on the App Store"
+        class="h-[40px] w-auto"
+      />
     </a>
   </div>
 </section>
