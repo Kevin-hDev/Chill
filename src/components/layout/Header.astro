@@ -1,0 +1,55 @@
+---
+import NavDropdown from './NavDropdown.tsx';
+import ThemeToggle from '../ui/ThemeToggle.tsx';
+import LanguageToggle from '../ui/LanguageToggle.tsx';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+const tutoItems = [
+  { label: t(lang, 'nav.tutos.configOs'), href: '/tutos/config-os' },
+  { label: t(lang, 'nav.tutos.ssh'), href: '/tutos/ssh' },
+  { label: t(lang, 'nav.tutos.tailscale'), href: '/tutos/tailscale' },
+  { label: t(lang, 'nav.tutos.bios'), href: '/tutos/bios' },
+  { label: t(lang, 'nav.tutos.wol'), href: '/tutos/wol' },
+  { label: t(lang, 'nav.tutos.agentsCli'), href: '/tutos/agents-cli' },
+];
+---
+
+<header class="w-full">
+  <!-- Logo Chill centré au-dessus -->
+  <div class="flex flex-col items-center pt-8 pb-4">
+    <a href="/" class="flex flex-col items-center gap-2 group">
+      <img
+        src="/images/logo-chill.png"
+        alt="Chill"
+        class="w-16 h-16 animate-float"
+        width="64"
+        height="64"
+      />
+      <span class="text-h3 font-heading font-bold text-chill-text group-hover:text-chill-accent transition-colors">
+        Chill
+      </span>
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-center gap-8 py-4 border-b border-chill-border">
+    <NavDropdown label={t(lang, 'nav.tutos')} items={tutoItems} client:load />
+    <a href="/securite" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
+      {t(lang, 'nav.security')}
+    </a>
+    <a href="/updates" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
+      {t(lang, 'nav.updates')}
+    </a>
+    <a href="/faq" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
+      {t(lang, 'nav.faq')}
+    </a>
+
+    <div class="flex items-center gap-2 ml-4">
+      <ThemeToggle client:load />
+      <LanguageToggle currentLang={lang} currentPath={currentPath} />
+    </div>
+  </nav>
+</header>
