@@ -12,12 +12,19 @@ export function getLangFromUrl(url: URL): Lang {
 }
 
 export function t(lang: Lang, key: string): string {
+  // Try nested resolution (e.g. "nav.tutos" -> nav -> tutos)
   const keys = key.split('.');
   let value: any = translations[lang];
   for (const k of keys) {
     value = value?.[k];
   }
-  return (value as string) ?? key;
+  if (typeof value === 'string') return value;
+
+  // Fallback: flat key lookup (e.g. "nav.tutos.configOs" as a literal key)
+  const flat = (translations[lang] as Record<string, unknown>)[key];
+  if (typeof flat === 'string') return flat;
+
+  return key;
 }
 
 export function getLocalePath(lang: Lang, path: string): string {
