@@ -1,0 +1,71 @@
+---
+import TutoLayout from '../../../components/tutos/TutoLayout.astro';
+import TailscaleContent from '../../../components/tutos/TailscaleContent.tsx';
+import { getLangFromUrl, t } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const win = [
+  {
+    title: t(lang, 'tutos.tailscale.step1.title'),
+    content: t(lang, 'tutos.tailscale.win.step1.content'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step2.title'),
+    content: t(lang, 'tutos.tailscale.step2.content'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step3.title'),
+    content: t(lang, 'tutos.tailscale.step3.content'),
+    code: t(lang, 'tutos.tailscale.step3.code'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step4.title'),
+    content: t(lang, 'tutos.tailscale.step4.content'),
+  },
+];
+
+const linux = [
+  {
+    title: t(lang, 'tutos.tailscale.step1.title'),
+    code: t(lang, 'tutos.tailscale.linux.step1.code'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step2.title'),
+    content: t(lang, 'tutos.tailscale.step2.content'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step3.title'),
+    content: t(lang, 'tutos.tailscale.step3.content'),
+    code: t(lang, 'tutos.tailscale.step3.code'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step4.title'),
+    content: t(lang, 'tutos.tailscale.step4.content'),
+  },
+];
+
+const mac = [
+  {
+    title: t(lang, 'tutos.tailscale.step1.title'),
+    content: t(lang, 'tutos.tailscale.mac.step1.content'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step2.title'),
+    content: t(lang, 'tutos.tailscale.step2.content'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step3.title'),
+    content: t(lang, 'tutos.tailscale.step3.content'),
+    code: t(lang, 'tutos.tailscale.step3.code'),
+  },
+  {
+    title: t(lang, 'tutos.tailscale.step4.title'),
+    content: t(lang, 'tutos.tailscale.step4.content'),
+  },
+];
+---
+
+<TutoLayout title={t(lang, 'tutos.tailscale.title')} intro={t(lang, 'tutos.tailscale.intro')}>
+  <TailscaleContent client:visible win={win} linux={linux} mac={mac} />
+</TutoLayout>

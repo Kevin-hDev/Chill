@@ -1,0 +1,64 @@
+---
+import TutoLayout from '../../../components/tutos/TutoLayout.astro';
+import ConfigOsContent from '../../../components/tutos/ConfigOsContent.tsx';
+import { getLangFromUrl, t } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const win = [
+  {
+    title: t(lang, 'tutos.configOs.win.step1.title'),
+    content: t(lang, 'tutos.configOs.win.step1.content'),
+  },
+  {
+    title: t(lang, 'tutos.configOs.win.step2.title'),
+    content: t(lang, 'tutos.configOs.win.step2.content'),
+    code: t(lang, 'tutos.configOs.win.step2.code'),
+  },
+  {
+    title: t(lang, 'tutos.configOs.win.step3.title'),
+    content: t(lang, 'tutos.configOs.win.step3.content'),
+    code: t(lang, 'tutos.configOs.win.step3.code'),
+  },
+  {
+    title: t(lang, 'tutos.configOs.win.step4.title'),
+    content: t(lang, 'tutos.configOs.win.step4.content'),
+    code: t(lang, 'tutos.configOs.win.step4.code'),
+  },
+];
+
+const linux = [
+  {
+    title: t(lang, 'tutos.configOs.linux.step1.title'),
+    content: t(lang, 'tutos.configOs.linux.step1.content'),
+    tabs: [
+      { label: 'Debian / Ubuntu', code: t(lang, 'tutos.configOs.linux.step1.codeDeb') },
+      { label: 'Fedora', code: t(lang, 'tutos.configOs.linux.step1.codeFed') },
+      { label: 'Arch', code: t(lang, 'tutos.configOs.linux.step1.codeArch') },
+    ],
+  },
+  {
+    title: t(lang, 'tutos.configOs.linux.step2.title'),
+    code: t(lang, 'tutos.configOs.linux.step2.code'),
+  },
+  {
+    title: t(lang, 'tutos.configOs.linux.step3.title'),
+    code: t(lang, 'tutos.configOs.linux.step3.code'),
+  },
+];
+
+const mac = [
+  {
+    title: t(lang, 'tutos.configOs.mac.step1.title'),
+    content: t(lang, 'tutos.configOs.mac.step1.content'),
+  },
+  {
+    title: t(lang, 'tutos.configOs.mac.step2.title'),
+    code: t(lang, 'tutos.configOs.mac.step2.code'),
+  },
+];
+---
+
+<TutoLayout title={t(lang, 'tutos.configOs.title')} intro={t(lang, 'tutos.configOs.intro')}>
+  <ConfigOsContent client:visible win={win} linux={linux} mac={mac} />
+</TutoLayout>

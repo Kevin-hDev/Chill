@@ -1,0 +1,28 @@
+---
+import TutoLayout from '../../../components/tutos/TutoLayout.astro';
+import WolContent from '../../../components/tutos/WolContent.tsx';
+import { getLangFromUrl, t, getLocalePath } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<TutoLayout title={t(lang, 'tutos.wol.title')} intro={t(lang, 'tutos.wol.intro')} showOsTabs={false}>
+  <WolContent
+    client:visible
+    warning={t(lang, 'tutos.wol.warning')}
+    step1Title={t(lang, 'tutos.wol.step1.title')}
+    step1Content={t(lang, 'tutos.wol.step1.content')}
+    biosLink={getLocalePath(lang, '/tutos/bios')}
+    winStep2Title={t(lang, 'tutos.wol.win.step2.title')}
+    winStep2Content={t(lang, 'tutos.wol.win.step2.content')}
+    linuxStep2Title={t(lang, 'tutos.wol.linux.step2.title')}
+    linuxStep2Code={t(lang, 'tutos.wol.linux.step2.code')}
+    linuxStep2Persist={t(lang, 'tutos.wol.linux.step2.persist')}
+    step3Title={t(lang, 'tutos.wol.step3.title')}
+    step3Content={t(lang, 'tutos.wol.step3.content')}
+    winStep3Code={t(lang, 'tutos.wol.win.step3.code')}
+    linuxStep3Code={t(lang, 'tutos.wol.linux.step3.code')}
+    debugTitle={t(lang, 'tutos.wol.debug.title')}
+    debugItems={t(lang, 'tutos.wol.debug.items')}
+  />
+</TutoLayout>

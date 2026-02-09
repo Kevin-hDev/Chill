@@ -1,0 +1,71 @@
+---
+import TutoLayout from '../../components/tutos/TutoLayout.astro';
+import SshContent from '../../components/tutos/SshContent.tsx';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const win = [
+  {
+    title: t(lang, 'tutos.ssh.step1.title'),
+    code: t(lang, 'tutos.ssh.win.step1.code'),
+  },
+  {
+    title: t(lang, 'tutos.ssh.step2.title'),
+    content: t(lang, 'tutos.ssh.step2.content'),
+    code: t(lang, 'tutos.ssh.step2.code'),
+  },
+  {
+    title: t(lang, 'tutos.ssh.step3.title'),
+    content: t(lang, 'tutos.ssh.step3.content'),
+    extra: [
+      {
+        label: t(lang, 'tutos.ssh.win.step3.admin'),
+        code: t(lang, 'tutos.ssh.win.step3.adminCode'),
+      },
+      {
+        label: t(lang, 'tutos.ssh.win.step3.standard'),
+        code: t(lang, 'tutos.ssh.win.step3.standardCode'),
+      },
+    ],
+  },
+];
+
+const linux = [
+  {
+    title: t(lang, 'tutos.ssh.step1.title'),
+    code: t(lang, 'tutos.ssh.linux.step1.code'),
+  },
+  {
+    title: t(lang, 'tutos.ssh.step2.title'),
+    content: t(lang, 'tutos.ssh.step2.content'),
+    code: t(lang, 'tutos.ssh.step2.code'),
+  },
+  {
+    title: t(lang, 'tutos.ssh.step3.title'),
+    content: t(lang, 'tutos.ssh.step3.content'),
+    code: t(lang, 'tutos.ssh.linux.step3.code'),
+  },
+];
+
+const mac = [
+  {
+    title: t(lang, 'tutos.ssh.step1.title'),
+    code: t(lang, 'tutos.ssh.mac.step1.code'),
+  },
+  {
+    title: t(lang, 'tutos.ssh.step2.title'),
+    content: t(lang, 'tutos.ssh.step2.content'),
+    code: t(lang, 'tutos.ssh.step2.code'),
+  },
+  {
+    title: t(lang, 'tutos.ssh.step3.title'),
+    content: t(lang, 'tutos.ssh.step3.content'),
+    code: t(lang, 'tutos.ssh.mac.step3.code'),
+  },
+];
+---
+
+<TutoLayout title={t(lang, 'tutos.ssh.title')} intro={t(lang, 'tutos.ssh.intro')}>
+  <SshContent client:visible win={win} linux={linux} mac={mac} />
+</TutoLayout>

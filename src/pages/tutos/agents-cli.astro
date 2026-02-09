@@ -1,0 +1,128 @@
+---
+import TutoLayout from '../../components/tutos/TutoLayout.astro';
+import CompatTable from '../../components/tutos/CompatTable.tsx';
+import AgentCard from '../../components/tutos/AgentCard.tsx';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const tabLabels = {
+  install: t(lang, 'tutos.agents.installTab'),
+  run: t(lang, 'tutos.agents.runTab'),
+  upgrade: t(lang, 'tutos.agents.upgradeTab'),
+};
+
+const statusLabels = {
+  ok: t(lang, 'tutos.agents.status.ok'),
+  bug: t(lang, 'tutos.agents.status.bug'),
+  testing: t(lang, 'tutos.agents.status.testing'),
+};
+
+const agents = [
+  {
+    name: 'Claude Code',
+    description: 'Anthropic\'s CLI agent for coding tasks.',
+    prereqs: 'Node.js 18+',
+    installCode: 'npm install -g @anthropic-ai/claude-code',
+    runCode: 'claude',
+    upgradeCode: 'npm update -g @anthropic-ai/claude-code',
+  },
+  {
+    name: 'Codex CLI',
+    description: 'OpenAI\'s CLI agent for code generation.',
+    prereqs: 'Node.js 22+',
+    installCode: 'npm install -g @openai/codex',
+    runCode: 'codex',
+    upgradeCode: 'npm update -g @openai/codex',
+  },
+  {
+    name: 'Cursor CLI',
+    description: 'Cursor\'s terminal-based coding agent.',
+    prereqs: 'Node.js 18+',
+    installCode: 'npm install -g @anthropic-ai/cursor-cli',
+    runCode: 'cursor-cli',
+    upgradeCode: 'npm update -g @anthropic-ai/cursor-cli',
+  },
+  {
+    name: 'Kimi Code',
+    description: 'Moonshot AI\'s CLI coding assistant.',
+    prereqs: 'Node.js 18+',
+    installCode: 'npm install -g kimi-code',
+    runCode: 'kimi',
+    upgradeCode: 'npm update -g kimi-code',
+  },
+  {
+    name: 'Gemini CLI',
+    description: 'Google\'s CLI agent powered by Gemini.',
+    prereqs: 'Node.js 18+',
+    installCode: 'npm install -g @anthropic-ai/gemini-cli',
+    runCode: 'gemini',
+    upgradeCode: 'npm update -g @anthropic-ai/gemini-cli',
+  },
+  {
+    name: 'Droid CLI',
+    description: 'Lightweight CLI agent for quick tasks.',
+    prereqs: 'Node.js 18+',
+    installCode: 'npm install -g droid-cli',
+    runCode: 'droid',
+    upgradeCode: 'npm update -g droid-cli',
+  },
+  {
+    name: 'Mistral Vibe',
+    description: 'Mistral AI\'s vibe coding agent.',
+    prereqs: 'Python 3.10+',
+    installCode: 'pip install mistral-vibe',
+    runCode: 'mistral-vibe',
+    upgradeCode: 'pip install --upgrade mistral-vibe',
+  },
+  {
+    name: 'Crush',
+    description: 'Experimental CLI agent — details coming soon.',
+    installCode: 'TBD',
+    runCode: 'TBD',
+    upgradeCode: 'TBD',
+  },
+  {
+    name: 'Grok CLI',
+    description: 'xAI\'s CLI agent powered by Grok.',
+    prereqs: 'Node.js 18+',
+    installCode: 'npm install -g grok-cli',
+    runCode: 'grok',
+    upgradeCode: 'npm update -g grok-cli',
+  },
+  {
+    name: 'OpenCode',
+    description: 'Open-source CLI agent written in Go.',
+    prereqs: 'Go 1.21+',
+    installCode: 'go install github.com/opencode-ai/opencode@latest',
+    runCode: 'opencode',
+    upgradeCode: 'go install github.com/opencode-ai/opencode@latest',
+  },
+];
+---
+
+<TutoLayout title={t(lang, 'tutos.agents.title')} intro={t(lang, 'tutos.agents.intro')} showOsTabs={false}>
+  <!-- Compatibility table -->
+  <div class="mb-10">
+    <h2 class="text-h3 font-heading font-bold text-chill-text mb-4">
+      {t(lang, 'tutos.agents.compat')}
+    </h2>
+    <CompatTable client:visible statusLabels={statusLabels} />
+  </div>
+
+  <!-- Agent cards grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {agents.map((agent) => (
+      <AgentCard
+        client:visible
+        name={agent.name}
+        description={agent.description}
+        prereqs={agent.prereqs}
+        installCode={agent.installCode}
+        runCode={agent.runCode}
+        upgradeCode={agent.upgradeCode}
+        tabLabels={tabLabels}
+      />
+    ))}
+  </div>
+</TutoLayout>
