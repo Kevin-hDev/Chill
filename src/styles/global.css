@@ -68,20 +68,20 @@
   --font-body: "Plus Jakarta Sans Variable", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
 
-  /* Font sizes */
-  --text-hero-h1: 4rem;
-  --text-hero-h1--line-height: 1.06;
-  --text-hero-h1--letter-spacing: -1.4px;
+  /* Font sizes — mobile-first, overridden at md+ below */
+  --text-hero-h1: 2.25rem;
+  --text-hero-h1--line-height: 1.1;
+  --text-hero-h1--letter-spacing: -0.8px;
   --text-hero-h1--font-weight: 700;
 
-  --text-h2: 2.5rem;
-  --text-h2--line-height: 1.1;
-  --text-h2--letter-spacing: -1px;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.6px;
   --text-h2--font-weight: 700;
 
-  --text-h3: 1.5rem;
+  --text-h3: 1.25rem;
   --text-h3--line-height: 1.3;
-  --text-h3--letter-spacing: -0.5px;
+  --text-h3--letter-spacing: -0.3px;
   --text-h3--font-weight: 600;
 
   --text-body: 1.0625rem;
@@ -113,6 +113,25 @@
 
   /* Animations */
   --animate-float: float 3s ease-in-out infinite;
+  --animate-slideDown: slideDown 0.2s ease-out;
+}
+
+/* ─── Responsive Font Sizes (md+: 768px) ─── */
+
+@media (min-width: 768px) {
+  :root {
+    --text-hero-h1: 4rem;
+    --text-hero-h1--line-height: 1.06;
+    --text-hero-h1--letter-spacing: -1.4px;
+
+    --text-h2: 2.5rem;
+    --text-h2--line-height: 1.1;
+    --text-h2--letter-spacing: -1px;
+
+    --text-h3: 1.5rem;
+    --text-h3--line-height: 1.3;
+    --text-h3--letter-spacing: -0.5px;
+  }
 }
 
 /* ─── Base Styles ─── */
@@ -136,6 +155,17 @@
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ─── Noise texture overlay ─── */

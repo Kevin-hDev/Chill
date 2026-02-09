@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chill.app/sitemap-index.xml

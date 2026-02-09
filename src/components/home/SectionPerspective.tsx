@@ -19,7 +19,7 @@ export default function SectionPerspective({
   // Split title into words for staggered animation
   const titleWords = title.split(' ');
 
-  // Perspective transform based on side
+  // Perspective transform based on side (desktop only via CSS media query)
   const perspectiveTransform =
     side === 'left'
       ? 'perspective(1000px) rotateY(-8deg)'
@@ -49,8 +49,7 @@ export default function SectionPerspective({
     }),
   };
 
-  // Shape-outside polygon for text wrapping
-  // Creates a trapezoid shape that matches the perspective tilt
+  // Shape-outside polygon for text wrapping (desktop only)
   const shapeOutsideStyle =
     side === 'left'
       ? {
@@ -68,18 +67,27 @@ export default function SectionPerspective({
 
   const ImageColumn = (
     <div className="relative">
+      {/* perspective-container class: transform applied only on md+ screens */}
       <div
-        className="rounded-chill-xl overflow-hidden border border-chill-border shadow-lg"
-        style={{ transform: perspectiveTransform }}
+        className="rounded-chill-xl overflow-hidden border border-chill-border shadow-lg perspective-container"
+        data-transform={perspectiveTransform}
       >
         <Carousel images={images} />
       </div>
+      {/* Inline style for md+ perspective via media query */}
+      <style>{`
+        @media (min-width: 768px) {
+          .perspective-container[data-transform="${perspectiveTransform}"] {
+            transform: ${perspectiveTransform};
+          }
+        }
+      `}</style>
     </div>
   );
 
   const TextColumn = (
     <div className="flex flex-col justify-center">
-      <h2 className="text-h2 font-heading font-bold text-chill-text mb-6">
+      <h2 className="text-h2 font-heading font-bold text-chill-text mb-4 md:mb-6">
         {titleWords.map((word, index) => (
           <motion.span
             key={index}
@@ -96,11 +104,11 @@ export default function SectionPerspective({
         ))}
       </h2>
       <div className="relative">
-        {/* Invisible shape element for text wrapping */}
+        {/* Invisible shape element for text wrapping (hidden on mobile) */}
         <div
           style={shapeOutsideStyle}
           aria-hidden="true"
-          className="pointer-events-none"
+          className="pointer-events-none hidden md:block"
         />
         <p className="text-body text-chill-text-secondary mt-4">
           {description}
@@ -115,13 +123,13 @@ export default function SectionPerspective({
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={containerVariants}
-      className="py-20"
+      className="py-12 md:py-20"
     >
       <div
-        className={`grid gap-12 items-center ${
+        className={`grid grid-cols-1 gap-8 md:gap-12 items-center ${
           side === 'left'
-            ? 'grid-cols-[55%_45%]'
-            : 'grid-cols-[45%_55%]'
+            ? 'md:grid-cols-[55%_45%]'
+            : 'md:grid-cols-[45%_55%]'
         }`}
       >
         {side === 'left' ? (

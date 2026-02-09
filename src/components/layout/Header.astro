@@ -1,5 +1,6 @@
 ---
 import NavDropdown from './NavDropdown.tsx';
+import MobileMenu from './MobileMenu.tsx';
 import ThemeToggle from '../ui/ThemeToggle.tsx';
 import LanguageToggle from '../ui/LanguageToggle.tsx';
 import { getLangFromUrl, t } from '../../i18n/utils';
@@ -15,27 +16,48 @@ const tutoItems = [
   { label: t(lang, 'nav.tutos.wol'), href: '/tutos/wol' },
   { label: t(lang, 'nav.tutos.agentsCli'), href: '/tutos/agents-cli' },
 ];
+
+const navItems = [
+  { label: t(lang, 'nav.security'), href: '/securite' },
+  { label: t(lang, 'nav.updates'), href: '/updates' },
+  { label: t(lang, 'nav.faq'), href: '/faq' },
+];
 ---
 
 <header class="w-full">
   <!-- Logo Chill centré au-dessus -->
-  <div class="flex flex-col items-center pt-8 pb-4">
-    <a href="/" class="flex flex-col items-center gap-2 group">
+  <div class="flex items-center justify-between px-4 pt-6 pb-3 md:justify-center md:px-0 md:pt-8 md:pb-4">
+    <!-- Mobile: hamburger on the left -->
+    <MobileMenu
+      client:load
+      tutoLabel={t(lang, 'nav.tutos')}
+      tutoItems={tutoItems}
+      navItems={navItems}
+    />
+
+    <!-- Logo (centered on desktop, center on mobile too via flex) -->
+    <a href="/" class="flex flex-col items-center gap-1 md:gap-2 group">
       <img
         src="/images/logo-chill.png"
         alt="Chill"
-        class="w-16 h-16 animate-float"
+        class="w-10 h-10 md:w-16 md:h-16 animate-float"
         width="64"
         height="64"
       />
-      <span class="text-h3 font-heading font-bold text-chill-text group-hover:text-chill-accent transition-colors">
+      <span class="text-body-sm md:text-h3 font-heading font-bold text-chill-text group-hover:text-chill-accent transition-colors">
         Chill
       </span>
     </a>
+
+    <!-- Mobile: theme + lang toggles on the right -->
+    <div class="flex items-center gap-1 md:hidden">
+      <ThemeToggle client:load />
+      <LanguageToggle currentLang={lang} currentPath={currentPath} />
+    </div>
   </div>
 
-  <!-- Navbar -->
-  <nav class="flex items-center justify-center gap-8 py-4 border-b border-chill-border">
+  <!-- Desktop Navbar (hidden on mobile) -->
+  <nav class="hidden md:flex items-center justify-center gap-8 py-4 border-b border-chill-border">
     <NavDropdown label={t(lang, 'nav.tutos')} items={tutoItems} client:load />
     <a href="/securite" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
       {t(lang, 'nav.security')}
@@ -52,4 +74,7 @@ const tutoItems = [
       <LanguageToggle currentLang={lang} currentPath={currentPath} />
     </div>
   </nav>
+
+  <!-- Mobile border bottom separator -->
+  <div class="border-b border-chill-border md:hidden"></div>
 </header>

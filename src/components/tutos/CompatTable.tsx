@@ -52,7 +52,7 @@ export default function CompatTable({ statusLabels }: Props) {
 
   return (
     <div className="overflow-x-auto rounded-chill border border-chill-border bg-chill-elevated">
-      <table className="w-full text-left">
+      <table className="w-full min-w-[500px] text-left">
         <thead>
           <tr className="border-b border-chill-border">
             <th className="px-4 py-3 text-body-sm font-heading font-semibold text-chill-text">
