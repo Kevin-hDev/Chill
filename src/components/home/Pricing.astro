@@ -1,0 +1,52 @@
+---
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<section class="py-20">
+  <h2 class="text-h2 font-heading font-bold text-chill-text text-center">
+    {t(lang, 'pricing.title')}
+  </h2>
+
+  <div class="flex flex-col md:flex-row gap-6 mt-12 justify-center items-stretch">
+    <!-- Card 1: Free trial -->
+    <div class="bg-chill-elevated border border-chill-border rounded-chill-xl p-8 text-center max-w-sm">
+      <h3 class="text-h3 font-heading font-semibold text-chill-text">
+        {t(lang, 'pricing.free')}
+      </h3>
+      <p class="text-body-sm text-chill-text-secondary mt-2">
+        {t(lang, 'pricing.freeDesc')}
+      </p>
+    </div>
+
+    <!-- Card 2: One-time purchase (featured) -->
+    <div class="bg-chill-elevated border-2 border-chill-accent rounded-chill-xl p-8 text-center max-w-sm">
+      <h3 class="text-h3 font-heading font-semibold text-chill-text">
+        {t(lang, 'pricing.price')}
+      </h3>
+      <p class="text-hero-h1 font-heading font-bold text-chill-accent mt-4">
+        {t(lang, 'pricing.priceAmount')}
+      </p>
+      <p class="text-body-sm text-chill-text-secondary mt-2">
+        {t(lang, 'pricing.priceDesc')}
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA buttons -->
+  <div class="flex gap-4 justify-center mt-8">
+    <a
+      href="https://play.google.com"
+      class="bg-chill-accent text-white px-6 py-3 rounded-chill-xl hover:opacity-90 transition-opacity font-medium"
+    >
+      {t(lang, 'hero.playStore')}
+    </a>
+    <a
+      href="https://apps.apple.com"
+      class="border border-chill-border text-chill-text px-6 py-3 rounded-chill-xl hover:bg-chill-surface transition-colors font-medium"
+    >
+      {t(lang, 'hero.appStore')}
+    </a>
+  </div>
+</section>
