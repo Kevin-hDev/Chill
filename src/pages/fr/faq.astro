@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Accordion from '../../components/ui/Accordion.tsx';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'faq.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'faq.title')}
+    </h1>
+
+    <!-- FAQ Accordion items -->
+    <div class="space-y-4">
+      <Accordion client:visible title={t(lang, 'faq.q1')} defaultOpen>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a1')}
+        </p>
+      </Accordion>
+
+      <Accordion client:visible title={t(lang, 'faq.q2')}>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a2')}
+        </p>
+      </Accordion>
+
+      <Accordion client:visible title={t(lang, 'faq.q3')}>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a3')}
+        </p>
+      </Accordion>
+
+      <Accordion client:visible title={t(lang, 'faq.q4')}>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a4')}
+        </p>
+      </Accordion>
+
+      <Accordion client:visible title={t(lang, 'faq.q5')}>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a5')}
+        </p>
+      </Accordion>
+
+      <Accordion client:visible title={t(lang, 'faq.q6')}>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a6')}
+        </p>
+      </Accordion>
+
+      <Accordion client:visible title={t(lang, 'faq.q7')}>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'faq.a7')}
+        </p>
+      </Accordion>
+    </div>
+  </section>
+</BaseLayout>

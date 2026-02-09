@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, t } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'legal.mentions.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'legal.mentions.title')}
+    </h1>
+
+    <div class="space-y-10">
+      <!-- Editor -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          {t(lang, 'legal.mentions.editor')}
+        </h2>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          [To be completed]
+        </p>
+      </div>
+
+      <!-- Host -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          Host
+        </h2>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          Vercel Inc.<br />
+          440 N Barranca Ave #4133<br />
+          Covina, CA 91723, United States<br />
+          <a href="https://vercel.com" class="text-chill-accent hover:text-chill-accent-hover transition-colors">vercel.com</a>
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          {t(lang, 'legal.mentions.contact')}
+        </h2>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          [To be completed]
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

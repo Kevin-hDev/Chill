@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'legal.terms.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'legal.terms.title')}
+    </h1>
+
+    <div class="space-y-10 text-body-sm text-chill-text-secondary leading-relaxed">
+      <!-- Article 1 - Objet -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          1. Objet
+        </h2>
+        <p>
+          Les presentes Conditions Generales d'Utilisation regissent l'utilisation de l'application mobile ChillShell (ci-apres "l'Application"). En telechargeant, installant ou utilisant l'Application, vous acceptez d'etre lie par ces conditions. Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser l'Application.
+        </p>
+      </div>
+
+      <!-- Article 2 - Licence -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          2. Licence personnelle
+        </h2>
+        <p>
+          L'Application est concedee sous licence, et non vendue. Lors de l'achat, vous beneficiez d'une licence non exclusive, non transferable et revocable pour utiliser l'Application a des fins personnelles sur les appareils que vous possedez. Cette licence est destinee a un seul utilisateur et ne s'etend a aucune organisation, entreprise ou tierce partie.
+        </p>
+      </div>
+
+      <!-- Article 3 - Restrictions -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          3. Restrictions
+        </h2>
+        <p class="mb-3">Vous vous engagez a ne pas :</p>
+        <ul class="list-disc list-inside space-y-2 pl-2">
+          <li>Redistribuer, sous-licencier, vendre ou louer l'Application a un tiers</li>
+          <li>Desassembler, decompiler ou tenter de reconstituer le code source de l'Application (retro-ingenierie)</li>
+          <li>Modifier, adapter, traduire ou creer des oeuvres derivees de l'Application</li>
+          <li>Supprimer, alterer ou masquer les mentions de propriete presentes dans l'Application</li>
+          <li>Utiliser l'Application a des fins illegales ou en violation des lois applicables</li>
+        </ul>
+      </div>
+
+      <!-- Article 4 - Propriete intellectuelle -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          4. Propriete intellectuelle
+        </h2>
+        <p>
+          L'Application, incluant son design, son code, ses graphismes et son contenu, est la propriete exclusive de l'editeur. Tous les droits de propriete intellectuelle sont reserves. Aucune disposition des presentes conditions ne vous confere un droit de propriete sur l'Application.
+        </p>
+      </div>
+
+      <!-- Article 5 - Limitation de responsabilite -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          5. Limitation de responsabilite
+        </h2>
+        <p>
+          L'Application est fournie "en l'etat" sans garantie d'aucune sorte, expresse ou implicite. L'editeur ne saurait etre tenu responsable de tout dommage direct, indirect, accessoire, special ou consecutif resultant de l'utilisation ou de l'impossibilite d'utiliser l'Application, y compris mais sans s'y limiter, la perte de donnees, les dommages au systeme ou les failles de securite sur les appareils connectes. Vous utilisez l'Application a vos propres risques, en particulier lors de l'etablissement de connexions SSH vers des systemes distants.
+        </p>
+      </div>
+
+      <!-- Article 6 - Paiement -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          6. Paiement et remboursement
+        </h2>
+        <p>
+          L'Application necessite un achat unique. Le paiement est traite via Google Play ou l'Apple App Store. Les politiques de remboursement sont regies par les conditions de la plateforme respective. Une periode d'essai gratuite de 7 jours est disponible avant l'achat.
+        </p>
+      </div>
+
+      <!-- Article 7 - Resiliation -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          7. Resiliation
+        </h2>
+        <p>
+          L'editeur se reserve le droit de mettre fin ou de suspendre votre acces a l'Application a tout moment, sans preavis, en cas de violation de l'une des dispositions des presentes conditions. En cas de resiliation, votre licence d'utilisation de l'Application est immediatement revoquee.
+        </p>
+      </div>
+
+      <!-- Article 8 - Modifications -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          8. Modifications
+        </h2>
+        <p>
+          L'editeur se reserve le droit de modifier ces conditions a tout moment. La poursuite de l'utilisation de l'Application apres de telles modifications constitue votre acceptation des conditions revisees. Nous vous encourageons a consulter regulierement ces conditions.
+        </p>
+      </div>
+
+      <!-- Article 9 - Droit applicable -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          9. Droit applicable
+        </h2>
+        <p>
+          Les presentes conditions sont regies et interpretees conformement au droit applicable. Tout litige decoulant de ou relatif a ces conditions sera soumis a la competence exclusive des tribunaux competents.
+        </p>
+      </div>
+
+      <!-- Derniere mise a jour -->
+      <p class="text-micro text-chill-text-muted text-center pt-4">
+        Derniere mise a jour : 9 fevrier 2026
+      </p>
+    </div>
+  </section>
+</BaseLayout>

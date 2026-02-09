@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, t } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'legal.privacy.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'legal.privacy.title')}
+    </h1>
+
+    <div class="space-y-10 text-body-sm text-chill-text-secondary leading-relaxed">
+      <!-- No data collection -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          1. Data Collection
+        </h2>
+        <p>
+          ChillShell does not collect, transmit, or store any personal data on external servers. The Application operates entirely on your device. No analytics, tracking, or telemetry data is sent to us or any third party.
+        </p>
+        <p class="mt-3">
+          If anonymous analytics are implemented in the future (e.g., via Plausible Analytics), this policy will be updated accordingly. Plausible is a privacy-focused, cookie-free analytics tool that does not collect personal data or use tracking technologies.
+        </p>
+      </div>
+
+      <!-- Local storage -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          2. Local Data Storage
+        </h2>
+        <p>
+          All data is stored locally on your device using secure storage mechanisms:
+        </p>
+        <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
+          <li>SSH keys are encrypted using AES-CBC (Android) or stored in the Keychain (iOS)</li>
+          <li>Master encryption key is stored in the hardware-backed keystore</li>
+          <li>PIN codes are hashed with PBKDF2-HMAC-SHA256 (100,000 iterations) and never stored in plaintext</li>
+          <li>Session credentials remain on your device and are never transmitted externally</li>
+        </ul>
+      </div>
+
+      <!-- No third parties -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          3. Third Parties
+        </h2>
+        <p>
+          ChillShell does not share, sell, or transmit any data to third parties. SSH connections are established directly between your device and the remote server you configure. No intermediary server is involved in the connection process.
+        </p>
+      </div>
+
+      <!-- SSH connections -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          4. SSH Connections
+        </h2>
+        <p>
+          When you connect to a remote server via SSH, the connection is established directly between your device and the target server. The Application does not route, intercept, or log the content of your SSH sessions. Host key verification uses a Trust On First Use (TOFU) model, and keys are held in memory only during active sessions.
+        </p>
+      </div>
+
+      <!-- Permissions -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          5. Device Permissions
+        </h2>
+        <p>
+          The Application may request the following device permissions, used solely for core functionality:
+        </p>
+        <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
+          <li>Network access: required for SSH connections and Wake-on-LAN</li>
+          <li>Biometric sensor: used for biometric authentication (optional)</li>
+          <li>Local storage: used to store encrypted credentials</li>
+        </ul>
+      </div>
+
+      <!-- GDPR -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          6. GDPR Compliance
+        </h2>
+        <p>
+          ChillShell is fully compliant with the General Data Protection Regulation (GDPR). Since no personal data is collected or processed by the Application, there is no data to access, rectify, or delete on our end. All your data remains exclusively on your device under your full control.
+        </p>
+        <p class="mt-3">
+          You can delete all Application data at any time by uninstalling the Application or clearing its data through your device settings.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          7. Contact
+        </h2>
+        <p>
+          For any questions regarding this privacy policy, please contact us at: [To be completed]
+        </p>
+      </div>
+
+      <!-- Last updated -->
+      <p class="text-micro text-chill-text-muted text-center pt-4">
+        Last updated: February 9, 2026
+      </p>
+    </div>
+  </section>
+</BaseLayout>

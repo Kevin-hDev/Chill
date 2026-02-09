@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, t } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'legal.terms.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'legal.terms.title')}
+    </h1>
+
+    <div class="space-y-10 text-body-sm text-chill-text-secondary leading-relaxed">
+      <!-- Article 1 - Purpose -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          1. Purpose
+        </h2>
+        <p>
+          These Terms of Service govern the use of the ChillShell mobile application (hereinafter "the Application"). By downloading, installing, or using the Application, you agree to be bound by these terms. If you do not agree with any part of these terms, you must not use the Application.
+        </p>
+      </div>
+
+      <!-- Article 2 - License -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          2. Personal License
+        </h2>
+        <p>
+          The Application is licensed, not sold. Upon purchase, you are granted a non-exclusive, non-transferable, revocable license to use the Application for personal purposes on devices you own. This license is for a single user and does not extend to any organization, company, or third party.
+        </p>
+      </div>
+
+      <!-- Article 3 - Restrictions -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          3. Restrictions
+        </h2>
+        <p class="mb-3">You agree not to:</p>
+        <ul class="list-disc list-inside space-y-2 pl-2">
+          <li>Redistribute, sublicense, sell, or lease the Application to any third party</li>
+          <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the Application</li>
+          <li>Modify, adapt, translate, or create derivative works based on the Application</li>
+          <li>Remove, alter, or obscure any proprietary notices, labels, or marks on the Application</li>
+          <li>Use the Application for any unlawful purpose or in violation of any applicable laws</li>
+        </ul>
+      </div>
+
+      <!-- Article 4 - Intellectual Property -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          4. Intellectual Property
+        </h2>
+        <p>
+          The Application, including its design, code, graphics, and content, is the exclusive property of the publisher. All intellectual property rights are reserved. No part of these terms grants you any ownership rights in the Application.
+        </p>
+      </div>
+
+      <!-- Article 5 - Liability Limitation -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          5. Limitation of Liability
+        </h2>
+        <p>
+          The Application is provided "as is" without warranty of any kind, express or implied. The publisher shall not be held liable for any direct, indirect, incidental, special, or consequential damages arising from the use or inability to use the Application, including but not limited to data loss, system damage, or security breaches on connected devices. You use the Application at your own risk, particularly when establishing SSH connections to remote systems.
+        </p>
+      </div>
+
+      <!-- Article 6 - Payment -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          6. Payment & Refunds
+        </h2>
+        <p>
+          The Application requires a one-time purchase. Payment is processed through Google Play or the Apple App Store. Refund policies are governed by the respective platform's terms. A free trial period of 7 days is available before purchase.
+        </p>
+      </div>
+
+      <!-- Article 7 - Termination -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          7. Termination
+        </h2>
+        <p>
+          The publisher reserves the right to terminate or suspend your access to the Application at any time, without prior notice, if you violate any provision of these terms. Upon termination, your license to use the Application is immediately revoked.
+        </p>
+      </div>
+
+      <!-- Article 8 - Modifications -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          8. Modifications
+        </h2>
+        <p>
+          The publisher reserves the right to modify these terms at any time. Continued use of the Application after such modifications constitutes your acceptance of the revised terms. We encourage you to review these terms periodically.
+        </p>
+      </div>
+
+      <!-- Article 9 - Governing Law -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          9. Governing Law
+        </h2>
+        <p>
+          These terms are governed by and construed in accordance with applicable law. Any disputes arising from or relating to these terms shall be subject to the exclusive jurisdiction of the competent courts.
+        </p>
+      </div>
+
+      <!-- Last updated -->
+      <p class="text-micro text-chill-text-muted text-center pt-4">
+        Last updated: February 9, 2026
+      </p>
+    </div>
+  </section>
+</BaseLayout>

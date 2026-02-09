@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Accordion from '../../components/ui/Accordion.tsx';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'updates.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'updates.title')}
+    </h1>
+
+    <!-- Current version card -->
+    <div class="mb-12 rounded-chill-xl border-2 border-chill-accent bg-chill-elevated p-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-flex items-center rounded-chill-sm bg-chill-accent/10 px-3 py-1 text-code font-mono font-bold text-chill-accent">
+          {t(lang, 'updates.current')}
+        </span>
+      </div>
+
+      <h2 class="text-h2 font-heading font-bold text-chill-text mb-2">
+        v1.0.0
+      </h2>
+      <p class="text-body-sm text-chill-text-muted mb-6 font-mono">
+        2026-02-09
+      </p>
+
+      <div class="mb-8">
+        <h3 class="text-h3 font-heading font-semibold text-chill-text mb-4">Fonctionnalites</h3>
+        <ul class="space-y-3 text-body-sm text-chill-text-secondary">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            Terminal SSH avec rendu xterm complet
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            Support Wake-on-LAN (magic packet via Ethernet)
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            5 themes de couleurs (Warp Dark, Dracula, Nord, Solarized, Monokai)
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            5 langues (anglais, francais, espagnol, allemand, chinois)
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            Support des agents CLI (Claude Code, Cursor, Gemini, Codex)
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            Authentification biometrique et verrouillage par code PIN
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+            Generation de cles SSH Ed25519 et stockage securise
+          </li>
+        </ul>
+      </div>
+
+      <a
+        href="#"
+        class="inline-flex items-center gap-2 rounded-chill bg-chill-accent px-6 py-3 text-body-sm font-heading font-bold text-white transition-colors hover:bg-chill-accent-hover"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        {t(lang, 'updates.download')}
+      </a>
+    </div>
+
+    <!-- Previous versions -->
+    <h2 class="text-h3 font-heading font-semibold text-chill-text mb-4">
+      {t(lang, 'updates.previous')}
+    </h2>
+
+    <div class="space-y-4">
+      <Accordion client:visible title="Pas encore de versions precedentes">
+        <p class="text-body-sm text-chill-text-muted leading-relaxed">
+          Ceci est la premiere version de ChillShell. Les versions precedentes apparaitront ici au fur et a mesure des mises a jour.
+        </p>
+      </Accordion>
+    </div>
+  </section>
+</BaseLayout>

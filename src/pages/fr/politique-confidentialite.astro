@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, t } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'legal.privacy.title')}>
+  <section class="py-[var(--spacing-section)]">
+    <!-- Title -->
+    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+      {t(lang, 'legal.privacy.title')}
+    </h1>
+
+    <div class="space-y-10 text-body-sm text-chill-text-secondary leading-relaxed">
+      <!-- Pas de collecte de donnees -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          1. Collecte de donnees
+        </h2>
+        <p>
+          ChillShell ne collecte, ne transmet et ne stocke aucune donnee personnelle sur des serveurs externes. L'Application fonctionne entierement sur votre appareil. Aucune analyse, aucun suivi ni aucune donnee de telemetrie ne sont envoyes a nos serveurs ou a un tiers.
+        </p>
+        <p class="mt-3">
+          Si des analyses anonymes sont implementees a l'avenir (par exemple via Plausible Analytics), cette politique sera mise a jour en consequence. Plausible est un outil d'analyse respectueux de la vie privee, sans cookies, qui ne collecte pas de donnees personnelles et n'utilise pas de technologies de suivi.
+        </p>
+      </div>
+
+      <!-- Stockage local -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          2. Stockage local des donnees
+        </h2>
+        <p>
+          Toutes les donnees sont stockees localement sur votre appareil via des mecanismes de stockage securises :
+        </p>
+        <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
+          <li>Les cles SSH sont chiffrees en AES-CBC (Android) ou stockees dans le Keychain (iOS)</li>
+          <li>La cle de chiffrement principale est stockee dans le keystore materiel</li>
+          <li>Les codes PIN sont hashes avec PBKDF2-HMAC-SHA256 (100 000 iterations) et jamais stockes en clair</li>
+          <li>Les identifiants de session restent sur votre appareil et ne sont jamais transmis a l'exterieur</li>
+        </ul>
+      </div>
+
+      <!-- Pas de tiers -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          3. Tiers
+        </h2>
+        <p>
+          ChillShell ne partage, ne vend et ne transmet aucune donnee a des tiers. Les connexions SSH sont etablies directement entre votre appareil et le serveur distant que vous configurez. Aucun serveur intermediaire n'est implique dans le processus de connexion.
+        </p>
+      </div>
+
+      <!-- Connexions SSH -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          4. Connexions SSH
+        </h2>
+        <p>
+          Lorsque vous vous connectez a un serveur distant via SSH, la connexion est etablie directement entre votre appareil et le serveur cible. L'Application ne route pas, n'intercepte pas et n'enregistre pas le contenu de vos sessions SSH. La verification des cles d'hote utilise un modele TOFU (Trust On First Use), et les cles ne sont conservees en memoire que pendant les sessions actives.
+        </p>
+      </div>
+
+      <!-- Permissions -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          5. Permissions de l'appareil
+        </h2>
+        <p>
+          L'Application peut demander les permissions suivantes, utilisees uniquement pour les fonctionnalites de base :
+        </p>
+        <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
+          <li>Acces reseau : necessaire pour les connexions SSH et le Wake-on-LAN</li>
+          <li>Capteur biometrique : utilise pour l'authentification biometrique (optionnel)</li>
+          <li>Stockage local : utilise pour stocker les identifiants chiffres</li>
+        </ul>
+      </div>
+
+      <!-- RGPD -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          6. Conformite RGPD
+        </h2>
+        <p>
+          ChillShell est pleinement conforme au Reglement General sur la Protection des Donnees (RGPD). Etant donne qu'aucune donnee personnelle n'est collectee ou traitee par l'Application, il n'y a aucune donnee a consulter, rectifier ou supprimer de notre cote. Toutes vos donnees restent exclusivement sur votre appareil, sous votre controle total.
+        </p>
+        <p class="mt-3">
+          Vous pouvez supprimer toutes les donnees de l'Application a tout moment en desinstallant l'Application ou en effacant ses donnees via les parametres de votre appareil.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          7. Contact
+        </h2>
+        <p>
+          Pour toute question concernant cette politique de confidentialite, veuillez nous contacter a : [A completer]
+        </p>
+      </div>
+
+      <!-- Derniere mise a jour -->
+      <p class="text-micro text-chill-text-muted text-center pt-4">
+        Derniere mise a jour : 9 fevrier 2026
+      </p>
+    </div>
+  </section>
+</BaseLayout>
