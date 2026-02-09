@@ -9,17 +9,18 @@
 
 /* Light mode (default) */
 :root {
-  --color-bg-primary: #fafafa;
-  --color-bg-elevated: #ffffff;
-  --color-bg-surface: #f4f4f5;
-  --color-border: #e5e7eb;
-  --color-border-subtle: #f0f0f2;
+  --color-bg-primary: #eef0f3;
+  --color-bg-elevated: #f6f7f9;
+  --color-bg-surface: #e4e6eb;
+  --color-border: #c9cdd5;
+  --color-border-subtle: #dcdfe5;
+  --color-dot-grid: #9ca3af;
   --color-text-primary: #111214;
-  --color-text-secondary: #6b7280;
-  --color-text-muted: #9ca3af;
+  --color-text-secondary: #5a6070;
+  --color-text-muted: #848a98;
   --color-accent: #059669;
   --color-accent-hover: #047857;
-  --color-accent-glow: rgba(5, 150, 105, 0.1);
+  --color-accent-glow: rgba(5, 150, 105, 0.08);
   --color-blue: #2563eb;
   --color-red: #dc2626;
   --color-green: #16a34a;
@@ -33,6 +34,7 @@
   --color-bg-surface: #161719;
   --color-border: #1e2025;
   --color-border-subtle: #151618;
+  --color-dot-grid: #3a3d45;
   --color-text-primary: #f7f8f8;
   --color-text-secondary: #8a8f98;
   --color-text-muted: #5c6170;
@@ -175,6 +177,18 @@
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
+/* Scroll-triggered animation — hidden until IntersectionObserver adds .is-visible */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -250,11 +264,11 @@
 .dot-grid {
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--color-dot-grid) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
-  opacity: 0.4;
+  opacity: 0.55;
   pointer-events: none;
   z-index: 0;
   animation: dotDrift 25s linear infinite;

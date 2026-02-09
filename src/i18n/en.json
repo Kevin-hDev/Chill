@@ -21,7 +21,7 @@
   "sections.connections.title": "Connect anywhere",
   "sections.connections.description": "SSH, Tailscale, Wake-on-LAN — everything you need to reach your desktop from anywhere in the world.",
   "sections.customize.title": "Make it yours",
-  "sections.customize.description": "5 color themes, 5 languages, and a design that adapts to you.",
+  "sections.customize.description": "12 color themes, 5 languages, and a design that adapts to you.",
   "differentiator.title": "Why ChillShell?",
   "differentiator.security": "End-to-end encrypted",
   "differentiator.securityDesc": "SSH keys stored in secure hardware. PIN hashed with PBKDF2. Zero secrets in code.",

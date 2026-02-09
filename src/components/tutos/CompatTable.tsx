@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 interface StatusLabels {
   ok: string;
   bug: string;
@@ -51,7 +53,13 @@ export default function CompatTable({ statusLabels }: Props) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-chill border border-chill-border bg-chill-elevated">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+      className="overflow-x-auto rounded-chill border border-chill-border bg-chill-elevated"
+    >
       <table className="w-full min-w-[500px] text-left">
         <thead>
           <tr className="border-b border-chill-border">
@@ -93,6 +101,6 @@ export default function CompatTable({ statusLabels }: Props) {
           ))}
         </tbody>
       </table>
-    </div>
+    </motion.div>
   );
 }

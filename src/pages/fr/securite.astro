@@ -19,14 +19,14 @@ const detailSections = [
 
 <BaseLayout title={`${t(lang, 'security.title')} — Chill`}>
   <section class="py-12">
-    <h1 class="text-h1 font-heading font-bold text-chill-text mb-10">
+    <h1 data-animate="0" class="text-h1 font-heading font-bold text-chill-text mb-10">
       {t(lang, 'security.title')}
     </h1>
 
     <!-- Simple section: 2x2 reassurance grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
       <!-- Shield: keys -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
+      <div data-animate="100" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
         <svg class="w-8 h-8 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
@@ -36,7 +36,7 @@ const detailSections = [
       </div>
 
       <!-- Lock: encryption -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
+      <div data-animate="200" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
         <svg class="w-8 h-8 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -47,7 +47,7 @@ const detailSections = [
       </div>
 
       <!-- Key: PIN -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
+      <div data-animate="300" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
         <svg class="w-8 h-8 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
         </svg>
@@ -57,7 +57,7 @@ const detailSections = [
       </div>
 
       <!-- Server: no data -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
+      <div data-animate="400" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
         <svg class="w-8 h-8 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
           <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />

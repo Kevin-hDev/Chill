@@ -126,10 +126,10 @@ export default function Carousel({
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 cursor-pointer ${
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer outline-none focus:outline-none ${
                 index === currentIndex
-                  ? 'bg-chill-accent'
-                  : 'bg-chill-border'
+                  ? 'bg-chill-accent scale-125'
+                  : 'bg-white/50 hover:bg-white/70'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

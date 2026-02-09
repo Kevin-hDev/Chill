@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    if (stored) {
-      setIsDark(stored === 'dark');
-    } else {
-      setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
     }
-  }, []);
+    return true;
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);

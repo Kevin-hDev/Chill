@@ -5,11 +5,11 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <section class="py-12 md:py-20">
-  <h2 class="text-h2 font-heading font-bold text-chill-text text-center">
+  <h2 data-animate="0" class="text-h2 font-heading font-bold text-chill-text text-center">
     {t(lang, 'pricing.title')}
   </h2>
 
-  <div class="flex flex-col sm:flex-row gap-4 mt-10 justify-center items-stretch max-w-lg mx-auto">
+  <div data-animate="150" class="flex flex-col sm:flex-row gap-4 mt-10 justify-center items-stretch max-w-lg mx-auto">
     <!-- Card 1: Free trial -->
     <div class="bg-chill-elevated border border-chill-border rounded-chill-xl px-5 py-6 text-center w-full flex flex-col items-center justify-center">
       <h3 class="text-h3 font-heading font-semibold text-chill-text">
@@ -35,7 +35,7 @@ const lang = getLangFromUrl(Astro.url);
   </div>
 
   <!-- CTA buttons — Official store badges -->
-  <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+  <div data-animate="300" class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
     <a href="https://play.google.com" class="inline-block hover:opacity-80 transition-opacity">
       <img
         src="/images/badges/google-play-badge.png"

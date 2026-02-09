@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
 
@@ -27,7 +28,13 @@ export default function AgentCard({
   ];
 
   return (
-    <div className="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+      className="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden"
+    >
       <div className="px-5 pt-5 pb-4">
         <h3 className="text-body font-heading font-bold text-chill-text mb-1">
           {name}
@@ -44,6 +51,6 @@ export default function AgentCard({
           <CodeBlock tabs={tabs} />
         </Accordion>
       </div>
-    </div>
+    </motion.div>
   );
 }

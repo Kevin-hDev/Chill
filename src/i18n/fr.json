@@ -21,7 +21,7 @@
   "sections.connections.title": "Connecte-toi partout",
   "sections.connections.description": "SSH, Tailscale, Wake-on-LAN — tout ce qu'il faut pour atteindre ton PC depuis n'importe où dans le monde.",
   "sections.customize.title": "Fais-le tien",
-  "sections.customize.description": "5 thèmes de couleurs, 5 langues, et un design qui s'adapte à toi.",
+  "sections.customize.description": "12 thèmes de couleurs, 5 langues, et un design qui s'adapte à toi.",
   "differentiator.title": "Pourquoi ChillShell ?",
   "differentiator.security": "Chiffré de bout en bout",
   "differentiator.securityDesc": "Clés SSH stockées dans le matériel sécurisé. PIN hashé avec PBKDF2. Zéro secret dans le code.",

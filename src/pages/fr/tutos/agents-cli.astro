@@ -103,7 +103,7 @@ const agents = [
 
 <TutoLayout title={t(lang, 'tutos.agents.title')} intro={t(lang, 'tutos.agents.intro')} showOsTabs={false}>
   <!-- Tableau de compatibilité -->
-  <div class="mb-10">
+  <div data-animate="0" class="mb-10">
     <h2 class="text-h3 font-heading font-bold text-chill-text mb-4">
       {t(lang, 'tutos.agents.compat')}
     </h2>
@@ -111,7 +111,7 @@ const agents = [
   </div>
 
   <!-- Grille de cartes agents -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div data-animate="200" class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {agents.map((agent) => (
       <AgentCard
         client:visible

@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import TabsOS from '../ui/TabsOS';
 import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
@@ -42,7 +43,13 @@ export default function WolContent({
   return (
     <div className="space-y-10">
       {/* Warning banner */}
-      <div className="rounded-chill border border-amber-500/40 bg-amber-500/10 px-5 py-4 flex items-start gap-3">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+        className="rounded-chill border border-amber-500/40 bg-amber-500/10 px-5 py-4 flex items-start gap-3"
+      >
         <svg
           width="20"
           height="20"
@@ -59,10 +66,15 @@ export default function WolContent({
           <line x1="12" y1="17" x2="12.01" y2="17" />
         </svg>
         <p className="text-body-sm text-amber-200/90 leading-relaxed">{warning}</p>
-      </div>
+      </motion.div>
 
       {/* Step 1: Enable in BIOS (common) */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+      >
         <h2 className="text-h3 font-heading font-bold text-chill-text mb-3">
           1. {step1Title}
         </h2>
@@ -75,10 +87,15 @@ export default function WolContent({
             BIOS Setup &rarr;
           </a>
         </p>
-      </div>
+      </motion.div>
 
       {/* Step 2: OS-specific (TabsOS) */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+      >
         <h2 className="text-h3 font-heading font-bold text-chill-text mb-4">
           2. {winStep2Title.replace(/^.*?in /, 'Enable in ')}
         </h2>
@@ -105,10 +122,15 @@ export default function WolContent({
             </div>
           }
         />
-      </div>
+      </motion.div>
 
       {/* Step 3: Configure in ChillShell (common + OS-specific code) */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+      >
         <h2 className="text-h3 font-heading font-bold text-chill-text mb-3">
           3. {step3Title}
         </h2>
@@ -123,10 +145,15 @@ export default function WolContent({
             <CodeBlock code={linuxStep3Code} language="bash" title="Terminal" />
           }
         />
-      </div>
+      </motion.div>
 
       {/* Debug checklist */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+      >
         <h2 className="text-h3 font-heading font-bold text-chill-text mb-4">
           {debugTitle}
         </h2>
@@ -152,7 +179,7 @@ export default function WolContent({
             </Accordion>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

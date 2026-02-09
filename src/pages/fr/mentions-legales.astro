@@ -8,11 +8,11 @@ const lang = getLangFromUrl(Astro.url);
 <BaseLayout title={t(lang, 'legal.mentions.title')}>
   <section class="py-[var(--spacing-section)]">
     <!-- Title -->
-    <h1 class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
+    <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
       {t(lang, 'legal.mentions.title')}
     </h1>
 
-    <div class="space-y-10">
+    <div data-animate="150" class="space-y-10">
       <!-- Editeur -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">

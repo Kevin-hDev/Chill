@@ -1,19 +1,19 @@
 ---
-import { getLangFromUrl, t } from '../../i18n/utils';
+import { getLangFromUrl, t, getLocalePath } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
 <footer class="border-t border-chill-border py-8 mt-24">
-  <div class="max-w-[var(--container-page)] mx-auto px-6 flex flex-wrap items-center justify-center gap-4 text-micro text-chill-text-muted">
+  <div data-animate="0" class="max-w-[var(--container-page)] mx-auto px-6 flex flex-wrap items-center justify-center gap-4 text-micro text-chill-text-muted">
     <span class="font-heading font-bold text-chill-text-secondary">Chill</span>
     <span>&copy; 2026 Chill</span>
-    <a href="/mentions-legales" class="hover:text-chill-text transition-colors">
+    <a href={getLocalePath(lang, '/mentions-legales')} class="hover:text-chill-text transition-colors">
       {t(lang, 'footer.legal')}
     </a>
-    <a href="/cgu" class="hover:text-chill-text transition-colors">
+    <a href={getLocalePath(lang, '/cgu')} class="hover:text-chill-text transition-colors">
       {t(lang, 'footer.terms')}
     </a>
-    <a href="/politique-confidentialite" class="hover:text-chill-text transition-colors">
+    <a href={getLocalePath(lang, '/politique-confidentialite')} class="hover:text-chill-text transition-colors">
       {t(lang, 'footer.privacy')}
     </a>
   </div>

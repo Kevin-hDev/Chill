@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import TabsOS from '../ui/TabsOS';
 import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
@@ -40,10 +41,17 @@ function StepList({ steps }: { steps: StepData[] }) {
 
 export default function SshContent({ win, linux, mac }: Props) {
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+    >
     <TabsOS
       windows={<StepList steps={win} />}
       linux={<StepList steps={linux} />}
       macos={<StepList steps={mac} />}
     />
+    </motion.div>
   );
 }

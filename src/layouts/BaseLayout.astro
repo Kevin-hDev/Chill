@@ -58,5 +58,22 @@ const canonicalURL = url ? new URL(url, Astro.site) : new URL(Astro.url.pathname
       <slot />
     </main>
     <Footer />
+    <!-- Scroll-triggered animations -->
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.getAttribute('data-animate') || '0';
+            setTimeout(() => entry.target.classList.add('is-visible'), Number(delay));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+      // Re-observe after Astro page transitions
+      document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('[data-animate]:not(.is-visible)').forEach((el) => observer.observe(el));
+      });
+    </script>
   </body>
 </html>

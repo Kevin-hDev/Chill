@@ -12,10 +12,10 @@ const { title, intro, showOsTabs = true } = Astro.props;
 
 <BaseLayout title={`${title} — Chill`}>
   <section class="py-12">
-    <h1 class="text-h1 font-heading font-bold text-chill-text mb-4">
+    <h1 data-animate="0" class="text-h1 font-heading font-bold text-chill-text mb-4">
       {title}
     </h1>
-    <p class="text-body text-chill-text-secondary mb-10 max-w-3xl">
+    <p data-animate="100" class="text-body text-chill-text-secondary mb-10 max-w-3xl">
       {intro}
     </p>
 
