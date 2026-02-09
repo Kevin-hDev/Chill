@@ -2,6 +2,8 @@
 @import "@fontsource-variable/plus-jakarta-sans";
 @import "@fontsource/jetbrains-mono";
 @import "@fontsource/jetbrains-mono/700.css";
+@import "@fontsource/space-mono";
+@import "@fontsource/space-mono/700.css";
 
 /* ─── Design Tokens as CSS Custom Properties ─── */
 
@@ -64,7 +66,7 @@
   --color-chill-orange: var(--color-orange);
 
   /* Fonts */
-  --font-heading: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+  --font-heading: "Space Mono", "JetBrains Mono", "Fira Code", monospace;
   --font-body: "Plus Jakarta Sans Variable", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
 
@@ -241,6 +243,26 @@
   pointer-events: none;
   z-index: -1;
   opacity: 0.5;
+}
+
+/* ─── Dot grid background (Linear-style) ─── */
+
+.dot-grid {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  animation: dotDrift 25s linear infinite;
+}
+
+@keyframes dotDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 28px 28px; }
 }
 
 /* ─── Noise texture overlay ─── */
