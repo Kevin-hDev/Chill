@@ -72,7 +72,7 @@ export default function SectionPerspective({
         className="rounded-chill-xl overflow-hidden border border-chill-border shadow-lg perspective-container"
         data-transform={perspectiveTransform}
       >
-        <Carousel images={images} />
+        <Carousel images={images} aspectRatio="9/16" />
       </div>
       {/* Inline style for md+ perspective via media query */}
       <style>{`
@@ -128,8 +128,8 @@ export default function SectionPerspective({
       <div
         className={`grid grid-cols-1 gap-8 md:gap-12 items-center ${
           side === 'left'
-            ? 'md:grid-cols-[55%_45%]'
-            : 'md:grid-cols-[45%_55%]'
+            ? 'md:grid-cols-[40%_60%]'
+            : 'md:grid-cols-[60%_40%]'
         }`}
       >
         {side === 'left' ? (

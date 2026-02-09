@@ -25,7 +25,7 @@ export default function SectionFade({
       >
         {/* Image carousel with fade effect */}
         <motion.div
-          className="w-full md:w-1/2"
+          className="w-full md:w-2/5"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -39,13 +39,13 @@ export default function SectionFade({
                 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
             }}
           >
-            <Carousel images={images} />
+            <Carousel images={images} aspectRatio="9/16" />
           </div>
         </motion.div>
 
         {/* Text content */}
         <motion.div
-          className="w-full md:w-1/2"
+          className="w-full md:w-3/5"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

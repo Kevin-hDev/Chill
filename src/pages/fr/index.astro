@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import HeroChill from '../../components/home/HeroChill.astro';
 import HeroChillShell from '../../components/home/HeroChillShell.tsx';
 import SectionPerspective from '../../components/home/SectionPerspective.tsx';
 import SectionFade from '../../components/home/SectionFade.tsx';
@@ -30,14 +29,16 @@ const customizeImages = [
 ---
 
 <BaseLayout title="Chill — Ton terminal de bureau. Dans ta poche.">
-  <HeroChill />
-
+  <!-- Product Hero (ChillShell) -->
   <HeroChillShell
     client:visible
     tagline={t(lang, 'hero.tagline')}
     subtitle={t(lang, 'hero.subtitle')}
   />
 
+  <hr class="section-divider" />
+
+  <!-- Section 1: Terminal -->
   <SectionPerspective
     client:visible
     side="left"
@@ -46,6 +47,9 @@ const customizeImages = [
     description={t(lang, 'sections.terminal.description')}
   />
 
+  <hr class="section-divider" />
+
+  <!-- Section 2: Connexions -->
   <SectionFade
     client:visible
     images={connectionImages}
@@ -54,6 +58,9 @@ const customizeImages = [
     side="right"
   />
 
+  <hr class="section-divider" />
+
+  <!-- Section 3: Personnalisation -->
   <SectionPerspective
     client:visible
     side="right"
@@ -62,7 +69,13 @@ const customizeImages = [
     description={t(lang, 'sections.customize.description')}
   />
 
+  <hr class="section-divider" />
+
+  <!-- Différenciateur -->
   <Differentiator />
 
+  <hr class="section-divider" />
+
+  <!-- Tarifs -->
   <Pricing />
 </BaseLayout>

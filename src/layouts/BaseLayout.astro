@@ -51,7 +51,7 @@ const canonicalURL = url ? new URL(url, Astro.site) : new URL(Astro.url.pathname
       document.documentElement.classList.toggle('dark', theme === 'dark');
     </script>
   </head>
-  <body class="min-h-screen noise-bg">
+  <body class="min-h-screen noise-bg bg-glow">
     <Header />
     <main class="max-w-[var(--container-page)] mx-auto px-4 md:px-6">
       <slot />

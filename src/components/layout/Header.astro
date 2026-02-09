@@ -3,24 +3,24 @@ import NavDropdown from './NavDropdown.tsx';
 import MobileMenu from './MobileMenu.tsx';
 import ThemeToggle from '../ui/ThemeToggle.tsx';
 import LanguageToggle from '../ui/LanguageToggle.tsx';
-import { getLangFromUrl, t } from '../../i18n/utils';
+import { getLangFromUrl, t, getLocalePath } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url.pathname;
 
 const tutoItems = [
-  { label: t(lang, 'nav.tutos.configOs'), href: '/tutos/config-os' },
-  { label: t(lang, 'nav.tutos.ssh'), href: '/tutos/ssh' },
-  { label: t(lang, 'nav.tutos.tailscale'), href: '/tutos/tailscale' },
-  { label: t(lang, 'nav.tutos.bios'), href: '/tutos/bios' },
-  { label: t(lang, 'nav.tutos.wol'), href: '/tutos/wol' },
-  { label: t(lang, 'nav.tutos.agentsCli'), href: '/tutos/agents-cli' },
+  { label: t(lang, 'nav.tutos.configOs'), href: getLocalePath(lang, '/tutos/config-os') },
+  { label: t(lang, 'nav.tutos.ssh'), href: getLocalePath(lang, '/tutos/ssh') },
+  { label: t(lang, 'nav.tutos.tailscale'), href: getLocalePath(lang, '/tutos/tailscale') },
+  { label: t(lang, 'nav.tutos.bios'), href: getLocalePath(lang, '/tutos/bios') },
+  { label: t(lang, 'nav.tutos.wol'), href: getLocalePath(lang, '/tutos/wol') },
+  { label: t(lang, 'nav.tutos.agentsCli'), href: getLocalePath(lang, '/tutos/agents-cli') },
 ];
 
 const navItems = [
-  { label: t(lang, 'nav.security'), href: '/securite' },
-  { label: t(lang, 'nav.updates'), href: '/updates' },
-  { label: t(lang, 'nav.faq'), href: '/faq' },
+  { label: t(lang, 'nav.security'), href: getLocalePath(lang, '/securite') },
+  { label: t(lang, 'nav.updates'), href: getLocalePath(lang, '/updates') },
+  { label: t(lang, 'nav.faq'), href: getLocalePath(lang, '/faq') },
 ];
 ---
 
@@ -35,16 +35,23 @@ const navItems = [
       navItems={navItems}
     />
 
-    <!-- Logo (centered on desktop, center on mobile too via flex) -->
-    <a href="/" class="flex flex-col items-center gap-1 md:gap-2 group">
-      <img
-        src="/images/logo-chill.png"
-        alt="Chill"
-        class="w-10 h-10 md:w-16 md:h-16 animate-float"
-        width="64"
-        height="64"
-      />
-      <span class="text-body-sm md:text-h3 font-heading font-bold text-chill-text group-hover:text-chill-accent transition-colors">
+    <!-- Logo (centered, bigger with halo) -->
+    <a href={getLocalePath(lang, '/')} class="flex flex-col items-center gap-2 md:gap-3 group relative">
+      <div class="relative">
+        <div
+          class="absolute inset-0 w-32 h-32 md:w-40 md:h-40 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          style="background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);"
+          aria-hidden="true"
+        ></div>
+        <img
+          src="/images/logo-chill.png"
+          alt="Chill"
+          class="w-16 h-16 md:w-24 md:h-24 animate-float relative z-10"
+          width="96"
+          height="96"
+        />
+      </div>
+      <span class="text-h3 md:text-h2 font-heading font-bold text-chill-text group-hover:text-chill-accent transition-colors">
         Chill
       </span>
     </a>
@@ -59,13 +66,13 @@ const navItems = [
   <!-- Desktop Navbar (hidden on mobile) -->
   <nav class="hidden md:flex items-center justify-center gap-8 py-4 border-b border-chill-border">
     <NavDropdown label={t(lang, 'nav.tutos')} items={tutoItems} client:load />
-    <a href="/securite" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
+    <a href={getLocalePath(lang, '/securite')} class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
       {t(lang, 'nav.security')}
     </a>
-    <a href="/updates" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
+    <a href={getLocalePath(lang, '/updates')} class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
       {t(lang, 'nav.updates')}
     </a>
-    <a href="/faq" class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
+    <a href={getLocalePath(lang, '/faq')} class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
       {t(lang, 'nav.faq')}
     </a>
 
