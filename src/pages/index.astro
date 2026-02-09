@@ -1,16 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroChill from '../components/home/HeroChill.astro';
+import HeroChillShell from '../components/home/HeroChillShell.tsx';
+import SectionPerspective from '../components/home/SectionPerspective.tsx';
+import SectionFade from '../components/home/SectionFade.tsx';
+import Differentiator from '../components/home/Differentiator.astro';
+import Pricing from '../components/home/Pricing.astro';
 import { getLangFromUrl, t } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+
+// Placeholder images for sections (replace with actual screenshots)
+const terminalImages = [
+  { src: '/images/screenshots/terminal-1.png', alt: 'Terminal SSH view' },
+  { src: '/images/screenshots/terminal-2.png', alt: 'Agent CLI running' },
+  { src: '/images/screenshots/terminal-3.png', alt: 'Multi-session terminal' },
+];
+
+const connectionImages = [
+  { src: '/images/screenshots/connect-1.png', alt: 'SSH connection' },
+  { src: '/images/screenshots/connect-2.png', alt: 'Tailscale VPN' },
+  { src: '/images/screenshots/connect-3.png', alt: 'Wake-on-LAN' },
+];
+
+const customizeImages = [
+  { src: '/images/screenshots/theme-1.png', alt: 'Dark theme' },
+  { src: '/images/screenshots/theme-2.png', alt: 'Dracula theme' },
+  { src: '/images/screenshots/theme-3.png', alt: 'Nord theme' },
+];
 ---
 
 <BaseLayout title="Chill — Your desktop terminal. In your pocket.">
-  <div class="py-24 text-center">
-    <h1 class="text-hero-h1 text-chill-text font-heading">Chill</h1>
-    <p class="text-body text-chill-text-secondary mt-4">
-      {t(lang, 'hero.tagline')}
-    </p>
-    <p class="text-body-sm text-chill-text-muted mt-2">Site en construction</p>
-  </div>
+  <!-- Brand Hero -->
+  <HeroChill />
+
+  <!-- Product Hero (ChillShell) -->
+  <HeroChillShell
+    client:visible
+    tagline={t(lang, 'hero.tagline')}
+    subtitle={t(lang, 'hero.subtitle')}
+  />
+
+  <!-- Section 1: Terminal (3D perspective, left) -->
+  <SectionPerspective
+    client:visible
+    side="left"
+    images={terminalImages}
+    title={t(lang, 'sections.terminal.title')}
+    description={t(lang, 'sections.terminal.description')}
+  />
+
+  <!-- Section 2: Connections (fade edges) -->
+  <SectionFade
+    client:visible
+    images={connectionImages}
+    title={t(lang, 'sections.connections.title')}
+    description={t(lang, 'sections.connections.description')}
+    side="right"
+  />
+
+  <!-- Section 3: Customization (3D perspective, right) -->
+  <SectionPerspective
+    client:visible
+    side="right"
+    images={customizeImages}
+    title={t(lang, 'sections.customize.title')}
+    description={t(lang, 'sections.customize.description')}
+  />
+
+  <!-- Differentiator (Why ChillShell?) -->
+  <Differentiator />
+
+  <!-- Pricing -->
+  <Pricing />
 </BaseLayout>
