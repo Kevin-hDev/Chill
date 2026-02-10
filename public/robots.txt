@@ -1,3 +1,130 @@
+# ============================================
+# robots.txt — chill.app (ChillShell)
+# Stratégie : Autoriser les bots de RECHERCHE IA (citations)
+#             Bloquer les bots de TRAINING IA (vol de contenu)
+# Dernière mise à jour : Février 2026
+# ============================================
+
+# ——— MOTEURS DE RECHERCHE CLASSIQUES (toujours autoriser) ———
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# ——— BOTS DE RECHERCHE IA — AUTORISER ———
+# Ces bots récupèrent le contenu pour CITER le site dans les réponses IA.
+# C'est le GEO (Generative Engine Optimization) : on VEUT être cité.
+
+# OpenAI — ChatGPT Search (quand un utilisateur fait une recherche web)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude (recherche web dans les conversations)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity — Moteur de recherche IA
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google — Gemini (passe via Googlebot pour la recherche, déjà autorisé)
+# + Deep Research de Gemini
+User-agent: Gemini-Deep-Research
+Allow: /
+
+# xAI — Grok (recherche web)
+User-agent: xAI-Grok
+Allow: /
+
+User-agent: Grok-DeepSearch
+Allow: /
+
+# Apple — Siri et Spotlight
+User-agent: Applebot
+Allow: /
+
+# DuckDuckGo — Réponses IA
+User-agent: DuckAssistBot
+Allow: /
+
+# You.com — Moteur de recherche IA
+User-agent: YouBot
+Allow: /
+
+# Phind — Recherche IA pour développeurs
+User-agent: PhindBot
+Allow: /
+
+# Cohere — Recherche IA
+User-agent: cohere-ai
+Allow: /
+
+# ——— BOTS DE TRAINING IA — BLOQUER ———
+# Ces bots prennent le contenu pour ENTRAÎNER leurs modèles.
+# On ne veut pas que notre contenu serve à entraîner des IA.
+
+# OpenAI — Training GPT
+User-agent: GPTBot
+Disallow: /
+
+# Google — Training Gemini/Bard/Vertex AI
+User-agent: Google-Extended
+Disallow: /
+
+# Common Crawl — Datasets open-source pour training IA
+User-agent: CCBot
+Disallow: /
+
+# Meta — Training LLaMA
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# ByteDance — Training TikTok/Doubao
+User-agent: Bytespider
+Disallow: /
+
+# Amazon — Training Alexa/AI
+User-agent: Amazonbot
+Disallow: /
+
+# Apple — Training Apple Intelligence
+User-agent: Applebot-Extended
+Disallow: /
+
+# xAI — Training Grok
+User-agent: GrokBot
+Disallow: /
+
+# Anthropic — Training Claude (bulk)
+User-agent: anthropic-ai
+Disallow: /
+
+# DeepSeek — Training (ne respecte pas toujours le robots.txt)
+User-agent: DeepSeekBot
+Disallow: /
+
+# ——— RÈGLE PAR DÉFAUT ———
 User-agent: *
 Allow: /
+
+# ——— SITEMAP ———
 Sitemap: https://chill.app/sitemap-index.xml
