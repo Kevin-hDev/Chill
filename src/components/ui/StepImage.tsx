@@ -2,11 +2,12 @@ interface StepImageProps {
   src: string;
   alt: string;
   caption?: string;
+  maxWidth?: string;
 }
 
-export default function StepImage({ src, alt, caption }: StepImageProps) {
+export default function StepImage({ src, alt, caption, maxWidth }: StepImageProps) {
   return (
-    <figure className="my-4 max-w-[70%]">
+    <figure className="my-4" style={maxWidth ? { maxWidth } : { maxWidth: '70%' }}>
       <div className="border border-chill-border rounded-chill overflow-hidden">
         <img
           src={src}

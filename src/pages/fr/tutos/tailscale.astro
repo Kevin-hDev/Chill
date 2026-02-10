@@ -8,60 +8,81 @@ const lang = getLangFromUrl(Astro.url);
 const win = [
   {
     title: t(lang, 'tutos.tailscale.step1.title'),
-    content: t(lang, 'tutos.tailscale.win.step1.content'),
+    content: t(lang, 'tutos.tailscale.step1.content'),
+    link: { url: 'https://login.tailscale.com/login?next_url=%2Fwelcome', label: t(lang, 'tutos.tailscale.step1.linkLabel') },
+    image: { src: '/images/tutos/tailscale/tailscale-login.png', alt: 'Page de connexion Tailscale', maxWidth: '42%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step2.title'),
-    content: t(lang, 'tutos.tailscale.step2.content'),
+    content: t(lang, 'tutos.tailscale.win.step2.content'),
+    link: { url: 'https://tailscale.com/download', label: t(lang, 'tutos.tailscale.win.step2.linkLabel') },
+    image: { src: '/images/tutos/tailscale/tailscale-download.png', alt: 'Page de téléchargement Tailscale' },
+    content2: t(lang, 'tutos.tailscale.win.step2.connectedNote'),
+    image2: { src: '/images/tutos/tailscale/tailscale-connected-pc.png', alt: 'Tailscale connecté dans la barre des tâches', maxWidth: '49%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step3.title'),
     content: t(lang, 'tutos.tailscale.step3.content'),
-    code: t(lang, 'tutos.tailscale.step3.code'),
+    storeBadges: true,
+    image: { src: '/images/tutos/tailscale/tailscale-playstore.png', alt: 'Tailscale sur le Google Play Store', maxWidth: '35%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step4.title'),
     content: t(lang, 'tutos.tailscale.step4.content'),
+    code: t(lang, 'tutos.tailscale.step4.code'),
+    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Dashboard web Tailscale', maxWidth: '88%' },
   },
 ];
 
 const linux = [
   {
     title: t(lang, 'tutos.tailscale.step1.title'),
-    code: t(lang, 'tutos.tailscale.linux.step1.code'),
+    content: t(lang, 'tutos.tailscale.step1.content'),
+    link: { url: 'https://login.tailscale.com/login?next_url=%2Fwelcome', label: t(lang, 'tutos.tailscale.step1.linkLabel') },
+    image: { src: '/images/tutos/tailscale/tailscale-login.png', alt: 'Page de connexion Tailscale', maxWidth: '42%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step2.title'),
-    content: t(lang, 'tutos.tailscale.step2.content'),
+    code: t(lang, 'tutos.tailscale.linux.step2.code'),
   },
   {
     title: t(lang, 'tutos.tailscale.step3.title'),
     content: t(lang, 'tutos.tailscale.step3.content'),
-    code: t(lang, 'tutos.tailscale.step3.code'),
+    storeBadges: true,
+    image: { src: '/images/tutos/tailscale/tailscale-playstore.png', alt: 'Tailscale sur le Google Play Store', maxWidth: '35%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step4.title'),
     content: t(lang, 'tutos.tailscale.step4.content'),
+    code: t(lang, 'tutos.tailscale.step4.code'),
+    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Dashboard web Tailscale', maxWidth: '88%' },
   },
 ];
 
 const mac = [
   {
     title: t(lang, 'tutos.tailscale.step1.title'),
-    content: t(lang, 'tutos.tailscale.mac.step1.content'),
+    content: t(lang, 'tutos.tailscale.step1.content'),
+    link: { url: 'https://login.tailscale.com/login?next_url=%2Fwelcome', label: t(lang, 'tutos.tailscale.step1.linkLabel') },
+    image: { src: '/images/tutos/tailscale/tailscale-login.png', alt: 'Page de connexion Tailscale', maxWidth: '42%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step2.title'),
-    content: t(lang, 'tutos.tailscale.step2.content'),
+    content: t(lang, 'tutos.tailscale.mac.step2.content'),
+    link: { url: 'https://tailscale.com/download', label: t(lang, 'tutos.tailscale.win.step2.linkLabel') },
+    image: { src: '/images/tutos/tailscale/tailscale-download.png', alt: 'Page de téléchargement Tailscale' },
   },
   {
     title: t(lang, 'tutos.tailscale.step3.title'),
     content: t(lang, 'tutos.tailscale.step3.content'),
-    code: t(lang, 'tutos.tailscale.step3.code'),
+    storeBadges: true,
+    image: { src: '/images/tutos/tailscale/tailscale-playstore.png', alt: 'Tailscale sur le Google Play Store', maxWidth: '35%' },
   },
   {
     title: t(lang, 'tutos.tailscale.step4.title'),
     content: t(lang, 'tutos.tailscale.step4.content'),
+    code: t(lang, 'tutos.tailscale.step4.code'),
+    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Dashboard web Tailscale', maxWidth: '88%' },
   },
 ];
 ---

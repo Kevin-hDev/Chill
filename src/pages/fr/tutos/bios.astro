@@ -1,9 +1,31 @@
 ---
 import TutoLayout from '../../../components/tutos/TutoLayout.astro';
 import Accordion from '../../../components/ui/Accordion.tsx';
+import BiosAsusContent from '../../../components/tutos/BiosAsusContent.tsx';
 import { getLangFromUrl, t } from '../../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+
+const asusSteps = [
+  { text: t(lang, 'tutos.bios.asus.step1') },
+  {
+    text: t(lang, 'tutos.bios.asus.step2'),
+    image: { src: '/images/tutos/bios/bios-1-advanced-apm.jpg', alt: 'BIOS Advanced > APM Configuration' },
+  },
+  {
+    text: t(lang, 'tutos.bios.asus.step3'),
+    image: { src: '/images/tutos/bios/bios-3-apm-settings.jpg', alt: 'Réglages APM Configuration' },
+  },
+  {
+    text: t(lang, 'tutos.bios.asus.step4'),
+    image: { src: '/images/tutos/bios/bios-2-advanced-platform-misc.jpg', alt: 'BIOS Advanced > Platform Misc Configuration' },
+  },
+  {
+    text: t(lang, 'tutos.bios.asus.step5'),
+    image: { src: '/images/tutos/bios/bios-4-native-aspm.jpg', alt: 'Native ASPM Disabled' },
+  },
+  { text: t(lang, 'tutos.bios.asus.step6') },
+];
 ---
 
 <TutoLayout title={t(lang, 'tutos.bios.title')} intro={t(lang, 'tutos.bios.intro')} showOsTabs={false}>
@@ -20,9 +42,10 @@ const lang = getLangFromUrl(Astro.url);
   <!-- Brand accordions -->
   <div data-animate="150" class="space-y-4">
     <Accordion client:visible title={t(lang, 'tutos.bios.asus.title')} defaultOpen>
-      <p class="whitespace-pre-line leading-relaxed">
-        {t(lang, 'tutos.bios.asus.content')}
-      </p>
+      <BiosAsusContent
+        warning={t(lang, 'tutos.bios.asus.warning')}
+        steps={asusSteps}
+      />
     </Accordion>
   </div>
 </TutoLayout>
