@@ -13,9 +13,12 @@ export default function LanguageToggle({ currentLang, currentPath }: Props) {
     : currentPath;
   const href = getLocalePath(otherLang, cleanPath);
 
+  const ariaLabel = currentLang === 'en' ? 'Switch to French' : 'Passer en anglais';
+
   return (
     <a
       href={href}
+      aria-label={ariaLabel}
       className="text-micro font-mono text-chill-text-secondary hover:text-chill-text transition-colors px-2 py-1 border border-chill-border rounded-chill-sm"
     >
       {languages[otherLang]}

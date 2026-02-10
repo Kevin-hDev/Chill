@@ -16,5 +16,11 @@ const lang = getLangFromUrl(Astro.url);
     <a href={getLocalePath(lang, '/politique-confidentialite')} class="hover:text-chill-text transition-colors">
       {t(lang, 'footer.privacy')}
     </a>
+    <a href={getLocalePath(lang, '/about')} class="hover:text-chill-text transition-colors">
+      {t(lang, 'footer.about')}
+    </a>
+    <a href={getLocalePath(lang, '/contact')} class="hover:text-chill-text transition-colors">
+      {t(lang, 'footer.contact')}
+    </a>
   </div>
 </footer>

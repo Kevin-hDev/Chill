@@ -5,7 +5,7 @@ import { getLangFromUrl, t } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<BaseLayout title={t(lang, 'legal.mentions.title')}>
+<BaseLayout title={t(lang, 'legal.mentions.pageTitle')} description={t(lang, 'legal.mentions.description')}>
   <section class="py-[var(--spacing-section)]">
     <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
@@ -19,7 +19,9 @@ const lang = getLangFromUrl(Astro.url);
           {t(lang, 'legal.mentions.editor')}
         </h2>
         <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          [To be completed]
+          Chill App SAS<br />
+          Paris, France<br />
+          Publication director: Kevin Huynh
         </p>
       </div>
 
@@ -42,7 +44,7 @@ const lang = getLangFromUrl(Astro.url);
           {t(lang, 'legal.mentions.contact')}
         </h2>
         <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          [To be completed]
+          Email: <a href="mailto:contact@chill.app" class="text-chill-accent hover:text-chill-accent-hover transition-colors">contact@chill.app</a>
         </p>
       </div>
     </div>

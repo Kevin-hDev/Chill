@@ -1,0 +1,165 @@
+# ChillShell - Mobile SSH Terminal
+
+> ChillShell is a professional mobile SSH terminal application for Android and iOS. It enables developers, system administrators, and DevOps engineers to securely connect to remote servers from their phone, run AI CLI agents, and manage infrastructure on the go.
+
+## About
+ChillShell bridges the gap between desktop development and mobile accessibility. Whether you need to deploy a hotfix from the train, monitor servers from the couch, or run AI coding agents from anywhere, ChillShell provides a full-featured SSH terminal experience on your mobile device.
+
+## Key Features
+
+### SSH Terminal
+- Full SSH terminal with native mobile keyboard support
+- Ed25519 key generation and management
+- Multi-session terminal management — switch between servers instantly
+- Trust On First Use (TOFU) host verification for SSH connections
+
+### AI CLI Agent Support
+- Run Claude Code directly from your phone via SSH
+- Full Cursor CLI compatibility
+- Gemini CLI integration
+- OpenAI Codex CLI support
+- Compatibility table available at https://chill.app/tutos/agents-cli
+
+### Connectivity
+- Direct SSH connections over local network
+- Tailscale VPN integration for secure remote access from anywhere (WiFi, 5G, abroad)
+- Wake-on-LAN to power on your PC remotely from your phone
+- No port forwarding required when using Tailscale
+
+### Customization
+- 12 color themes (including Dracula, Nord, Monokai)
+- 5 language support
+- Dark and light mode
+- Adaptive design
+
+## Security Architecture
+
+### Data Storage
+SSH keys and credentials are stored using flutter_secure_storage: AES-CBC encryption on Android (EncryptedSharedPreferences), Keychain on iOS. The master key is stored in the device's hardware-backed keystore.
+
+### SSH Connection Security
+Trust On First Use (TOFU) for host verification. Ed25519 preferred for key generation. Keys are loaded into memory only during active sessions, then securely disposed via SecureBuffer.
+
+### Local Authentication
+PIN hashed with PBKDF2-HMAC-SHA256 with 100,000 iterations. Biometric unlock via local_auth. Auto-lock after inactivity period.
+
+### Leak Protection
+Command history filtered with regex patterns. Clipboard auto-cleanup after sensitive operations. FLAG_SECURE on Android prevents screenshots of the app.
+
+### Root/Jailbreak Detection
+Common root paths verified at launch. Warning banner shown if detected. App remains functional but user is informed of the risk.
+
+### Audit Trail
+Security events logged locally with FIFO rotation at 500 entries. Tracked events include: login, session start/end, key generation.
+
+### Security Audit Results
+- White-box audit score: 8.5/10
+- STRIDE threat model: 100% mitigated
+- Full reports available on request
+
+### Known Limitations (Documented for Transparency)
+- SecureBuffer cannot guarantee garbage collector won't copy data
+- Root detection is bypassable on rooted devices
+
+## Pricing
+- 7-day free trial with all features unlocked
+- One-time purchase: $2.99 USD / 2.99 EUR
+- Lifetime access — no subscription, no hidden fees
+- Available on Google Play Store and Apple App Store
+
+## Tutorials
+
+### OS Setup (Windows, Linux, macOS)
+Guide to enable SSH server on your computer before connecting with ChillShell.
+- Windows: Install OpenSSH Client and Server, start sshd service, configure firewall
+- Linux: Install openssh-server, enable systemd service
+- macOS: Enable Remote Login in System Settings
+URL: https://chill.app/tutos/config-os
+
+### SSH Connection
+Step-by-step guide to connect to your PC from ChillShell.
+- Find your local IP address
+- Test SSH connection
+- Generate and deploy Ed25519 keys
+URL: https://chill.app/tutos/ssh
+
+### Tailscale VPN Setup
+Connect to your PC from anywhere without port forwarding.
+- Create Tailscale account
+- Install on PC and phone
+- Use Tailscale IP (100.x.x.x) in ChillShell
+URL: https://chill.app/tutos/tailscale
+
+### BIOS Wake-on-LAN Setup
+Configure BIOS settings for remote PC power-on.
+- Enable Wake on LAN / Power On By PCI-E
+- Disable ErP Ready
+- Disable Native ASPM
+- Specific instructions for ASUS/ROG motherboards included
+URL: https://chill.app/tutos/bios
+
+### Wake-on-LAN Usage
+Power on your PC remotely from ChillShell.
+- Requires Ethernet cable (not WiFi)
+- Configure Windows/Linux OS settings
+- Add MAC address in ChillShell
+- Troubleshooting checklist included
+URL: https://chill.app/tutos/wol
+
+### CLI Agents Setup
+Set up and run AI coding agents via SSH from your phone.
+- Installation, run, and upgrade commands for each agent
+- Compatibility table with status (OK, Bug, Testing)
+URL: https://chill.app/tutos/agents-cli
+
+## FAQ
+
+### Which server OS does ChillShell work with?
+Any OS with an SSH server: Windows (with OpenSSH), Linux, macOS. See the OS Setup tutorial for step-by-step instructions.
+
+### Does it work with Claude Code / Cursor CLI / Codex?
+Yes. ChillShell supports all major CLI agents via SSH. Check the CLI Agents page for the full compatibility table.
+
+### Does Wake-on-LAN work over WiFi?
+No. Wake-on-LAN requires an Ethernet cable connection. Your phone must also be on the same local network.
+
+### Can I use ChillShell without Wake-on-LAN?
+Absolutely. Wake-on-LAN is optional. You can use ChillShell purely for SSH connections — locally or via Tailscale VPN.
+
+### Is my data sent anywhere?
+No. All data stays on your phone. ChillShell does not collect any user data. See the Security page for full details.
+
+### Is the payment one-time or recurring?
+One-time purchase. $2.99 for lifetime access. No subscription, no hidden fees.
+
+### Can I get a refund?
+Refunds follow Google Play and App Store policies. Contact within the refund window of your platform.
+
+## All Pages
+- https://chill.app/ — Homepage (English)
+- https://chill.app/fr/ — Homepage (French)
+- https://chill.app/securite — Security details (English)
+- https://chill.app/fr/securite — Security details (French)
+- https://chill.app/faq — FAQ (English)
+- https://chill.app/fr/faq — FAQ (French)
+- https://chill.app/updates — Version history
+- https://chill.app/fr/updates — Version history (French)
+- https://chill.app/tutos/config-os — OS Setup tutorial (English)
+- https://chill.app/fr/tutos/config-os — OS Setup tutorial (French)
+- https://chill.app/tutos/ssh — SSH tutorial (English)
+- https://chill.app/fr/tutos/ssh — SSH tutorial (French)
+- https://chill.app/tutos/tailscale — Tailscale tutorial (English)
+- https://chill.app/fr/tutos/tailscale — Tailscale tutorial (French)
+- https://chill.app/tutos/bios — BIOS tutorial (English)
+- https://chill.app/fr/tutos/bios — BIOS tutorial (French)
+- https://chill.app/tutos/wol — Wake-on-LAN tutorial (English)
+- https://chill.app/fr/tutos/wol — Wake-on-LAN tutorial (French)
+- https://chill.app/tutos/agents-cli — CLI Agents tutorial (English)
+- https://chill.app/fr/tutos/agents-cli — CLI Agents tutorial (French)
+- https://chill.app/mentions-legales — Legal notice
+- https://chill.app/cgu — Terms of service
+- https://chill.app/politique-confidentialite — Privacy policy
+
+## Contact
+- Website: https://chill.app
+- Email: contact@chill.app

@@ -19,14 +19,14 @@ export default function HeroChillShell({
   return (
     <section className="py-16 text-center">
       {/* Product Name */}
-      <motion.h2
+      <motion.h1
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
         className="text-h2 font-heading font-bold text-chill-text mb-6"
       >
         ChillShell
-      </motion.h2>
+      </motion.h1>
 
       {/* Animated Tagline */}
       <div className="mb-4">
@@ -68,6 +68,8 @@ export default function HeroChillShell({
           <img
             src="/images/badges/google-play-badge.png"
             alt="Get it on Google Play"
+            width={175}
+            height={52}
             className="h-[52px] w-auto"
           />
         </a>
@@ -75,6 +77,8 @@ export default function HeroChillShell({
           <img
             src="/images/badges/app-store-badge.svg"
             alt="Download on the App Store"
+            width={135}
+            height={40}
             className="h-[40px] w-auto"
           />
         </a>

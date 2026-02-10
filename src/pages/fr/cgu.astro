@@ -5,7 +5,7 @@ import { getLangFromUrl, t } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<BaseLayout title={t(lang, 'legal.terms.title')}>
+<BaseLayout title={t(lang, 'legal.terms.pageTitle')} description={t(lang, 'legal.terms.description')}>
   <section class="py-[var(--spacing-section)]">
     <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">

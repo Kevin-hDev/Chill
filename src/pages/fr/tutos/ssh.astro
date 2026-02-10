@@ -66,6 +66,19 @@ const mac = [
 ];
 ---
 
-<TutoLayout title={t(lang, 'tutos.ssh.title')} intro={t(lang, 'tutos.ssh.intro')}>
+<TutoLayout
+  title={t(lang, 'tutos.ssh.title')}
+  intro={t(lang, 'tutos.ssh.intro')}
+  howToSteps={[
+    { name: t(lang, 'tutos.ssh.step1.title'), text: t(lang, 'tutos.ssh.win.step1.code') },
+    { name: t(lang, 'tutos.ssh.step2.title'), text: t(lang, 'tutos.ssh.step2.content') },
+    { name: t(lang, 'tutos.ssh.step3.title'), text: t(lang, 'tutos.ssh.step3.content') },
+  ]}
+  breadcrumbs={[
+    { name: 'Accueil', url: 'https://chill.app/fr/' },
+    { name: 'Tutos', url: 'https://chill.app/fr/tutos/config-os' },
+    { name: t(lang, 'tutos.ssh.title'), url: 'https://chill.app/fr/tutos/ssh' },
+  ]}
+>
   <SshContent client:visible win={win} linux={linux} mac={mac} />
 </TutoLayout>

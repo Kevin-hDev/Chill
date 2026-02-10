@@ -1,16 +1,32 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaHowTo from '../seo/SchemaHowTo.astro';
+import SchemaBreadcrumb from '../seo/SchemaBreadcrumb.astro';
+
+interface HowToStep {
+  name: string;
+  text: string;
+}
 
 interface Props {
   title: string;
   intro: string;
   showOsTabs?: boolean;
+  howToSteps?: HowToStep[];
+  breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, intro, showOsTabs = true } = Astro.props;
+const { title, intro, showOsTabs = true, howToSteps, breadcrumbs } = Astro.props;
 ---
 
 <BaseLayout title={`${title} — Chill`}>
+  {howToSteps && howToSteps.length > 0 && (
+    <SchemaHowTo name={title} description={intro} steps={howToSteps} />
+  )}
+  {breadcrumbs && breadcrumbs.length > 0 && (
+    <SchemaBreadcrumb items={breadcrumbs} />
+  )}
+
   <section class="py-12">
     <h1 data-animate="0" class="text-h1 font-heading font-bold text-chill-text mb-4">
       {title}

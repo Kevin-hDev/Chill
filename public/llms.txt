@@ -1,0 +1,54 @@
+# ChillShell - Mobile SSH Terminal
+
+> ChillShell is a mobile SSH terminal application for Android and iOS that lets developers securely connect to remote servers from their phone.
+
+## Key Features
+- Full SSH terminal with Ed25519 key support
+- CLI agent integration (Claude Code, Cursor, Gemini, Codex)
+- Wake-on-LAN remote PC startup
+- Tailscale VPN integration for remote access anywhere
+- Multi-session terminal management
+- Dark and light theme support
+- 12 color themes, 5 languages
+
+## Security
+- SSH keys stored in device secure enclave (AES-CBC on Android, Keychain on iOS)
+- PIN protected with PBKDF2-HMAC-SHA256 (100,000 iterations)
+- TOFU (Trust On First Use) host verification
+- No data collection — all data stays on device
+- Root/jailbreak detection at launch
+- Auto-lock after inactivity
+- White-box security audit: 8.5/10
+- STRIDE threat model: 100% mitigated
+
+## Pricing
+- 7-day free trial with full features
+- One-time purchase: $2.99 / 2.99 EUR
+- Lifetime access, no subscription
+
+## Pages
+- https://chill.app/ — Homepage
+- https://chill.app/securite — Security details
+- https://chill.app/faq — Frequently asked questions
+- https://chill.app/tutos/config-os — OS setup guide (Windows, Linux, macOS)
+- https://chill.app/tutos/ssh — SSH connection guide
+- https://chill.app/tutos/tailscale — Tailscale VPN setup
+- https://chill.app/tutos/bios — BIOS Wake-on-LAN setup
+- https://chill.app/tutos/wol — Wake-on-LAN usage guide
+- https://chill.app/tutos/agents-cli — CLI Agents setup (Claude Code, Cursor, Gemini, Codex)
+- https://chill.app/updates — Version history and changelogs
+
+## French Pages
+- https://chill.app/fr/ — Page d'accueil
+- https://chill.app/fr/securite — Details de securite
+- https://chill.app/fr/faq — Questions frequentes
+- https://chill.app/fr/tutos/config-os — Guide de configuration OS
+- https://chill.app/fr/tutos/ssh — Guide de connexion SSH
+- https://chill.app/fr/tutos/tailscale — Configuration VPN Tailscale
+- https://chill.app/fr/tutos/bios — Configuration BIOS Wake-on-LAN
+- https://chill.app/fr/tutos/wol — Utilisation Wake-on-LAN
+- https://chill.app/fr/tutos/agents-cli — Configuration des agents CLI
+
+## Contact
+- Website: https://chill.app
+- Email: contact@chill.app

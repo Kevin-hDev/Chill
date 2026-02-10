@@ -1,61 +1,54 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Accordion from '../components/ui/Accordion.tsx';
+import SchemaFAQ from '../components/seo/SchemaFAQ.astro';
+import SchemaBreadcrumb from '../components/seo/SchemaBreadcrumb.astro';
 import { getLangFromUrl, t } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+
+const faqItems = [
+  { question: t(lang, 'faq.q1'), answer: t(lang, 'faq.a1') },
+  { question: t(lang, 'faq.q2'), answer: t(lang, 'faq.a2') },
+  { question: t(lang, 'faq.q3'), answer: t(lang, 'faq.a3') },
+  { question: t(lang, 'faq.q4'), answer: t(lang, 'faq.a4') },
+  { question: t(lang, 'faq.q5'), answer: t(lang, 'faq.a5') },
+  { question: t(lang, 'faq.q6'), answer: t(lang, 'faq.a6') },
+  { question: t(lang, 'faq.q7'), answer: t(lang, 'faq.a7') },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://chill.app/' },
+  { name: 'FAQ', url: 'https://chill.app/faq' },
+];
 ---
 
-<BaseLayout title={t(lang, 'faq.title')}>
+<BaseLayout title={t(lang, 'faq.pageTitle')} description={t(lang, 'faq.description')}>
+  <SchemaFAQ items={faqItems} />
+  <SchemaBreadcrumb items={breadcrumbs} />
+
   <section class="py-12 md:py-[var(--spacing-section)]">
     <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
       {t(lang, 'faq.title')}
     </h1>
 
-    <!-- FAQ Accordion items -->
+    <!-- Static FAQ content — visible to crawlers and AI bots -->
     <div data-animate="150" class="space-y-4">
-      <Accordion client:visible title={t(lang, 'faq.q1')} defaultOpen>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a1')}
-        </p>
-      </Accordion>
-
-      <Accordion client:visible title={t(lang, 'faq.q2')}>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a2')}
-        </p>
-      </Accordion>
-
-      <Accordion client:visible title={t(lang, 'faq.q3')}>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a3')}
-        </p>
-      </Accordion>
-
-      <Accordion client:visible title={t(lang, 'faq.q4')}>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a4')}
-        </p>
-      </Accordion>
-
-      <Accordion client:visible title={t(lang, 'faq.q5')}>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a5')}
-        </p>
-      </Accordion>
-
-      <Accordion client:visible title={t(lang, 'faq.q6')}>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a6')}
-        </p>
-      </Accordion>
-
-      <Accordion client:visible title={t(lang, 'faq.q7')}>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'faq.a7')}
-        </p>
-      </Accordion>
+      {faqItems.map((item) => (
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer select-none text-body font-medium text-chill-text hover:bg-chill-surface transition-colors">
+            <span>{item.question}</span>
+            <svg class="w-5 h-5 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-4">
+            <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+              {item.answer}
+            </p>
+          </div>
+        </details>
+      ))}
     </div>
   </section>
 </BaseLayout>

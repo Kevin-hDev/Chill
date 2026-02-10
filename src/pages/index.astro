@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SchemaOrganization from '../components/seo/SchemaOrganization.astro';
+import SchemaSoftwareApp from '../components/seo/SchemaSoftwareApp.astro';
 import HeroChillShell from '../components/home/HeroChillShell.tsx';
 import SectionPerspective from '../components/home/SectionPerspective.tsx';
 import SectionFade from '../components/home/SectionFade.tsx';
@@ -29,7 +31,10 @@ const customizeImages = [
 ];
 ---
 
-<BaseLayout title="Chill — Your desktop terminal. In your pocket.">
+<BaseLayout title={t(lang, 'home.title')} description={t(lang, 'home.description')}>
+  <SchemaOrganization />
+  <SchemaSoftwareApp lang={lang} />
+
   <!-- Product Hero (ChillShell) -->
   <HeroChillShell
     client:visible

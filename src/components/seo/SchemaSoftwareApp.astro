@@ -1,0 +1,45 @@
+---
+/**
+ * Schema.org SoftwareApplication JSON-LD
+ * For the homepage — describes ChillShell as a mobile app.
+ */
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const description = lang === 'fr'
+  ? "Terminal SSH mobile pour les developpeurs. Connectez-vous a vos serveurs depuis votre telephone avec SSH, Tailscale VPN, Wake-on-LAN et agents CLI IA."
+  : "Mobile SSH terminal for developers. Connect to your servers from your phone with SSH, Tailscale VPN, Wake-on-LAN, and AI CLI agents.";
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ChillShell",
+  "description": description,
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Android, iOS",
+  "url": "https://chill.app",
+  "screenshot": "https://chill.app/images/screenshots/terminal-1.png",
+  "featureList": [
+    "Full SSH terminal with Ed25519 key support",
+    "CLI agent integration (Claude Code, Cursor, Gemini, Codex)",
+    "Wake-on-LAN remote PC startup",
+    "Tailscale VPN integration",
+    "Multi-session terminal management",
+    "12 color themes"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "2.99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ChillShell",
+    "url": "https://chill.app"
+  }
+})} />

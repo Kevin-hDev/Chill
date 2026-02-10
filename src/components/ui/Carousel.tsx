@@ -87,6 +87,8 @@ export default function Carousel({
   return (
     <div
       className="relative border border-chill-border rounded-chill-xl overflow-hidden"
+      role="region"
+      aria-label="Image carousel"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
@@ -110,6 +112,8 @@ export default function Carousel({
               <img
                 src={image.src}
                 alt={image.alt}
+                width={800}
+                height={450}
                 className="w-full h-full object-cover"
                 loading={index === 0 ? 'eager' : 'lazy'}
                 draggable={false}
@@ -126,13 +130,15 @@ export default function Carousel({
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer outline-none focus:outline-none ${
+              className={`w-11 h-11 flex items-center justify-center rounded-full cursor-pointer outline-none focus:outline-none`}
+              aria-label={`Go to slide ${index + 1}`}
+            >
+              <span className={`block w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? 'bg-chill-accent scale-125'
                   : 'bg-white/50 hover:bg-white/70'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+              }`} />
+            </button>
           ))}
         </div>
       )}

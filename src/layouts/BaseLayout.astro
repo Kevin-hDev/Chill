@@ -9,12 +9,17 @@ interface Props {
   description?: string;
   image?: string;
   url?: string;
+  schema?: string;
 }
 
 const lang = getLangFromUrl(Astro.url);
-const { title, description = "Chill — Your desktop terminal. In your pocket.", image = "/images/og-default.png", url } = Astro.props;
+const { title, description = "Chill — Your desktop terminal. In your pocket.", image = "/images/logo-chill.png", url, schema } = Astro.props;
 
 const canonicalURL = url ? new URL(url, Astro.site) : new URL(Astro.url.pathname, Astro.site);
+const pathname = Astro.url.pathname;
+const enPath = pathname.replace(/^\/fr/, '') || '/';
+const frPath = '/fr' + enPath.replace(/^\/$/, '');
+const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
 ---
 
 <!doctype html>
@@ -25,7 +30,17 @@ const canonicalURL = url ? new URL(url, Astro.site) : new URL(Astro.url.pathname
     <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/logo-chill.png" />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang: bilingual EN/FR -->
+    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />
+    <link rel="alternate" hreflang="fr" href={new URL(frPath, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(enPath, Astro.site)} />
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/@fs/node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/@fs/node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -33,13 +48,17 @@ const canonicalURL = url ? new URL(url, Astro.site) : new URL(Astro.url.pathname
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:locale" content={lang} />
+    <meta property="og:locale" content={ogLocale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- Schema JSON-LD slot for structured data -->
+    {schema && <script type="application/ld+json" set:html={schema} />}
+    <slot name="schema" />
 
     <!-- Theme detection script (inline, runs before render to prevent flash) -->
     <script is:inline>
@@ -53,8 +72,9 @@ const canonicalURL = url ? new URL(url, Astro.site) : new URL(Astro.url.pathname
   </head>
   <body class="min-h-screen noise-bg bg-glow">
     <div class="dot-grid" aria-hidden="true"></div>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-chill-bg focus:text-chill-text">Skip to content</a>
     <Header />
-    <main class="max-w-[var(--container-page)] mx-auto px-4 md:px-6">
+    <main id="main-content" class="max-w-[var(--container-page)] mx-auto px-4 md:px-6">
       <slot />
     </main>
     <Footer />

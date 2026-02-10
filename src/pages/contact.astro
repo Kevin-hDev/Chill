@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, t } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'contact.pageTitle')} description={t(lang, 'contact.description')}>
+  <section class="py-12 md:py-[var(--spacing-section)]">
+    <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-4">
+      {t(lang, 'contact.title')}
+    </h1>
+    <p data-animate="50" class="text-body-sm text-chill-text-secondary mb-12">
+      {t(lang, 'contact.intro')}
+    </p>
+
+    <div class="space-y-10">
+      <!-- Email -->
+      <div data-animate="100" class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <h2 class="text-h3 font-heading font-semibold text-chill-text">
+            {t(lang, 'contact.email.title')}
+          </h2>
+        </div>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed mb-3">
+          {t(lang, 'contact.email.content')}
+        </p>
+        <a href="mailto:support@chill.app" class="text-body-sm text-chill-accent hover:text-chill-accent-hover transition-colors font-mono">
+          support@chill.app
+        </a>
+      </div>
+
+      <!-- Stores -->
+      <div data-animate="200" class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <h2 class="text-h3 font-heading font-semibold text-chill-text">
+            {t(lang, 'contact.stores.title')}
+          </h2>
+        </div>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed mb-4">
+          {t(lang, 'contact.stores.content')}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://play.google.com/store" class="inline-flex items-center gap-2 rounded-chill bg-chill-bg border border-chill-border px-4 py-2 text-body-sm text-chill-text hover:border-chill-accent transition-colors">
+            Google Play
+          </a>
+          <a href="https://apps.apple.com" class="inline-flex items-center gap-2 rounded-chill bg-chill-bg border border-chill-border px-4 py-2 text-body-sm text-chill-text hover:border-chill-accent transition-colors">
+            App Store
+          </a>
+        </div>
+      </div>
+
+      <!-- Response time -->
+      <div data-animate="300" class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <h2 class="text-h3 font-heading font-semibold text-chill-text">
+            {t(lang, 'contact.response.title')}
+          </h2>
+        </div>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          {t(lang, 'contact.response.content')}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

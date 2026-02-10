@@ -87,6 +87,20 @@ const mac = [
 ];
 ---
 
-<TutoLayout title={t(lang, 'tutos.tailscale.title')} intro={t(lang, 'tutos.tailscale.intro')}>
+<TutoLayout
+  title={t(lang, 'tutos.tailscale.title')}
+  intro={t(lang, 'tutos.tailscale.intro')}
+  howToSteps={[
+    { name: t(lang, 'tutos.tailscale.step1.title'), text: t(lang, 'tutos.tailscale.step1.content') },
+    { name: t(lang, 'tutos.tailscale.step2.title'), text: t(lang, 'tutos.tailscale.win.step2.content') },
+    { name: t(lang, 'tutos.tailscale.step3.title'), text: t(lang, 'tutos.tailscale.step3.content') },
+    { name: t(lang, 'tutos.tailscale.step4.title'), text: t(lang, 'tutos.tailscale.step4.content') },
+  ]}
+  breadcrumbs={[
+    { name: 'Accueil', url: 'https://chill.app/fr/' },
+    { name: 'Tutos', url: 'https://chill.app/fr/tutos/config-os' },
+    { name: t(lang, 'tutos.tailscale.title'), url: 'https://chill.app/fr/tutos/tailscale' },
+  ]}
+>
   <TailscaleContent client:visible win={win} linux={linux} mac={mac} />
 </TutoLayout>

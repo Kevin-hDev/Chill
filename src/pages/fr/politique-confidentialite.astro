@@ -5,7 +5,7 @@ import { getLangFromUrl, t } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<BaseLayout title={t(lang, 'legal.privacy.title')}>
+<BaseLayout title={t(lang, 'legal.privacy.pageTitle')} description={t(lang, 'legal.privacy.description')}>
   <section class="py-[var(--spacing-section)]">
     <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
@@ -96,7 +96,7 @@ const lang = getLangFromUrl(Astro.url);
           7. Contact
         </h2>
         <p>
-          Pour toute question concernant cette politique de confidentialite, veuillez nous contacter a : [A completer]
+          Pour toute question concernant cette politique de confidentialité, veuillez nous contacter à : <a href="mailto:contact@chill.app" class="text-chill-accent hover:text-chill-accent-hover transition-colors">contact@chill.app</a>
         </p>
       </div>
 
