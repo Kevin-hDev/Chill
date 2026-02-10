@@ -9,21 +9,59 @@ const win = [
   {
     title: t(lang, 'tutos.configOs.win.step1.title'),
     content: t(lang, 'tutos.configOs.win.step1.content'),
+    warning: t(lang, 'tutos.configOs.win.step1.warning'),
+    methods: {
+      graphicalLabel: t(lang, 'tutos.configOs.methodGraphical'),
+      terminalLabel: t(lang, 'tutos.configOs.methodTerminal'),
+      graphical: {
+        steps: [
+          {
+            text: t(lang, 'tutos.configOs.win.step1.graphical.step1'),
+            image: { src: '/images/tutos/windows/openssh-1-settings.png', alt: 'Windows Settings > System > Optional features' },
+          },
+          {
+            text: t(lang, 'tutos.configOs.win.step1.graphical.step2'),
+            image: { src: '/images/tutos/windows/openssh-2-view-features.png', alt: 'View features button' },
+          },
+          {
+            text: t(lang, 'tutos.configOs.win.step1.graphical.step3'),
+            image: { src: '/images/tutos/windows/openssh-3-available-features.png', alt: 'Available features list' },
+          },
+          {
+            text: t(lang, 'tutos.configOs.win.step1.graphical.step4'),
+            image: { src: '/images/tutos/windows/openssh-4-select-install.png', alt: 'Select OpenSSH Client and Server' },
+          },
+        ],
+        note: t(lang, 'tutos.configOs.win.step1.graphical.restart'),
+      },
+      terminal: {
+        content: t(lang, 'tutos.configOs.win.step1.terminal.content'),
+        code: t(lang, 'tutos.configOs.win.step1.terminal.code'),
+        note: t(lang, 'tutos.configOs.win.step1.terminal.restart'),
+      },
+    },
   },
   {
     title: t(lang, 'tutos.configOs.win.step2.title'),
     content: t(lang, 'tutos.configOs.win.step2.content'),
     code: t(lang, 'tutos.configOs.win.step2.code'),
+    note: t(lang, 'tutos.configOs.win.step2.note'),
   },
   {
     title: t(lang, 'tutos.configOs.win.step3.title'),
     content: t(lang, 'tutos.configOs.win.step3.content'),
     code: t(lang, 'tutos.configOs.win.step3.code'),
+    note: t(lang, 'tutos.configOs.win.step3.note'),
+    content2: t(lang, 'tutos.configOs.win.step3.content2'),
+    code2: t(lang, 'tutos.configOs.win.step3.code2'),
+    note2: t(lang, 'tutos.configOs.win.step3.note2'),
   },
   {
     title: t(lang, 'tutos.configOs.win.step4.title'),
     content: t(lang, 'tutos.configOs.win.step4.content'),
     code: t(lang, 'tutos.configOs.win.step4.code'),
+    fallback: t(lang, 'tutos.configOs.win.step4.fallback'),
+    fallbackCode: t(lang, 'tutos.configOs.win.step4.fallbackCode'),
   },
 ];
 

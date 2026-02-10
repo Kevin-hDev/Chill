@@ -2,6 +2,14 @@ import { motion } from 'motion/react';
 import TabsOS from '../ui/TabsOS';
 import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
+import StepImage from '../ui/StepImage';
+import MethodTabs from '../ui/MethodTabs';
+
+interface ImageData {
+  src: string;
+  alt: string;
+  caption?: string;
+}
 
 interface WolContentProps {
   warning: string;
@@ -9,16 +17,28 @@ interface WolContentProps {
   step1Content: string;
   biosLink: string;
   winStep2Title: string;
-  winStep2Content: string;
+  winStep2Intro?: string;
+  winStep2Sub1Title?: string;
+  winStep2Sub1Content?: string;
+  winStep2Sub2Title?: string;
+  winStep2Sub2Content?: string;
+  winStep2Sub3Title?: string;
+  winStep2Sub3Content?: string;
+  winStep2Images?: ImageData[];
+  winStep2PowershellCode?: string;
   linuxStep2Title: string;
   linuxStep2Code: string;
   linuxStep2Persist: string;
   step3Title: string;
   step3Content: string;
   winStep3Code: string;
+  winStep3GraphicalContent?: string;
+  winStep3GraphicalImage?: ImageData;
   linuxStep3Code: string;
   debugTitle: string;
   debugItems: string;
+  methodGraphicalLabel?: string;
+  methodTerminalLabel?: string;
 }
 
 export default function WolContent({
@@ -27,18 +47,33 @@ export default function WolContent({
   step1Content,
   biosLink,
   winStep2Title,
-  winStep2Content,
+  winStep2Intro,
+  winStep2Sub1Title,
+  winStep2Sub1Content,
+  winStep2Sub2Title,
+  winStep2Sub2Content,
+  winStep2Sub3Title,
+  winStep2Sub3Content,
+  winStep2Images = [],
+  winStep2PowershellCode,
   linuxStep2Title,
   linuxStep2Code,
   linuxStep2Persist,
   step3Title,
   step3Content,
   winStep3Code,
+  winStep3GraphicalContent,
+  winStep3GraphicalImage,
   linuxStep3Code,
   debugTitle,
   debugItems,
+  methodGraphicalLabel = 'Graphical method',
+  methodTerminalLabel = 'PowerShell',
 }: WolContentProps) {
   const items = debugItems.split('|');
+
+  // Check if we have enriched Windows content
+  const hasEnrichedWin = winStep2Intro && winStep2Sub1Title;
 
   return (
     <div className="space-y-10">
@@ -96,19 +131,83 @@ export default function WolContent({
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        <h2 className="text-h3 font-heading font-bold text-chill-text mb-4">
-          2. {winStep2Title.replace(/^.*?in /, 'Enable in ')}
-        </h2>
+        <Accordion title={`2. ${winStep2Title}`}>
         <TabsOS
           windows={
-            <div className="space-y-3">
-              <h3 className="text-body font-heading font-semibold text-chill-text">
-                {winStep2Title}
-              </h3>
-              <p className="text-body-sm text-chill-text-secondary whitespace-pre-line leading-relaxed">
-                {winStep2Content}
-              </p>
-            </div>
+            hasEnrichedWin ? (
+              <div className="space-y-4">
+                <p className="text-body-sm text-chill-text-secondary leading-relaxed">
+                  {winStep2Intro}
+                </p>
+                <MethodTabs
+                  graphicalLabel={methodGraphicalLabel}
+                  terminalLabel={methodTerminalLabel}
+                  graphicalContent={
+                    <div className="space-y-6">
+                      {/* Device Manager */}
+                      {winStep2Images[0] && (
+                        <StepImage src={winStep2Images[0].src} alt={winStep2Images[0].alt} caption={winStep2Images[0].caption} />
+                      )}
+
+                      {/* Sub-section 1: Wake on Magic Packet */}
+                      {winStep2Sub1Title && (
+                        <div>
+                          <h4 className="text-body-sm font-heading font-semibold text-chill-text mb-2">
+                            {winStep2Sub1Title}
+                          </h4>
+                          <p className="text-body-sm text-chill-text-secondary mb-3 leading-relaxed">{winStep2Sub1Content}</p>
+                          {winStep2Images[1] && (
+                            <StepImage src={winStep2Images[1].src} alt={winStep2Images[1].alt} caption={winStep2Images[1].caption} />
+                          )}
+                        </div>
+                      )}
+
+                      {/* Sub-section 2: Power Management */}
+                      {winStep2Sub2Title && (
+                        <div>
+                          <h4 className="text-body-sm font-heading font-semibold text-chill-text mb-2">
+                            {winStep2Sub2Title}
+                          </h4>
+                          <p className="text-body-sm text-chill-text-secondary mb-3 leading-relaxed">{winStep2Sub2Content}</p>
+                          {winStep2Images[2] && (
+                            <StepImage src={winStep2Images[2].src} alt={winStep2Images[2].alt} caption={winStep2Images[2].caption} />
+                          )}
+                        </div>
+                      )}
+
+                      {/* Sub-section 3: Disable Fast Startup */}
+                      {winStep2Sub3Title && (
+                        <div>
+                          <h4 className="text-body-sm font-heading font-semibold text-chill-text mb-2">
+                            {winStep2Sub3Title}
+                          </h4>
+                          <p className="text-body-sm text-chill-text-secondary mb-3 leading-relaxed">{winStep2Sub3Content}</p>
+                          {winStep2Images[3] && (
+                            <StepImage src={winStep2Images[3].src} alt={winStep2Images[3].alt} caption={winStep2Images[3].caption} />
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  }
+                  terminalContent={
+                    winStep2PowershellCode ? (
+                      <CodeBlock code={winStep2PowershellCode} language="powershell" title="PowerShell" />
+                    ) : (
+                      <p className="text-body-sm text-chill-text-muted italic">No PowerShell commands available for this step.</p>
+                    )
+                  }
+                />
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <h3 className="text-body font-heading font-semibold text-chill-text">
+                  {winStep2Title}
+                </h3>
+                <p className="text-body-sm text-chill-text-secondary whitespace-pre-line leading-relaxed">
+                  {winStep2Intro}
+                </p>
+              </div>
+            )
           }
           linux={
             <div className="space-y-4">
@@ -122,6 +221,7 @@ export default function WolContent({
             </div>
           }
         />
+        </Accordion>
       </motion.div>
 
       {/* Step 3: Configure in ChillShell (common + OS-specific code) */}
@@ -131,20 +231,43 @@ export default function WolContent({
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        <h2 className="text-h3 font-heading font-bold text-chill-text mb-3">
-          3. {step3Title}
-        </h2>
+        <Accordion title={`3. ${step3Title}`}>
         <p className="text-body-sm text-chill-text-secondary mb-4 leading-relaxed">
           {step3Content}
         </p>
         <TabsOS
           windows={
-            <CodeBlock code={winStep3Code} language="powershell" title="PowerShell" />
+            winStep3GraphicalContent ? (
+              <MethodTabs
+                graphicalLabel={methodGraphicalLabel}
+                terminalLabel={methodTerminalLabel}
+                graphicalContent={
+                  <div className="space-y-3">
+                    <p className="text-body-sm text-chill-text-secondary leading-relaxed">
+                      {winStep3GraphicalContent}
+                    </p>
+                    {winStep3GraphicalImage && (
+                      <StepImage
+                        src={winStep3GraphicalImage.src}
+                        alt={winStep3GraphicalImage.alt}
+                        caption={winStep3GraphicalImage.caption}
+                      />
+                    )}
+                  </div>
+                }
+                terminalContent={
+                  <CodeBlock code={winStep3Code} language="powershell" title="PowerShell" />
+                }
+              />
+            ) : (
+              <CodeBlock code={winStep3Code} language="powershell" title="PowerShell" />
+            )
           }
           linux={
             <CodeBlock code={linuxStep3Code} language="bash" title="Terminal" />
           }
         />
+        </Accordion>
       </motion.div>
 
       {/* Debug checklist */}

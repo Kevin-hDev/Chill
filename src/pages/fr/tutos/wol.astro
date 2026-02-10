@@ -14,15 +14,32 @@ const lang = getLangFromUrl(Astro.url);
     step1Content={t(lang, 'tutos.wol.step1.content')}
     biosLink={getLocalePath(lang, '/tutos/bios')}
     winStep2Title={t(lang, 'tutos.wol.win.step2.title')}
-    winStep2Content={t(lang, 'tutos.wol.win.step2.content')}
+    winStep2Intro={t(lang, 'tutos.wol.win.step2.intro')}
+    winStep2Sub1Title={t(lang, 'tutos.wol.win.step2.sub1.title')}
+    winStep2Sub1Content={t(lang, 'tutos.wol.win.step2.sub1.content')}
+    winStep2Sub2Title={t(lang, 'tutos.wol.win.step2.sub2.title')}
+    winStep2Sub2Content={t(lang, 'tutos.wol.win.step2.sub2.content')}
+    winStep2Sub3Title={t(lang, 'tutos.wol.win.step2.sub3.title')}
+    winStep2Sub3Content={t(lang, 'tutos.wol.win.step2.sub3.content')}
+    winStep2Images={[
+      { src: '/images/tutos/windows/wol-1-device-manager.png', alt: 'Gestionnaire de peripheriques - Cartes reseau' },
+      { src: '/images/tutos/windows/wol-2-magic-packet.png', alt: 'Onglet Avance - Wake on Magic Packet' },
+      { src: '/images/tutos/windows/wol-3-power-management.png', alt: 'Onglet Gestion de alimentation' },
+      { src: '/images/tutos/windows/wol-4-disable-fast-startup.png', alt: 'Desactiver le demarrage rapide' },
+    ]}
+    winStep2PowershellCode={t(lang, 'tutos.wol.win.step2.powershellCode')}
     linuxStep2Title={t(lang, 'tutos.wol.linux.step2.title')}
     linuxStep2Code={t(lang, 'tutos.wol.linux.step2.code')}
     linuxStep2Persist={t(lang, 'tutos.wol.linux.step2.persist')}
     step3Title={t(lang, 'tutos.wol.step3.title')}
     step3Content={t(lang, 'tutos.wol.step3.content')}
     winStep3Code={t(lang, 'tutos.wol.win.step3.code')}
+    winStep3GraphicalContent={t(lang, 'tutos.wol.win.step3.graphicalContent')}
+    winStep3GraphicalImage={{ src: '/images/tutos/windows/wol-5-mac-address.png', alt: 'Adresse MAC dans les parametres Ethernet' }}
     linuxStep3Code={t(lang, 'tutos.wol.linux.step3.code')}
     debugTitle={t(lang, 'tutos.wol.debug.title')}
     debugItems={t(lang, 'tutos.wol.debug.items')}
+    methodGraphicalLabel={t(lang, 'tutos.wol.methodGraphical')}
+    methodTerminalLabel={t(lang, 'tutos.wol.methodTerminal')}
   />
 </TutoLayout>
