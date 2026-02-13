@@ -106,11 +106,11 @@
   --spacing-header: 64px;
 
   /* Radius */
-  --radius-chill: 8px;
-  --radius-chill-sm: 4px;
-  --radius-chill-md: 6px;
-  --radius-chill-xl: 12px;
-  --radius-chill-2xl: 16px;
+  --radius-chill: 4px;
+  --radius-chill-sm: 2px;
+  --radius-chill-md: 3px;
+  --radius-chill-xl: 6px;
+  --radius-chill-2xl: 8px;
 
   /* Max width */
   --container-page: 1024px;
@@ -241,6 +241,7 @@
 
 /* ─── Subtle background glow ─── */
 
+/* ─── Subtle background glow ─── */
 .bg-glow::after {
   content: "";
   position: fixed;
@@ -277,6 +278,26 @@
 @keyframes dotDrift {
   0% { background-position: 0 0; }
   100% { background-position: 28px 28px; }
+}
+
+/* ─── Concentric ripple arcs (OG-style) ─── */
+
+.ripple-arcs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 500px;
+  background: repeating-radial-gradient(
+    ellipse 900px 450px at 50% -120px,
+    rgba(30, 130, 50, 0.09) 0px,
+    transparent 2px,
+    transparent 40px
+  );
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 60%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 60%);
 }
 
 /* ─── Noise texture overlay ─── */

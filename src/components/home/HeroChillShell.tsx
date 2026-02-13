@@ -73,6 +73,7 @@ export default function HeroChillShell({
             className="h-[52px] w-auto"
           />
         </a>
+        {/* App Store — masqué temporairement, réactiver quand prêt
         <a href={appStoreUrl} className="inline-block hover:opacity-80 transition-opacity">
           <img
             src="/images/badges/app-store-badge.svg"
@@ -82,6 +83,7 @@ export default function HeroChillShell({
             className="h-[40px] w-auto"
           />
         </a>
+        */}
       </motion.div>
     </section>
   );

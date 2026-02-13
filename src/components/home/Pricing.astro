@@ -9,23 +9,13 @@ const lang = getLangFromUrl(Astro.url);
     {t(lang, 'pricing.title')}
   </h2>
 
-  <div data-animate="150" class="flex flex-col sm:flex-row gap-4 mt-10 justify-center items-stretch max-w-lg mx-auto">
-    <!-- Card 1: Free trial -->
-    <div class="bg-chill-elevated border border-chill-border rounded-chill-xl px-5 py-6 text-center w-full flex flex-col items-center justify-center">
-      <h3 class="text-h3 font-heading font-semibold text-chill-text">
-        {t(lang, 'pricing.free')}
-      </h3>
-      <p class="text-body-sm text-chill-text-secondary mt-1">
-        {t(lang, 'pricing.freeDesc')}
-      </p>
-    </div>
-
-    <!-- Card 2: One-time purchase (featured) -->
-    <div class="bg-chill-elevated border-2 border-chill-accent rounded-chill-xl px-5 py-6 text-center w-full">
-      <h3 class="text-h3 font-heading font-semibold text-chill-text">
+  <div data-animate="150" class="flex justify-center mt-10 max-w-xs mx-auto">
+    <!-- Card: One-time purchase -->
+    <div class="bg-chill-elevated border-2 border-chill-accent rounded-chill-xl px-5 py-4 text-center w-full">
+      <h3 class="text-body font-heading font-semibold text-chill-text">
         {t(lang, 'pricing.price')}
       </h3>
-      <p class="text-h2 font-heading font-bold text-chill-accent mt-2">
+      <p class="text-h3 font-heading font-bold text-chill-accent mt-1">
         {t(lang, 'pricing.priceAmount')}
       </p>
       <p class="text-body-sm text-chill-text-secondary mt-1">
@@ -45,6 +35,7 @@ const lang = getLangFromUrl(Astro.url);
         class="h-[52px] w-auto"
       />
     </a>
+    <!-- App Store — masqué temporairement, réactiver quand prêt
     <a href="https://apps.apple.com/app/chillshell/id0000000000" class="inline-block hover:opacity-80 transition-opacity">
       <img
         src="/images/badges/app-store-badge.svg"
@@ -54,5 +45,6 @@ const lang = getLangFromUrl(Astro.url);
         class="h-[40px] w-auto"
       />
     </a>
+    -->
   </div>
 </section>
