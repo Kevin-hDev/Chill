@@ -18,8 +18,8 @@
 - No data collection — all data stays on device
 - Root/jailbreak detection at launch
 - Auto-lock after inactivity
-- White-box security audit: 8.5/10
-- STRIDE threat model: 100% mitigated
+- Internal white-box security audit covering code, storage, network, and auth
+- STRIDE threat model: 100% mitigated across all six categories
 
 ## Pricing
 - 7-day free trial with full features

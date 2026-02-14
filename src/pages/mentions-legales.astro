@@ -7,21 +7,20 @@ const lang = getLangFromUrl(Astro.url);
 
 <BaseLayout title={t(lang, 'legal.mentions.pageTitle')} description={t(lang, 'legal.mentions.description')}>
   <section class="py-[var(--spacing-section)]">
-    <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
       {t(lang, 'legal.mentions.title')}
     </h1>
 
     <div data-animate="150" class="space-y-10">
-      <!-- Editor -->
+      <!-- Publisher -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
           {t(lang, 'legal.mentions.editor')}
         </h2>
         <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          Chill App SAS<br />
-          Paris, France<br />
-          Publication director: Kevin Huynh
+          This website is published by an individual.<br />
+          In accordance with Article 6 of the French Law No. 2004-575 of June 21, 2004 (LCEN),
+          the publisher's identity has been communicated to the hosting provider.
         </p>
       </div>
 
@@ -44,7 +43,18 @@ const lang = getLangFromUrl(Astro.url);
           {t(lang, 'legal.mentions.contact')}
         </h2>
         <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          Email: <a href="mailto:contact@chill.app" class="text-chill-accent hover:text-chill-accent-hover transition-colors">contact@chill.app</a>
+          Email: <a href="mailto:chill_app@outlook.fr" class="text-chill-accent hover:text-chill-accent-hover transition-colors">chill_app@outlook.fr</a>
+        </p>
+      </div>
+
+      <!-- Intellectual Property -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          Intellectual Property
+        </h2>
+        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+          All content on this website (text, images, logos, design) is protected by copyright.
+          Any reproduction, even partial, is prohibited without prior authorization.
         </p>
       </div>
     </div>

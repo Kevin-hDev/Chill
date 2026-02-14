@@ -9,6 +9,7 @@ const lang = getLangFromUrl(Astro.url);
 <TutoLayout
   title={t(lang, 'tutos.wol.title')}
   intro={t(lang, 'tutos.wol.intro')}
+  showChillCta
   showOsTabs={false}
   howToSteps={[
     { name: t(lang, 'tutos.wol.step1.title'), text: t(lang, 'tutos.wol.step1.content') },
@@ -37,8 +38,8 @@ const lang = getLangFromUrl(Astro.url);
     winStep2Sub3Content={t(lang, 'tutos.wol.win.step2.sub3.content')}
     winStep2Images={[
       { src: '/images/tutos/windows/wol-1-device-manager.png', alt: 'Gestionnaire de peripheriques - Cartes reseau' },
-      { src: '/images/tutos/windows/wol-2-magic-packet.png', alt: 'Onglet Avance - Wake on Magic Packet' },
-      { src: '/images/tutos/windows/wol-3-power-management.png', alt: 'Onglet Gestion de alimentation' },
+      { src: '/images/tutos/windows/wol-2-magic-packet.png', alt: 'Onglet Avance - Wake on Magic Packet', maxWidth: '49%' },
+      { src: '/images/tutos/windows/wol-3-power-management.png', alt: 'Onglet Gestion de alimentation', maxWidth: '49%' },
       { src: '/images/tutos/windows/wol-4-disable-fast-startup.png', alt: 'Desactiver le demarrage rapide' },
     ]}
     winStep2PowershellCode={t(lang, 'tutos.wol.win.step2.powershellCode')}

@@ -60,7 +60,7 @@ export default function Accordion({
             style={{ overflow: 'hidden' }}
           >
             <div
-              className={`px-4 pb-4 border-t border-chill-border ${
+              className={`px-4 pb-4 border-t border-chill-border bg-chill-surface ${
                 isCode
                   ? 'pt-3 font-mono text-code text-chill-text-secondary'
                   : 'pt-3 text-body-sm text-chill-text-secondary'

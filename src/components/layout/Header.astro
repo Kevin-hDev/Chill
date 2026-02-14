@@ -8,6 +8,11 @@ import { getLangFromUrl, t, getLocalePath } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url.pathname;
 
+const productItems = [
+  { label: t(lang, 'nav.product.chillshell'), href: getLocalePath(lang, '/') },
+  { label: t(lang, 'nav.product.chill'), href: getLocalePath(lang, '/chill') },
+];
+
 const tutoItems = [
   { label: t(lang, 'nav.tutos.configOs'), href: getLocalePath(lang, '/tutos/config-os') },
   { label: t(lang, 'nav.tutos.ssh'), href: getLocalePath(lang, '/tutos/ssh') },
@@ -32,8 +37,10 @@ const navItems = [
     <!-- Mobile: hamburger on the left -->
     <MobileMenu
       client:load
-      tutoLabel={t(lang, 'nav.tutos')}
-      tutoItems={tutoItems}
+      dropdowns={[
+        { label: t(lang, 'nav.product'), items: productItems },
+        { label: t(lang, 'nav.tutos'), items: tutoItems },
+      ]}
       navItems={navItems}
     />
 
@@ -48,9 +55,9 @@ const navItems = [
         <img
           src="/images/logo-chill.png"
           alt="Chill"
-          class="w-16 h-16 md:w-24 md:h-24 animate-float relative z-10"
-          width="96"
-          height="96"
+          class="w-20 h-20 md:w-[115px] md:h-[115px] animate-float relative z-10"
+          width="115"
+          height="115"
         />
       </div>
       <span class="text-h3 md:text-h2 font-heading font-bold text-chill-text group-hover:text-chill-accent transition-colors">
@@ -67,6 +74,7 @@ const navItems = [
 
   <!-- Desktop Navbar (hidden on mobile) -->
   <nav class="hidden md:flex items-center justify-center gap-8 py-4 border-b border-chill-border animate-fade-in-up" style="animation-delay: 0.15s;">
+    <NavDropdown label={t(lang, 'nav.product')} items={productItems} client:load />
     <NavDropdown label={t(lang, 'nav.tutos')} items={tutoItems} client:load />
     <a href={getLocalePath(lang, '/securite')} class="text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors">
       {t(lang, 'nav.security')}

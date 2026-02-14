@@ -9,6 +9,7 @@ interface ImageData {
   src: string;
   alt: string;
   caption?: string;
+  maxWidth?: string;
 }
 
 interface GraphicalStep {
@@ -85,7 +86,7 @@ function StepList({ steps }: { steps: StepData[] }) {
                           <span className="text-chill-accent font-semibold">{j + 1}.</span> {gs.text}
                         </p>
                         {gs.image && (
-                          <StepImage src={gs.image.src} alt={gs.image.alt} caption={gs.image.caption} />
+                          <StepImage src={gs.image.src} alt={gs.image.alt} caption={gs.image.caption} maxWidth={gs.image.maxWidth} />
                         )}
                       </div>
                     ))}

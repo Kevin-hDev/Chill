@@ -5,16 +5,24 @@ interface NavItem {
   href: string;
 }
 
+interface DropdownSection {
+  label: string;
+  items: NavItem[];
+}
+
 interface Props {
-  tutoLabel: string;
-  tutoItems: NavItem[];
+  dropdowns: DropdownSection[];
   navItems: NavItem[];
 }
 
-export default function MobileMenu({ tutoLabel, tutoItems, navItems }: Props) {
+export default function MobileMenu({ dropdowns, navItems }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isTutoOpen, setIsTutoOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = (index: number) => {
+    setOpenDropdown(openDropdown === index ? null : index);
+  };
 
   // Close menu on outside click
   useEffect(() => {
@@ -84,39 +92,43 @@ export default function MobileMenu({ tutoLabel, tutoItems, navItems }: Props) {
 
           {/* Nav links */}
           <nav className="flex flex-col px-6 py-4 gap-1 max-h-[80vh] overflow-y-auto">
-            {/* Tutos accordion */}
-            <button
-              onClick={() => setIsTutoOpen(!isTutoOpen)}
-              className="flex items-center justify-between w-full py-3 text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors cursor-pointer"
-            >
-              <span>{tutoLabel}</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className={`transition-transform duration-200 ${isTutoOpen ? 'rotate-180' : ''}`}
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-
-            {isTutoOpen && (
-              <div className="flex flex-col pl-4 gap-1 border-l border-chill-border ml-2 mb-2">
-                {tutoItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="py-2 text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors"
+            {/* Dropdown accordions */}
+            {dropdowns.map((dropdown, index) => (
+              <div key={dropdown.label}>
+                <button
+                  onClick={() => toggleDropdown(index)}
+                  className="flex items-center justify-between w-full py-3 text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors cursor-pointer"
+                >
+                  <span>{dropdown.label}</span>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className={`transition-transform duration-200 ${openDropdown === index ? 'rotate-180' : ''}`}
                   >
-                    {item.label}
-                  </a>
-                ))}
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+
+                {openDropdown === index && (
+                  <div className="flex flex-col pl-4 gap-1 border-l border-chill-border ml-2 mb-2">
+                    {dropdown.items.map((item) => (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="py-2 text-body-sm text-chill-text-secondary hover:text-chill-text transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            ))}
 
             {/* Other nav links */}
             {navItems.map((item) => (

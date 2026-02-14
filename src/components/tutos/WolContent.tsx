@@ -9,6 +9,7 @@ interface ImageData {
   src: string;
   alt: string;
   caption?: string;
+  maxWidth?: string;
 }
 
 interface WolContentProps {
@@ -146,7 +147,7 @@ export default function WolContent({
                     <div className="space-y-6">
                       {/* Device Manager */}
                       {winStep2Images[0] && (
-                        <StepImage src={winStep2Images[0].src} alt={winStep2Images[0].alt} caption={winStep2Images[0].caption} />
+                        <StepImage src={winStep2Images[0].src} alt={winStep2Images[0].alt} caption={winStep2Images[0].caption} maxWidth={winStep2Images[0].maxWidth} />
                       )}
 
                       {/* Sub-section 1: Wake on Magic Packet */}
@@ -157,7 +158,7 @@ export default function WolContent({
                           </h4>
                           <p className="text-body-sm text-chill-text-secondary mb-3 leading-relaxed">{winStep2Sub1Content}</p>
                           {winStep2Images[1] && (
-                            <StepImage src={winStep2Images[1].src} alt={winStep2Images[1].alt} caption={winStep2Images[1].caption} />
+                            <StepImage src={winStep2Images[1].src} alt={winStep2Images[1].alt} caption={winStep2Images[1].caption} maxWidth={winStep2Images[1].maxWidth} />
                           )}
                         </div>
                       )}
@@ -170,7 +171,7 @@ export default function WolContent({
                           </h4>
                           <p className="text-body-sm text-chill-text-secondary mb-3 leading-relaxed">{winStep2Sub2Content}</p>
                           {winStep2Images[2] && (
-                            <StepImage src={winStep2Images[2].src} alt={winStep2Images[2].alt} caption={winStep2Images[2].caption} />
+                            <StepImage src={winStep2Images[2].src} alt={winStep2Images[2].alt} caption={winStep2Images[2].caption} maxWidth={winStep2Images[2].maxWidth} />
                           )}
                         </div>
                       )}
@@ -183,7 +184,7 @@ export default function WolContent({
                           </h4>
                           <p className="text-body-sm text-chill-text-secondary mb-3 leading-relaxed">{winStep2Sub3Content}</p>
                           {winStep2Images[3] && (
-                            <StepImage src={winStep2Images[3].src} alt={winStep2Images[3].alt} caption={winStep2Images[3].caption} />
+                            <StepImage src={winStep2Images[3].src} alt={winStep2Images[3].alt} caption={winStep2Images[3].caption} maxWidth={winStep2Images[3].maxWidth} />
                           )}
                         </div>
                       )}

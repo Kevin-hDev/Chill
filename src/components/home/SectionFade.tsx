@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import Carousel from '../ui/Carousel';
+import { useTheme } from '../../hooks/useTheme';
 
 interface SectionFadeProps {
-  images: { src: string; alt: string }[];
+  images: { src: string; srcLight?: string; alt: string }[];
   title: string;
   description: string;
   side?: 'left' | 'right';
@@ -20,6 +21,7 @@ export default function SectionFade({
   fadeBottomLeft = false,
   diagonalText = false,
 }: SectionFadeProps) {
+  const theme = useTheme();
   const isImageLeft = side === 'left';
 
   const perspectiveClass = isImageLeft ? 'perspective-right' : 'perspective-left';
@@ -47,14 +49,14 @@ export default function SectionFade({
               aspectRatio,
               scale: '1.8',
               ...(fadeBottomLeft && {
-                maskImage: 'linear-gradient(to bottom left, black 45%, rgba(0,0,0,0.5) 70%, transparent 90%)',
-                WebkitMaskImage: 'linear-gradient(to bottom left, black 40%, rgba(0,0,0,0.5) 70%, transparent 90%)'
+                maskImage: 'linear-gradient(to bottom left, black 45%, rgba(0,0,0,0.5) 70%, transparent 95%)',
+                WebkitMaskImage: 'linear-gradient(to bottom left, black 40%, rgba(0,0,0,0.5) 70%, transparent 95%)'
               }),
             }}
           >
             {isSingleImage ? (
               <img
-                src={images[0].src}
+                src={theme === 'light' && images[0].srcLight ? images[0].srcLight : images[0].src}
                 alt={images[0].alt}
                 className="w-full h-full object-cover"
                 loading="lazy"

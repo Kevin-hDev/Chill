@@ -7,7 +7,6 @@ const lang = getLangFromUrl(Astro.url);
 
 <BaseLayout title={t(lang, 'legal.terms.pageTitle')} description={t(lang, 'legal.terms.description')}>
   <section class="py-[var(--spacing-section)]">
-    <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
       {t(lang, 'legal.terms.title')}
     </h1>
@@ -19,98 +18,88 @@ const lang = getLangFromUrl(Astro.url);
           1. Purpose
         </h2>
         <p>
-          These Terms of Service govern the use of the ChillShell mobile application (hereinafter "the Application"). By downloading, installing, or using the Application, you agree to be bound by these terms. If you do not agree with any part of these terms, you must not use the Application.
+          These Terms of Service govern the use of the ChillShell (mobile) and Chill (desktop) applications, hereinafter "the Applications." By downloading, installing, or using the Applications, you agree to be bound by these terms. If you do not agree with any part of these terms, you must not use the Applications.
         </p>
       </div>
 
-      <!-- Article 2 - License -->
+      <!-- Article 2 - Access -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          2. Personal License
+          2. Access to the Service
         </h2>
         <p>
-          The Application is licensed, not sold. Upon purchase, you are granted a non-exclusive, non-transferable, revocable license to use the Application for personal purposes on devices you own. This license is for a single user and does not extend to any organization, company, or third party.
+          The Applications are provided free of charge. They are available through distribution platforms (Google Play, App Store) or via direct download from this website.
         </p>
       </div>
 
-      <!-- Article 3 - Restrictions -->
+      <!-- Article 3 - License -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          3. Restrictions
+          3. License
+        </h2>
+        <p>
+          The Applications are licensed, not sold. You are granted a free, non-exclusive, non-transferable, revocable license to use the Applications for personal purposes on devices you own.
+        </p>
+      </div>
+
+      <!-- Article 4 - Restrictions -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          4. Restrictions
         </h2>
         <p class="mb-3">You agree not to:</p>
         <ul class="list-disc list-inside space-y-2 pl-2">
-          <li>Redistribute, sublicense, sell, or lease the Application to any third party</li>
-          <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the Application</li>
-          <li>Modify, adapt, translate, or create derivative works based on the Application</li>
-          <li>Remove, alter, or obscure any proprietary notices, labels, or marks on the Application</li>
-          <li>Use the Application for any unlawful purpose or in violation of any applicable laws</li>
+          <li>Redistribute, sublicense, sell, or lease the Applications to any third party</li>
+          <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the Applications</li>
+          <li>Modify, adapt, translate, or create derivative works based on the Applications</li>
+          <li>Remove, alter, or obscure any proprietary notices in the Applications</li>
+          <li>Use the Applications for any unlawful purpose or in violation of applicable laws</li>
         </ul>
       </div>
 
-      <!-- Article 4 - Intellectual Property -->
+      <!-- Article 5 - Intellectual Property -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          4. Intellectual Property
+          5. Intellectual Property
         </h2>
         <p>
-          The Application, including its design, code, graphics, and content, is the exclusive property of the publisher. All intellectual property rights are reserved. No part of these terms grants you any ownership rights in the Application.
+          The Applications, including their design, code, graphics, and content, are the exclusive property of the publisher. All intellectual property rights are reserved.
         </p>
       </div>
 
-      <!-- Article 5 - Liability Limitation -->
+      <!-- Article 6 - Liability -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          5. Limitation of Liability
+          6. Limitation of Liability
         </h2>
         <p>
-          The Application is provided "as is" without warranty of any kind, express or implied. The publisher shall not be held liable for any direct, indirect, incidental, special, or consequential damages arising from the use or inability to use the Application, including but not limited to data loss, system damage, or security breaches on connected devices. You use the Application at your own risk, particularly when establishing SSH connections to remote systems.
+          The Applications are provided "as is" without warranty of any kind. The publisher shall not be held liable for any direct or indirect damages arising from the use or inability to use the Applications, including data loss or security breaches on connected devices. You use the Applications at your own risk, particularly when establishing SSH connections to remote systems.
         </p>
       </div>
 
-      <!-- Article 6 - Payment -->
+      <!-- Article 7 - Modifications -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          6. Payment & Refunds
+          7. Modifications
         </h2>
         <p>
-          The Application requires a one-time purchase. Payment is processed through Google Play or the Apple App Store. Refund policies are governed by the respective platform's terms. A free trial period of 7 days is available before purchase.
+          The publisher reserves the right to modify these terms at any time. Continued use of the Applications after such modifications constitutes your acceptance of the revised terms.
         </p>
       </div>
 
-      <!-- Article 7 - Termination -->
+      <!-- Article 8 - Governing Law -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          7. Termination
+          8. Governing Law
         </h2>
         <p>
-          The publisher reserves the right to terminate or suspend your access to the Application at any time, without prior notice, if you violate any provision of these terms. Upon termination, your license to use the Application is immediately revoked.
-        </p>
-      </div>
-
-      <!-- Article 8 - Modifications -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
-        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          8. Modifications
-        </h2>
-        <p>
-          The publisher reserves the right to modify these terms at any time. Continued use of the Application after such modifications constitutes your acceptance of the revised terms. We encourage you to review these terms periodically.
-        </p>
-      </div>
-
-      <!-- Article 9 - Governing Law -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
-        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          9. Governing Law
-        </h2>
-        <p>
-          These terms are governed by and construed in accordance with applicable law. Any disputes arising from or relating to these terms shall be subject to the exclusive jurisdiction of the competent courts.
+          These terms are governed by French law. Any disputes arising from or relating to these terms shall be subject to the jurisdiction of the competent French courts.
         </p>
       </div>
 
       <!-- Last updated -->
       <p class="text-micro text-chill-text-muted text-center pt-4">
-        Last updated: February 9, 2026
+        Last updated: February 13, 2026
       </p>
     </div>
   </section>

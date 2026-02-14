@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChillContent from '../../components/chill/ChillContent.tsx';
+import { getLangFromUrl, t, getLocalePath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout title={t(lang, 'chill.pageTitle')} description={t(lang, 'chill.description')}>
+  <ChillContent
+    client:load
+    lang={lang}
+    tagline={t(lang, 'chill.tagline')}
+    subtitle={t(lang, 'chill.subtitle')}
+    badge={t(lang, 'chill.badge')}
+    downloadWindows={t(lang, 'chill.download.windows')}
+    downloadLinux={t(lang, 'chill.download.linux')}
+    sshTitle={t(lang, 'chill.ssh.title')}
+    sshDescription={t(lang, 'chill.ssh.description')}
+    wolTitle={t(lang, 'chill.wol.title')}
+    wolDescription={t(lang, 'chill.wol.description')}
+    tailscaleTitle={t(lang, 'chill.tailscale.title')}
+    tailscaleDescription={t(lang, 'chill.tailscale.description')}
+    ctaTitle={t(lang, 'chill.cta.title')}
+    ctaManual={t(lang, 'chill.cta.manual')}
+    tutosHref={getLocalePath(lang, '/tutos/config-os')}
+  />
+</BaseLayout>

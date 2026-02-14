@@ -68,9 +68,9 @@ export default function HeroChillShell({
           <img
             src="/images/badges/google-play-badge.png"
             alt="Get it on Google Play"
-            width={175}
-            height={52}
-            className="h-[52px] w-auto"
+            width={210}
+            height={62}
+            className="h-[62px] w-auto"
           />
         </a>
         {/* App Store — masqué temporairement, réactiver quand prêt

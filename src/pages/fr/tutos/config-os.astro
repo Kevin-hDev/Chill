@@ -17,7 +17,7 @@ const win = [
         steps: [
           {
             text: t(lang, 'tutos.configOs.win.step1.graphical.step1'),
-            image: { src: '/images/tutos/windows/openssh-1-settings.png', alt: 'Windows Settings > System > Optional features' },
+            image: { src: '/images/tutos/windows/openssh-1-settings.png', alt: 'Windows Settings > System > Optional features', maxWidth: '60%' },
           },
           {
             text: t(lang, 'tutos.configOs.win.step1.graphical.step2'),
@@ -25,11 +25,11 @@ const win = [
           },
           {
             text: t(lang, 'tutos.configOs.win.step1.graphical.step3'),
-            image: { src: '/images/tutos/windows/openssh-3-available-features.png', alt: 'Available features list' },
+            image: { src: '/images/tutos/windows/openssh-3-available-features.png', alt: 'Available features list', maxWidth: '45%' },
           },
           {
             text: t(lang, 'tutos.configOs.win.step1.graphical.step4'),
-            image: { src: '/images/tutos/windows/openssh-4-select-install.png', alt: 'Select OpenSSH Client and Server' },
+            image: { src: '/images/tutos/windows/openssh-4-select-install.png', alt: 'Select OpenSSH Client and Server', maxWidth: '45%' },
           },
         ],
         note: t(lang, 'tutos.configOs.win.step1.graphical.restart'),
@@ -83,12 +83,22 @@ const linux = [
     title: t(lang, 'tutos.configOs.linux.step3.title'),
     code: t(lang, 'tutos.configOs.linux.step3.code'),
   },
+  {
+    title: t(lang, 'tutos.configOs.linux.step4.title'),
+    content: t(lang, 'tutos.configOs.linux.step4.content'),
+    tabs: [
+      { label: 'Ubuntu / Debian (ufw)', code: t(lang, 'tutos.configOs.linux.step4.codeUfw') },
+      { label: 'Fedora (firewalld)', code: t(lang, 'tutos.configOs.linux.step4.codeFwd') },
+    ],
+    note: t(lang, 'tutos.configOs.linux.step4.note'),
+  },
 ];
 
 const mac = [
   {
     title: t(lang, 'tutos.configOs.mac.step1.title'),
     content: t(lang, 'tutos.configOs.mac.step1.content'),
+    code: t(lang, 'tutos.configOs.mac.step1.code'),
   },
   {
     title: t(lang, 'tutos.configOs.mac.step2.title'),
@@ -100,6 +110,7 @@ const mac = [
 <TutoLayout
   title={t(lang, 'tutos.configOs.title')}
   intro={t(lang, 'tutos.configOs.intro')}
+  showChillCta
   howToSteps={[
     { name: t(lang, 'tutos.configOs.win.step1.title'), text: t(lang, 'tutos.configOs.win.step1.content') },
     { name: t(lang, 'tutos.configOs.win.step2.title'), text: t(lang, 'tutos.configOs.win.step2.content') },

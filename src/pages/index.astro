@@ -11,21 +11,20 @@ import { getLangFromUrl, t } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 
-// Placeholder images for sections (replace with actual screenshots)
 const terminalImages = [
-  { src: '/images/screenshots/terminal-1.png', alt: 'Terminal SSH view' },
-  { src: '/images/screenshots/terminal-2.png', alt: 'Agent CLI running' },
-  { src: '/images/screenshots/terminal-3.png', alt: 'Multi-session terminal' },
+  { src: '/images/screenshots/en/dark/terminal-1.png', srcLight: '/images/screenshots/en/light/terminal-1.png', alt: 'Terminal SSH view' },
+  { src: '/images/screenshots/en/dark/terminal-2.png', srcLight: '/images/screenshots/en/light/terminal-2.png', alt: 'Agent CLI running' },
+  { src: '/images/screenshots/en/dark/terminal-3.png', srcLight: '/images/screenshots/en/light/terminal-3.png', alt: 'Multi-session terminal' },
 ];
 
 const connectionImages = [
-  { src: '/images/screenshots/connect-1.png', alt: 'ChillShell connection dashboard' },
+  { src: '/images/screenshots/en/dark/connect-1.png', srcLight: '/images/screenshots/en/light/connect-1.png', alt: 'ChillShell connection dashboard' },
 ];
 
 const customizeImages = [
-  { src: '/images/screenshots/theme-1.png', alt: 'Dark theme' },
-  { src: '/images/screenshots/theme-2.png', alt: 'Dracula theme' },
-  { src: '/images/screenshots/theme-3.png', alt: 'Nord theme' },
+  { src: '/images/screenshots/en/dark/theme-1.png', srcLight: '/images/screenshots/en/light/theme-1.png', alt: 'Settings with 12 color themes' },
+  { src: '/images/screenshots/en/dark/theme-2.png', srcLight: '/images/screenshots/en/light/theme-2.png', alt: 'PIN and fingerprint lock screen' },
+  { src: '/images/screenshots/en/dark/theme-3.png', srcLight: '/images/screenshots/en/light/theme-3.png', alt: 'Tailscale VPN and SSH keys' },
 ];
 ---
 

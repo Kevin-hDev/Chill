@@ -7,68 +7,83 @@ const lang = getLangFromUrl(Astro.url);
 
 <BaseLayout title={t(lang, 'legal.privacy.pageTitle')} description={t(lang, 'legal.privacy.description')}>
   <section class="py-[var(--spacing-section)]">
-    <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
       {t(lang, 'legal.privacy.title')}
     </h1>
 
     <div data-animate="150" class="space-y-10 text-body-sm text-chill-text-secondary leading-relaxed">
-      <!-- No data collection -->
+      <!-- 1. Data Controller -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          1. Data Collection
+          1. Data Controller
         </h2>
         <p>
-          ChillShell does not collect, transmit, or store any personal data on external servers. The Application operates entirely on your device. No analytics, tracking, or telemetry data is sent to us or any third party.
+          The data controller is an individual, publisher of the Chill website and the ChillShell and Chill applications.
         </p>
         <p class="mt-3">
-          If anonymous analytics are implemented in the future (e.g., via Plausible Analytics), this policy will be updated accordingly. Plausible is a privacy-focused, cookie-free analytics tool that does not collect personal data or use tracking technologies.
+          Contact: <a href="mailto:chill_app@outlook.fr" class="text-chill-accent hover:text-chill-accent-hover transition-colors">chill_app@outlook.fr</a>
         </p>
       </div>
 
-      <!-- Local storage -->
+      <!-- 2. Data Collection -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          2. Local Data Storage
+          2. Data Collection
         </h2>
         <p>
-          All data is stored locally on your device using secure storage mechanisms:
+          Our applications (ChillShell and Chill) do not collect, transmit, or store any personal data on external servers. They operate entirely on your device. No analytics, tracking, or telemetry data is sent to our servers or any third party.
+        </p>
+        <p class="mt-3">
+          If anonymous analytics are added in the future (e.g., via Plausible Analytics), this policy will be updated accordingly. Plausible is a privacy-focused, cookie-free analytics tool that does not collect personal data.
+        </p>
+      </div>
+
+      <!-- 3. Local Data Storage -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          3. Local Data Storage
+        </h2>
+        <p>
+          All data is stored locally on your device using secure mechanisms:
         </p>
         <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
           <li>SSH keys are encrypted using AES-CBC (Android) or stored in the Keychain (iOS)</li>
-          <li>Master encryption key is stored in the hardware-backed keystore</li>
+          <li>The master encryption key is stored in the device's hardware-backed keystore</li>
           <li>PIN codes are hashed with PBKDF2-HMAC-SHA256 (100,000 iterations) and never stored in plaintext</li>
-          <li>Session credentials remain on your device and are never transmitted externally</li>
+          <li>Session credentials remain on your device and are never transmitted</li>
         </ul>
-      </div>
-
-      <!-- No third parties -->
-      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
-        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          3. Third Parties
-        </h2>
-        <p>
-          ChillShell does not share, sell, or transmit any data to third parties. SSH connections are established directly between your device and the remote server you configure. No intermediary server is involved in the connection process.
+        <p class="mt-3">
+          <strong>Retention period:</strong> your data remains on your device as long as the application is installed. It is deleted when you uninstall the application or clear its data.
         </p>
       </div>
 
-      <!-- SSH connections -->
+      <!-- 4. Third Parties -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          4. SSH Connections
+          4. Third Parties
         </h2>
         <p>
-          When you connect to a remote server via SSH, the connection is established directly between your device and the target server. The Application does not route, intercept, or log the content of your SSH sessions. Host key verification uses a Trust On First Use (TOFU) model, and keys are held in memory only during active sessions.
+          Our applications do not share, sell, or transmit any data to third parties. SSH connections are established directly between your device and the remote server you configure. No intermediary server is involved.
         </p>
       </div>
 
-      <!-- Permissions -->
+      <!-- 5. SSH Connections -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          5. Device Permissions
+          5. SSH Connections
         </h2>
         <p>
-          The Application may request the following device permissions, used solely for core functionality:
+          When you connect to a remote server via SSH, the connection is established directly between your device and the target server. The application does not route, intercept, or log the content of your SSH sessions. Host key verification uses a Trust On First Use (TOFU) model, and keys are held in memory only during active sessions.
+        </p>
+      </div>
+
+      <!-- 6. Device Permissions -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          6. Device Permissions
+        </h2>
+        <p>
+          The applications may request the following permissions, used solely for their core functionality:
         </p>
         <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
           <li>Network access: required for SSH connections and Wake-on-LAN</li>
@@ -77,32 +92,67 @@ const lang = getLangFromUrl(Astro.url);
         </ul>
       </div>
 
-      <!-- GDPR -->
+      <!-- 7. Hosting and International Transfers -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          6. GDPR Compliance
+          7. Hosting and International Transfers
         </h2>
         <p>
-          ChillShell is fully compliant with the General Data Protection Regulation (GDPR). Since no personal data is collected or processed by the Application, there is no data to access, rectify, or delete on our end. All your data remains exclusively on your device under your full control.
+          This website is hosted by Vercel Inc. (United States). As part of hosting, Vercel may process technical data (IP address, access logs) in accordance with its own privacy policy.
         </p>
         <p class="mt-3">
-          You can delete all Application data at any time by uninstalling the Application or clearing its data through your device settings.
+          Our applications do not transmit any personal data to servers. All data remains on your device.
         </p>
       </div>
 
-      <!-- Contact -->
+      <!-- 8. Your Rights (GDPR) -->
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
         <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
-          7. Contact
+          8. Your Rights (GDPR)
         </h2>
         <p>
-          For any questions regarding this privacy policy, please contact us at: <a href="mailto:contact@chill.app" class="text-chill-accent hover:text-chill-accent-hover transition-colors">contact@chill.app</a>
+          Under the General Data Protection Regulation (GDPR), you have the following rights:
+        </p>
+        <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
+          <li>Right of access (Article 15)</li>
+          <li>Right to rectification (Article 16)</li>
+          <li>Right to erasure (Article 17)</li>
+          <li>Right to restriction of processing (Article 18)</li>
+          <li>Right to data portability (Article 20)</li>
+          <li>Right to object (Article 21)</li>
+        </ul>
+        <p class="mt-3">
+          Since our applications collect no personal data, there is no data to access, rectify, or delete on our end. All your data is exclusively on your device, under your full control.
+        </p>
+        <p class="mt-3">
+          For any request: <a href="mailto:chill_app@outlook.fr" class="text-chill-accent hover:text-chill-accent-hover transition-colors">chill_app@outlook.fr</a>
+        </p>
+      </div>
+
+      <!-- 9. Complaints -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          9. Complaints
+        </h2>
+        <p>
+          If you believe that your data is not being processed in compliance with regulations, you may file a complaint with the CNIL (French Data Protection Authority):
+          <a href="https://www.cnil.fr" class="text-chill-accent hover:text-chill-accent-hover transition-colors">www.cnil.fr</a>
+        </p>
+      </div>
+
+      <!-- 10. Changes -->
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-6">
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">
+          10. Changes
+        </h2>
+        <p>
+          This policy may be updated at any time. The date of the last update is indicated below. We encourage you to review it periodically.
         </p>
       </div>
 
       <!-- Last updated -->
       <p class="text-micro text-chill-text-muted text-center pt-4">
-        Last updated: February 9, 2026
+        Last updated: February 13, 2026
       </p>
     </div>
   </section>

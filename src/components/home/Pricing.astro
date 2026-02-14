@@ -4,35 +4,23 @@ import { getLangFromUrl, t } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<section class="py-12 md:py-20">
-  <h2 data-animate="0" class="text-h2 font-heading font-bold text-chill-text text-center">
+<section class="py-12 md:py-20 text-center">
+  <h2 data-animate="0" class="text-h2 font-heading font-bold text-chill-text">
     {t(lang, 'pricing.title')}
   </h2>
-
-  <div data-animate="150" class="flex justify-center mt-10 max-w-xs mx-auto">
-    <!-- Card: One-time purchase -->
-    <div class="bg-chill-elevated border-2 border-chill-accent rounded-chill-xl px-5 py-4 text-center w-full">
-      <h3 class="text-body font-heading font-semibold text-chill-text">
-        {t(lang, 'pricing.price')}
-      </h3>
-      <p class="text-h3 font-heading font-bold text-chill-accent mt-1">
-        {t(lang, 'pricing.priceAmount')}
-      </p>
-      <p class="text-body-sm text-chill-text-secondary mt-1">
-        {t(lang, 'pricing.priceDesc')}
-      </p>
-    </div>
-  </div>
+  <p data-animate="100" class="text-body text-chill-text-secondary mt-3">
+    {t(lang, 'pricing.subtitle')}
+  </p>
 
   <!-- CTA buttons — Official store badges -->
-  <div data-animate="300" class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+  <div data-animate="200" class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
     <a href="https://play.google.com/store/apps/details?id=com.chill.shell" class="inline-block hover:opacity-80 transition-opacity">
       <img
         src="/images/badges/google-play-badge.png"
         alt="Get it on Google Play"
-        width="175"
-        height="52"
-        class="h-[52px] w-auto"
+        width="210"
+        height="62"
+        class="h-[62px] w-auto"
       />
     </a>
     <!-- App Store — masqué temporairement, réactiver quand prêt
@@ -40,9 +28,9 @@ const lang = getLangFromUrl(Astro.url);
       <img
         src="/images/badges/app-store-badge.svg"
         alt="Download on the App Store"
-        width="135"
-        height="40"
-        class="h-[40px] w-auto"
+        width="162"
+        height="48"
+        class="h-[48px] w-auto"
       />
     </a>
     -->

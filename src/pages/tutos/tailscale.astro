@@ -30,7 +30,7 @@ const win = [
     title: t(lang, 'tutos.tailscale.step4.title'),
     content: t(lang, 'tutos.tailscale.step4.content'),
     code: t(lang, 'tutos.tailscale.step4.code'),
-    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Tailscale web dashboard', maxWidth: '88%' },
+    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Tailscale web dashboard', maxWidth: '66%' },
   },
 ];
 
@@ -55,7 +55,7 @@ const linux = [
     title: t(lang, 'tutos.tailscale.step4.title'),
     content: t(lang, 'tutos.tailscale.step4.content'),
     code: t(lang, 'tutos.tailscale.step4.code'),
-    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Tailscale web dashboard', maxWidth: '88%' },
+    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Tailscale web dashboard', maxWidth: '66%' },
   },
 ];
 
@@ -82,7 +82,7 @@ const mac = [
     title: t(lang, 'tutos.tailscale.step4.title'),
     content: t(lang, 'tutos.tailscale.step4.content'),
     code: t(lang, 'tutos.tailscale.step4.code'),
-    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Tailscale web dashboard', maxWidth: '88%' },
+    image: { src: '/images/tutos/tailscale/tailscale-dashboard.png', alt: 'Tailscale web dashboard', maxWidth: '66%' },
   },
 ];
 ---
@@ -90,6 +90,7 @@ const mac = [
 <TutoLayout
   title={t(lang, 'tutos.tailscale.title')}
   intro={t(lang, 'tutos.tailscale.intro')}
+  showChillCta
   howToSteps={[
     { name: t(lang, 'tutos.tailscale.step1.title'), text: t(lang, 'tutos.tailscale.step1.content') },
     { name: t(lang, 'tutos.tailscale.step2.title'), text: t(lang, 'tutos.tailscale.win.step2.content') },

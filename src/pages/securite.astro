@@ -1,99 +1,444 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SchemaBreadcrumb from '../components/seo/SchemaBreadcrumb.astro';
 import { getLangFromUrl, t } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-
-const detailSections = [
-  { title: t(lang, 'security.detail.storage.title'), content: t(lang, 'security.detail.storage.content') },
-  { title: t(lang, 'security.detail.ssh.title'), content: t(lang, 'security.detail.ssh.content') },
-  { title: t(lang, 'security.detail.auth.title'), content: t(lang, 'security.detail.auth.content') },
-  { title: t(lang, 'security.detail.leaks.title'), content: t(lang, 'security.detail.leaks.content') },
-  { title: t(lang, 'security.detail.root.title'), content: t(lang, 'security.detail.root.content') },
-  { title: t(lang, 'security.detail.audit.title'), content: t(lang, 'security.detail.audit.content') },
-  { title: t(lang, 'security.detail.limits.title'), content: t(lang, 'security.detail.limits.content') },
-  { title: t(lang, 'security.detail.scores.title'), content: t(lang, 'security.detail.scores.content') },
-];
-
-const breadcrumbs = [
-  { name: 'Home', url: 'https://chill.app/' },
-  { name: t(lang, 'security.title'), url: 'https://chill.app/securite' },
-];
 ---
 
 <BaseLayout title={t(lang, 'security.pageTitle')} description={t(lang, 'security.description')}>
-  <SchemaBreadcrumb items={breadcrumbs} />
-
-  <section class="py-12">
-    <h1 data-animate="0" class="text-h1 font-heading font-bold text-chill-text mb-10">
+  <section class="py-[var(--spacing-section)]">
+    <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-10">
       {t(lang, 'security.title')}
     </h1>
 
-    <!-- Simple section: 2x2 reassurance grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
-      <!-- Shield: keys -->
-      <div data-animate="100" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
-        <svg class="w-8 h-8 shrink-0 text-chill-accent" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        </svg>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'security.simple.keys')}
-        </p>
-      </div>
-
-      <!-- Lock: encryption -->
-      <div data-animate="200" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
-        <svg class="w-8 h-8 shrink-0 text-chill-accent" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-        </svg>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'security.simple.encryption')}
-        </p>
-      </div>
-
-      <!-- Key: PIN -->
-      <div data-animate="300" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
-        <svg class="w-8 h-8 shrink-0 text-chill-accent" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
-        </svg>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'security.simple.pin')}
-        </p>
-      </div>
-
-      <!-- Server: no data -->
-      <div data-animate="400" class="rounded-chill border border-chill-border bg-chill-elevated p-6 flex items-start gap-4">
-        <svg class="w-8 h-8 shrink-0 text-chill-accent" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-          <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-          <line x1="6" y1="6" x2="6.01" y2="6" />
-          <line x1="6" y1="18" x2="6.01" y2="18" />
-        </svg>
-        <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-          {t(lang, 'security.simple.noData')}
-        </p>
-      </div>
+    <!-- Tabs -->
+    <div class="flex gap-3 mb-10" role="tablist">
+      <button
+        role="tab"
+        aria-selected="true"
+        data-tab="chillshell"
+        class="tab-btn px-5 py-2.5 rounded-chill font-heading font-semibold text-body-sm transition-all duration-200 cursor-pointer bg-chill-accent text-white"
+      >
+        ChillShell
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        data-tab="chill"
+        class="tab-btn px-5 py-2.5 rounded-chill font-heading font-semibold text-body-sm transition-all duration-200 cursor-pointer border border-chill-border text-chill-text-secondary hover:text-chill-text"
+      >
+        Chill
+      </button>
     </div>
 
-    <!-- Detailed section — static HTML for crawlers -->
-    <div class="space-y-4">
-      {detailSections.map((section, i) => (
-        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate={String(100 + i * 80)}>
-          <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer select-none text-body font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
-            <span>{section.title}</span>
-            <svg class="w-5 h-5 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-            </svg>
+    <!-- ==================== CHILLSHELL TAB ==================== -->
+    <div data-tab-content="chillshell">
+
+      <!-- Reassurance cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        <div data-animate="100" class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">SSH keys encrypted via AES-CBC (Android) and Keychain (iOS). Never transmitted.</p>
+        </div>
+        <div data-animate="150" class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">PIN hashed with PBKDF2-HMAC-SHA256, 100,000 iterations. Built-in brute force protection.</p>
+        </div>
+        <div data-animate="200" class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+            <line x1="6" y1="6" x2="6.01" y2="6" />
+            <line x1="6" y1="18" x2="6.01" y2="18" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">Zero data sent to our servers. No telemetry, no analytics.</p>
+        </div>
+        <div data-animate="250" class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+            <line x1="1" y1="1" x2="23" y2="23" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">Screen protection enabled. Anti-capture and anti-recording by default.</p>
+        </div>
+      </div>
+
+      <!-- Detail sections -->
+      <div class="space-y-3">
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="300">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Sensitive data storage</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
           </summary>
-          <div class="px-6 pb-4">
-            <p class="text-body-sm text-chill-text-secondary leading-relaxed whitespace-pre-line">
-              {section.content}
-            </p>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All sensitive data is stored via Flutter Secure Storage: AES-CBC encryption on Android (hardware Android Keystore) and Keychain on iOS. The master encryption key is stored in the device's hardware keystore, making extraction impossible even with root access.
+
+Protected data: SSH private keys, PIN hash, SSH server fingerprints, audit log, Wake-on-LAN configurations, and command history.
+
+No secrets are hardcoded in the source code — a full codebase scan confirms this.</p>
           </div>
         </details>
-      ))}
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="340">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>SSH connection and TOFU verification</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Standard SSH2 protocol. Preferred key algorithm: Ed25519 (256 bits).
+
+On first connection, the server's SHA-256 fingerprint is displayed. The user must manually confirm it. The fingerprint is then stored and automatically verified. If it changes: red alert with an explanation of the interception risk (MITM). Fingerprint comparison is performed in constant time (bitwise XOR) to prevent timing attacks.
+
+Private keys are loaded into a dedicated SecureBuffer. After use, memory is zeroed out. The SSH worker re-reads the key from secure storage on each new connection — no persistence in memory between sessions. Cryptographic operations run in a separate isolate (background thread).</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="380">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Local authentication and brute force protection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">PIN code: minimum 8 digits (100 million combinations). Hashed with PBKDF2-HMAC-SHA256 over 100,000 iterations, combined with a unique random salt of 32 bytes. The plaintext PIN is never stored. Hash comparison is performed in constant time.
+
+Brute force protection: lockout after 5 failed attempts, with exponential backoff (30s, 60s, 120s, capped at 300s). The counter is monotonic: it only resets after a correct PIN, never by delay expiration.
+
+Biometrics: native system API, biometric data never leaves the device. Strict mode: biometrics only, no fallback to the device system PIN. Automatically invalidated when the app goes to background.
+
+Configurable auto-lock (5, 10, 15 or 30 minutes). Loading screen at startup until the PIN state is fully loaded, preventing any temporary bypass.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="420">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Data leak protection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Command history: regex filtering excludes AWS keys, JWT/Bearer tokens, API keys, command-line passwords, and sensitive variables. Automatic expiration after 90 days. Manual wipe available.
+
+Clipboard: automatically cleared 30 seconds after any sensitive data copy. Also cleared when the app goes to background via the native Android API.
+
+Production logs: all debug calls gated by kDebugMode. Zero logs in release builds. No hostnames, IPs, or identifiers in production. Go logs (Tailscale) are filtered to prevent OAuth token or authentication URL leaks.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="460">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Screen protection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Android: FLAG_SECURE enabled by default. Blocks screenshots and screen recording. The app appears as a black screen in the recent apps selector. Can be disabled in settings.
+
+iOS: automatic masking screen when the app goes to background. Prevents content capture in the app switcher. Can be disabled in settings.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="500">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Compromised device detection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">At startup, the app checks for the presence of root (Android) or jailbreak (iOS) characteristic paths and files. If detected: a warning banner explains the risk to SSH key security. This is an informational measure, not a blocking one — the user can continue at their own discretion.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="540">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Audit log</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Automatically recorded events: SSH connection (success/failure), disconnection, reconnection, authentication failure, SSH key import/deletion, PIN creation/deletion, server fingerprint change.
+
+Stored encrypted in secure storage, compact JSON format with timestamps. FIFO rotation at 500 entries. Never leaves the device.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="580">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>SFTP transfers and key import</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">SFTP transfers limited to 30 MB per file. Chunk-based streaming, no full loading into memory — prevents saturation attacks (DoS/OOM). Directory traversal detection.
+
+SSH key import: format validated, size limited to 16 KB (a normal key is under 5 KB). Abnormally large files are blocked. Immediate storage in secure storage after import.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="620">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Tailscale integration</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">WireGuard VPN connection via libtailscale (native Go library, Kotlin channel). OAuth authentication URLs are never logged in plaintext — only their length is recorded in debug mode. Peer public keys are truncated in logs. Error messages are generic.
+
+URL validation: HTTPS scheme only before opening in the browser. No Tailscale token stored on the Flutter side — all token-related code has been removed.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="660">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Permissions and architecture</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Android: ADB backup disabled (allowBackup=false), services not exported, VPN service protected by system permissions. Only necessary permissions requested: network (SSH/WoL), biometric sensor (optional), local storage (encrypted credentials).
+
+SSH cryptographic operations in a separate isolate (background thread). Request identifiers use cryptographically random UUID v4. Interface translated into 5 languages, no sensitive strings hardcoded.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="700">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Known limitations</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">The following limitations are documented for transparency. Honest disclosure of trade-offs is preferable to concealment.
+
+The SSH private key passes through memory as a Dart String (immutable), potentially persisting until garbage collection. Low impact: requires a rooted device with memory access. Mitigated by re-reading from secure storage on each connection.
+
+The Dart garbage collector may create temporary copies in memory. Same prerequisites.
+
+Root detection can be bypassed by advanced tools (Magisk Hide). Informational measure only.
+
+The generated Ed25519 key uses cipher=none. Acceptable as long as it remains in secure storage (AES/Keychain encrypted).
+
+The PIN hash is stored in SharedPreferences (locally accessible). Mitigated by PBKDF2 making offline brute force impractical.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group" data-animate="740">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Audit results</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All audits are internal reviews conducted with specialized security analysis tools. No external audit has been performed to date.
+
+White-box audit V1.5.1 (February 2026): score improved from 6.5 to 8.5/10, 9 fixes applied.
+STRIDE analysis (February 2026): 22 threats identified, 8 risks validated, 12 mitigations implemented at 100%.
+Quality audit (February 2026): 4 critical bugs fixed, dead code removed, 92/92 tests pass.
+Advanced security audit (February 2026): 62 findings, 0 remotely exploitable vulnerability. 27 fixed, 11 mitigated/documented.</p>
+          </div>
+        </details>
+
+      </div>
     </div>
+
+    <!-- ==================== CHILL TAB ==================== -->
+    <div data-tab-content="chill" class="hidden">
+
+      <!-- Reassurance cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="4 17 10 11 4 5" />
+            <line x1="12" y1="19" x2="20" y2="19" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">All system commands go through a single, auditable execution point.</p>
+        </div>
+        <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">PIN hashed with PBKDF2-HMAC-SHA256, 100,000 iterations. Built-in brute force protection.</p>
+        </div>
+        <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+            <line x1="6" y1="6" x2="6.01" y2="6" />
+            <line x1="6" y1="18" x2="6.01" y2="18" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">Zero data sent to our servers. No telemetry, no analytics.</p>
+        </div>
+        <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
+          <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">Command injection protection validated by audit.</p>
+        </div>
+      </div>
+
+      <!-- Detail sections -->
+      <div class="space-y-3">
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Secure architecture</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All system commands go through a single centralized class, creating an audit and control point for every execution. Arguments are passed as a separated list, preventing shell metacharacter interpretation.
+
+Default 120-second timeout on all commands. Exception handling: timeouts and process errors are caught cleanly.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Privilege escalation</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Single mechanism adapted to each operating system:
+
+Windows: temporary PowerShell script executed via the -File parameter (prevents PowerShell from interpreting the script content).
+Linux: temporary bash script executed via pkexec (polkit). Arguments as separated list.
+macOS: temporary script executed via osascript with POSIX escaping (single-quote encapsulation).
+
+In all cases: unique temporary directories, 700 permissions (owner only), systematic deletion after execution. Only one password prompt per operation — all admin commands are grouped into a single script.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Local authentication and brute force protection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">PIN code: minimum 8 digits. Strict regex validation in business logic. Hashed with PBKDF2-HMAC-SHA256 over 100,000 iterations + random 16-byte salt (cryptographically secure generator). Constant-time comparison (bitwise XOR).
+
+Brute force protection: lockout after 5 attempts, exponential backoff (30s, 60s, 120s, 300s). Monotonic counter — reset only by correct PIN. Counters are persisted and survive restarts.
+
+Loading screen at startup prevents any bypass. Automatic transparent migration from legacy hash formats.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Automated SSH configuration</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Temporary scripts in unique directories with 700 permissions, deleted after execution. Semantic exit codes for precise error diagnosis. Post-installation verification of the SSH service. Firewall rule created only if none exists.
+
+Supported systems: Windows (OpenSSH Capabilities), Linux (automatic apt/dnf/pacman detection, systemd), macOS (systemsetup).</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Wake-on-LAN configuration</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Same secure model as SSH. Strict network interface name validation via regex (alphanumeric, hyphens and dots, max 15 characters). Windows adapter names escaped for PowerShell.
+
+Systemd service created on Linux for persistence. All admin commands grouped in a single pkexec call.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Tailscale integration</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Communication with the Go daemon (chill-tailscale) via JSON over stdin/stdout. URL validation (HTTPS only) before opening in the browser. Guard against concurrent calls during daemon restarts.
+
+Clean shutdown with 3-second timeout and forced kill as fallback. Defensive JSON parsing: try-catch on every response, invalid peers filtered. Binary permissions verified at startup. Debug logs only, inactive in production.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Command injection protection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All injection vectors identified by the audit have been fixed:
+
+Windows elevation: -File parameter instead of -Command, preventing script content interpretation.
+macOS elevation: dedicated POSIX escaping function (single-quote encapsulation).
+Network interface names: centralized strict regex validation across all functions.
+Windows adapter names: apostrophe escaping for PowerShell.
+WoL PowerShell commands: single quotes for interpolated values.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Information leak protection</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Generic error messages shown to the user, technical details sent to debug logs only. Clipboard automatically cleared 30 seconds after copy.
+
+All silent catch blocks replaced with informative logs (6 blocks fixed). Zero sensitive information in production logs.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Known limitations</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">The following limitations are documented for transparency.
+
+The entered PIN passes through memory as a Dart String (immutable), persisting a few milliseconds until garbage collection. Very low impact.
+
+The PIN hash and salt are stored in SharedPreferences (unencrypted). Mitigated by PBKDF2 making offline brute force impractical.
+
+The Process.run timeout does not guarantee child process termination (Dart limitation). Documented, future improvement planned.
+
+TOCTOU on temporary scripts: a local process could theoretically modify the script between creation and execution. Mitigated by 700 permissions.
+
+The Tailscale daemon binary may be resolved via the system PATH as fallback. A warning is logged.</p>
+          </div>
+        </details>
+
+        <details class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-3 cursor-pointer select-none text-body-sm font-medium text-chill-text hover:bg-chill-surface transition-colors font-heading">
+            <span>Audit results</span>
+            <svg class="w-4 h-4 shrink-0 text-chill-text-secondary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+          </summary>
+          <div class="px-5 pb-3 bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All audits are internal reviews. No external audit has been performed to date.
+
+Architectural context audit (February 2026): complete mapping of 12 modules, 7 actors, 13 trust boundaries, 6 end-to-end workflows.
+Full security audit (February 2026): 38 findings (4 critical, 8 high, 14 medium, 12 low). 27 fixed, 11 mitigated/documented. 61/61 tests.
+Quality audit (February 2026): 34 findings (6 critical, 14 important, 14 minor). All fixed. 42/42 tests.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
   </section>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-tab');
+      document.querySelectorAll('[data-tab-content]').forEach(el => {
+        el.classList.toggle('hidden', el.getAttribute('data-tab-content') !== tab);
+      });
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        const isActive = b.getAttribute('data-tab') === tab;
+        b.setAttribute('aria-selected', String(isActive));
+        if (isActive) {
+          b.classList.add('bg-chill-accent', 'text-white');
+          b.classList.remove('border', 'border-chill-border', 'text-chill-text-secondary');
+        } else {
+          b.classList.remove('bg-chill-accent', 'text-white');
+          b.classList.add('border', 'border-chill-border', 'text-chill-text-secondary');
+        }
+      });
+    });
+  });
+</script>

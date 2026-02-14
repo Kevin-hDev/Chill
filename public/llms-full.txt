@@ -53,8 +53,8 @@ Common root paths verified at launch. Warning banner shown if detected. App rema
 Security events logged locally with FIFO rotation at 500 entries. Tracked events include: login, session start/end, key generation.
 
 ### Security Audit Results
-- White-box audit score: 8.5/10
-- STRIDE threat model: 100% mitigated
+- Internal white-box security audit covering code, storage, network, and auth flows
+- STRIDE threat model: 100% mitigated across all six categories
 - Full reports available on request
 
 ### Known Limitations (Documented for Transparency)

@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useTheme } from '../../hooks/useTheme';
 
 interface CarouselImage {
   src: string;
+  srcLight?: string;
   alt: string;
 }
 
@@ -18,6 +20,7 @@ export default function Carousel({
   interval = 4000,
   aspectRatio = '16/9',
 }: CarouselProps) {
+  const theme = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const touchStartX = useRef<number>(0);
@@ -110,7 +113,7 @@ export default function Carousel({
               className="w-full h-full shrink-0"
             >
               <img
-                src={image.src}
+                src={theme === 'light' && image.srcLight ? image.srcLight : image.src}
                 alt={image.alt}
                 width={800}
                 height={450}

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SchemaHowTo from '../seo/SchemaHowTo.astro';
 import SchemaBreadcrumb from '../seo/SchemaBreadcrumb.astro';
+import { getLangFromUrl, getLocalePath } from '../../i18n/utils';
 
 interface HowToStep {
   name: string;
@@ -12,11 +13,14 @@ interface Props {
   title: string;
   intro: string;
   showOsTabs?: boolean;
+  showChillCta?: boolean;
   howToSteps?: HowToStep[];
   breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, intro, showOsTabs = true, howToSteps, breadcrumbs } = Astro.props;
+const { title, intro, showOsTabs = true, showChillCta = false, howToSteps, breadcrumbs } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const chillPath = getLocalePath(lang, '/chill');
 ---
 
 <BaseLayout title={`${title} — Chill`}>
@@ -33,6 +37,15 @@ const { title, intro, showOsTabs = true, howToSteps, breadcrumbs } = Astro.props
     </h1>
     <p data-animate="100" class="text-body text-chill-text-secondary mb-10 max-w-3xl">
       {intro}
+      {showChillCta && (
+        <>
+          {' '}
+          {lang === 'fr'
+            ? <span>Télécharge l'application <a href={chillPath} class="text-chill-accent hover:underline font-semibold">Chill</a> pour tout configurer en trois clics, ou suis les étapes ci-dessous pour tout configurer manuellement.</span>
+            : <span>Download the <a href={chillPath} class="text-chill-accent hover:underline font-semibold">Chill</a> app to set up everything in three clicks, or follow the steps below for manual configuration.</span>
+          }
+        </>
+      )}
     </p>
 
     <slot />

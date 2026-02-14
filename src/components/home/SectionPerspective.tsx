@@ -3,7 +3,7 @@ import Carousel from '../ui/Carousel';
 
 interface SectionPerspectiveProps {
   side: 'left' | 'right';
-  images: { src: string; alt: string }[];
+  images: { src: string; srcLight?: string; alt: string }[];
   title: string;
   description: string;
   accentColor?: string;
