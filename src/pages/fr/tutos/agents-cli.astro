@@ -104,13 +104,55 @@ const agents = [
 <TutoLayout
   title={t(lang, 'tutos.agents.title')}
   intro={t(lang, 'tutos.agents.intro')}
+  description="Coder depuis votre téléphone avec des agents IA via SSH. Claude Code, Gemini CLI, Codex — vibe coding mobile gratuit avec ChillShell. Guide et compatibilité."
   showOsTabs={false}
   breadcrumbs={[
     { name: 'Accueil', url: 'https://chill.app/fr/' },
-    { name: 'Tutos', url: 'https://chill.app/fr/tutos/config-os' },
+    { name: 'Tutoriels', url: 'https://chill.app/fr/tutos' },
     { name: t(lang, 'tutos.agents.title'), url: 'https://chill.app/fr/tutos/agents-cli' },
   ]}
 >
+  <!-- Intro vibe coding -->
+  <div data-animate="0" class="mb-10 space-y-6">
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Code depuis ton téléphone</h2>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed mb-3">
+        Le vibe coding change la façon dont les développeurs travaillent. Avec ChillShell, tu peux lancer n'importe quel agent IA en ligne de commande directement depuis ton téléphone via SSH — Claude Code, Codex CLI, Gemini, Cursor et plus. Pas besoin de laptop. Ouvre ChillShell, connecte-toi à ton PC et commence à coder de n'importe où.
+      </p>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+        Tout ce qu'il te faut, c'est une connexion SSH vers ton ordinateur (réseau local ou via le VPN Tailscale pour l'accès distant). L'agent IA tourne sur le matériel de ton PC avec un accès complet à ta base de code, pendant que tu contrôles tout depuis le terminal de ton téléphone. Ton code reste sur ta machine — rien ne passe par les serveurs de ChillShell.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">10+</p>
+        <p class="text-micro text-chill-text-muted">Agents CLI supportés</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">SSH</p>
+        <p class="text-micro text-chill-text-muted">Connexion sécurisée</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">Gratuit</p>
+        <p class="text-micro text-chill-text-muted">Sans abonnement</p>
+      </div>
+    </div>
+
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Comment ça marche</h2>
+      <ol class="space-y-2 text-body-sm text-chill-text-secondary list-decimal list-inside">
+        <li>Configure SSH sur ton PC (<a href="/fr/tutos/config-os" class="text-chill-accent hover:underline">Guide Config OS</a>)</li>
+        <li>Installe l'agent IA de ton choix sur ton PC (voir les commandes ci-dessous)</li>
+        <li>Connecte-toi via ChillShell depuis ton téléphone (<a href="/fr/tutos/ssh" class="text-chill-accent hover:underline">Guide SSH</a>)</li>
+        <li>Lance la commande de l'agent — il utilise toute la puissance de ton PC</li>
+      </ol>
+      <p class="text-body-sm text-chill-text-muted mt-3 italic">
+        Pour l'accès distant hors de ton réseau local, configure d'abord le <a href="/fr/tutos/tailscale" class="text-chill-accent hover:underline">VPN Tailscale</a>.
+      </p>
+    </div>
+  </div>
+
   <!-- Tableau de compatibilité -->
   <div data-animate="0" class="mb-10">
     <h2 class="text-h3 font-heading font-bold text-chill-text mb-4">
@@ -133,5 +175,38 @@ const agents = [
         tabLabels={tabLabels}
       />
     ))}
+  </div>
+
+  <!-- Cas d'utilisation -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Qu'est-ce que tu peux faire ?</h2>
+    <ul class="space-y-2 text-body-sm text-chill-text-secondary">
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Demande à Claude Code d'implémenter des fonctionnalités, corriger des bugs ou refactoriser du code — le tout depuis ton téléphone
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Génère du code boilerplate, des tests ou de la documentation avec Codex CLI pendant tes trajets
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Lance des revues de code et obtiens des suggestions d'amélioration avec Gemini CLI
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Surveille les tâches longues des agents — vérifie la progression, approuve les changements, itère
+      </li>
+    </ul>
+  </div>
+
+  <!-- Tutoriels associés -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Prérequis</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/fr/tutos/config-os" class="text-body-sm text-chill-accent hover:underline">Config OS — Activer SSH sur ton PC &rarr;</a>
+      <a href="/fr/tutos/ssh" class="text-body-sm text-chill-accent hover:underline">Connexion SSH — Se connecter depuis ton téléphone &rarr;</a>
+      <a href="/fr/tutos/tailscale" class="text-body-sm text-chill-accent hover:underline">VPN Tailscale — Accéder de n'importe où &rarr;</a>
+    </div>
   </div>
 </TutoLayout>

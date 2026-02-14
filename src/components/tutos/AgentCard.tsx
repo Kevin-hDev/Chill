@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
 
 interface AgentCardProps {
@@ -47,9 +46,12 @@ export default function AgentCard({
         )}
       </div>
       <div className="px-5 pb-5">
-        <Accordion title={name} variant="code">
-          <CodeBlock tabs={tabs} />
-        </Accordion>
+        <div className="border border-chill-border rounded-chill bg-chill-surface overflow-hidden">
+          <div className="px-4 py-3 font-mono text-code text-chill-text">{name}</div>
+          <div className="px-4 pb-4 border-t border-chill-border bg-chill-surface pt-3 font-mono text-code text-chill-text-secondary">
+            <CodeBlock tabs={tabs} />
+          </div>
+        </div>
       </div>
     </motion.div>
   );

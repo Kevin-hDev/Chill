@@ -22,9 +22,9 @@
 - STRIDE threat model: 100% mitigated across all six categories
 
 ## Pricing
-- 7-day free trial with full features
-- One-time purchase: $2.99 / 2.99 EUR
-- Lifetime access, no subscription
+- Completely free — no trial, no purchase required
+- All features unlocked from day one
+- No subscription, no hidden fees
 
 ## Pages
 - https://chill.app/ — Homepage

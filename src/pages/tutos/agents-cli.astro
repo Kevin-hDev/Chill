@@ -104,13 +104,55 @@ const agents = [
 <TutoLayout
   title={t(lang, 'tutos.agents.title')}
   intro={t(lang, 'tutos.agents.intro')}
+  description="Install and run AI coding agents via SSH from your phone. Claude Code, Cursor CLI, Gemini CLI, Codex, and more — full compatibility table."
   showOsTabs={false}
   breadcrumbs={[
     { name: 'Home', url: 'https://chill.app/' },
-    { name: 'Tutos', url: 'https://chill.app/tutos/config-os' },
+    { name: 'Tutorials', url: 'https://chill.app/tutos' },
     { name: t(lang, 'tutos.agents.title'), url: 'https://chill.app/tutos/agents-cli' },
   ]}
 >
+  <!-- Vibe coding intro -->
+  <div data-animate="0" class="mb-10 space-y-6">
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Code from your phone</h2>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed mb-3">
+        Vibe coding is changing how developers work. With ChillShell, you can run any CLI-based AI agent directly from your phone via SSH — Claude Code, Codex CLI, Gemini, Cursor, and more. No laptop needed. Just open ChillShell, connect to your PC, and start coding from anywhere.
+      </p>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+        All you need is an SSH connection to your computer (local network or via Tailscale VPN for remote access). The AI agent runs on your PC's hardware with full access to your codebase, while you control everything from your phone's terminal. Your code stays on your machine — nothing is sent through ChillShell's servers.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">10+</p>
+        <p class="text-micro text-chill-text-muted">Supported CLI agents</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">SSH</p>
+        <p class="text-micro text-chill-text-muted">Secure connection</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">Free</p>
+        <p class="text-micro text-chill-text-muted">No subscription</p>
+      </div>
+    </div>
+
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">How it works</h2>
+      <ol class="space-y-2 text-body-sm text-chill-text-secondary list-decimal list-inside">
+        <li>Set up SSH on your PC (<a href="/tutos/config-os" class="text-chill-accent hover:underline">OS Setup guide</a>)</li>
+        <li>Install your preferred AI agent on your PC (see commands below)</li>
+        <li>Connect via ChillShell from your phone (<a href="/tutos/ssh" class="text-chill-accent hover:underline">SSH guide</a>)</li>
+        <li>Run the agent command — it uses your PC's full computing power</li>
+      </ol>
+      <p class="text-body-sm text-chill-text-muted mt-3 italic">
+        For remote access outside your local network, set up <a href="/tutos/tailscale" class="text-chill-accent hover:underline">Tailscale VPN</a> first.
+      </p>
+    </div>
+  </div>
+
   <!-- Compatibility table -->
   <div data-animate="0" class="mb-10">
     <h2 class="text-h3 font-heading font-bold text-chill-text mb-4">
@@ -133,5 +175,38 @@ const agents = [
         tabLabels={tabLabels}
       />
     ))}
+  </div>
+
+  <!-- Use cases -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">What can you do?</h2>
+    <ul class="space-y-2 text-body-sm text-chill-text-secondary">
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Ask Claude Code to implement features, fix bugs, or refactor code — all from your phone
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Generate boilerplate code, tests, or documentation with Codex CLI while commuting
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Run code reviews and get improvement suggestions from Gemini CLI
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+        Monitor long-running agent tasks — check progress, approve changes, iterate
+      </li>
+    </ul>
+  </div>
+
+  <!-- Related tutorials -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Prerequisites</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/tutos/config-os" class="text-body-sm text-chill-accent hover:underline">OS Setup — Enable SSH on your PC &rarr;</a>
+      <a href="/tutos/ssh" class="text-body-sm text-chill-accent hover:underline">SSH Connection — Connect from your phone &rarr;</a>
+      <a href="/tutos/tailscale" class="text-body-sm text-chill-accent hover:underline">Tailscale VPN — Access from anywhere &rarr;</a>
+    </div>
   </div>
 </TutoLayout>

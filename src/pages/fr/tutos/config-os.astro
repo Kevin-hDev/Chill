@@ -110,6 +110,7 @@ const mac = [
 <TutoLayout
   title={t(lang, 'tutos.configOs.title')}
   intro={t(lang, 'tutos.configOs.intro')}
+  description="Comment activer le serveur SSH sur Windows, Linux et macOS. Guide étape par étape pour configurer OpenSSH et se connecter avec Chill."
   showChillCta
   howToSteps={[
     { name: t(lang, 'tutos.configOs.win.step1.title'), text: t(lang, 'tutos.configOs.win.step1.content') },
@@ -119,9 +120,19 @@ const mac = [
   ]}
   breadcrumbs={[
     { name: 'Accueil', url: 'https://chill.app/fr/' },
-    { name: 'Tutos', url: 'https://chill.app/fr/tutos/config-os' },
+    { name: 'Tutoriels', url: 'https://chill.app/fr/tutos' },
     { name: t(lang, 'tutos.configOs.title'), url: 'https://chill.app/fr/tutos/config-os' },
   ]}
 >
   <ConfigOsContent client:visible win={win} linux={linux} mac={mac} />
+
+  <!-- Tutoriels associés -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Étapes suivantes</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/fr/tutos/ssh" class="text-body-sm text-chill-accent hover:underline">Connexion SSH &rarr;</a>
+      <a href="/fr/tutos/tailscale" class="text-body-sm text-chill-accent hover:underline">VPN Tailscale &rarr;</a>
+      <a href="/fr/securite" class="text-body-sm text-chill-accent hover:underline">Sécurité &rarr;</a>
+    </div>
+  </div>
 </TutoLayout>

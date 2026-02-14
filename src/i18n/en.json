@@ -328,6 +328,12 @@
   "chill.cta.title": "Ready to set up your PC?",
   "chill.cta.manual": "Prefer manual setup? Follow our step-by-step tutorials",
 
+  "author.name": "HUYNH Kevin",
+  "author.role": "Creator of Chill",
+  "author.bio": "Independent creator based in France, building tools for secure remote access.",
+  "meta.published": "Published",
+  "meta.updated": "Last updated",
+
   "legal.mentions.title": "Legal Notice",
   "legal.mentions.editor": "Publisher",
   "legal.mentions.host": "Host: Vercel Inc.",

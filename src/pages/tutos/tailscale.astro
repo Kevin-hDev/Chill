@@ -90,6 +90,7 @@ const mac = [
 <TutoLayout
   title={t(lang, 'tutos.tailscale.title')}
   intro={t(lang, 'tutos.tailscale.intro')}
+  description="Set up Tailscale VPN to connect to your PC from anywhere with Chill. No port forwarding required — works over WiFi, 5G, and abroad."
   showChillCta
   howToSteps={[
     { name: t(lang, 'tutos.tailscale.step1.title'), text: t(lang, 'tutos.tailscale.step1.content') },
@@ -99,9 +100,19 @@ const mac = [
   ]}
   breadcrumbs={[
     { name: 'Home', url: 'https://chill.app/' },
-    { name: 'Tutos', url: 'https://chill.app/tutos/config-os' },
+    { name: 'Tutorials', url: 'https://chill.app/tutos' },
     { name: t(lang, 'tutos.tailscale.title'), url: 'https://chill.app/tutos/tailscale' },
   ]}
 >
   <TailscaleContent client:visible win={win} linux={linux} mac={mac} />
+
+  <!-- Related tutorials -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Related</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/tutos/config-os" class="text-body-sm text-chill-accent hover:underline">OS Setup &rarr;</a>
+      <a href="/tutos/ssh" class="text-body-sm text-chill-accent hover:underline">SSH Connection &rarr;</a>
+      <a href="/tutos/agents-cli" class="text-body-sm text-chill-accent hover:underline">CLI Agents &rarr;</a>
+    </div>
+  </div>
 </TutoLayout>

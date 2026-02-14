@@ -1,0 +1,34 @@
+---
+/**
+ * Schema.org Article JSON-LD
+ * For Updates/Release Notes pages.
+ */
+interface Props {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+}
+
+const { headline, description, url, datePublished, dateModified } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": headline,
+  "description": description,
+  "url": url,
+  "datePublished": datePublished,
+  "dateModified": dateModified || datePublished,
+  "author": {
+    "@type": "Person",
+    "name": "HUYNH Kevin"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Chill",
+    "url": "https://chill.app"
+  }
+})} />

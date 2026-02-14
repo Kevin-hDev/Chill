@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import TabsOS from '../ui/TabsOS';
-import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
 import StepImage from '../ui/StepImage';
 import MethodTabs from '../ui/MethodTabs';
@@ -132,7 +131,9 @@ export default function WolContent({
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        <Accordion title={`2. ${winStep2Title}`}>
+        <div className="border border-chill-border rounded-chill bg-chill-elevated overflow-hidden">
+        <h3 className="font-heading text-body-sm text-chill-text px-4 py-3">2. {winStep2Title}</h3>
+        <div className="px-4 pb-4 border-t border-chill-border bg-chill-surface pt-3 text-body-sm text-chill-text-secondary">
         <TabsOS
           windows={
             hasEnrichedWin ? (
@@ -222,7 +223,8 @@ export default function WolContent({
             </div>
           }
         />
-        </Accordion>
+        </div>
+        </div>
       </motion.div>
 
       {/* Step 3: Configure in ChillShell (common + OS-specific code) */}
@@ -232,7 +234,9 @@ export default function WolContent({
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        <Accordion title={`3. ${step3Title}`}>
+        <div className="border border-chill-border rounded-chill bg-chill-elevated overflow-hidden">
+        <h3 className="font-heading text-body-sm text-chill-text px-4 py-3">3. {step3Title}</h3>
+        <div className="px-4 pb-4 border-t border-chill-border bg-chill-surface pt-3 text-body-sm text-chill-text-secondary">
         <p className="text-body-sm text-chill-text-secondary mb-4 leading-relaxed">
           {step3Content}
         </p>
@@ -268,7 +272,8 @@ export default function WolContent({
             <CodeBlock code={linuxStep3Code} language="bash" title="Terminal" />
           }
         />
-        </Accordion>
+        </div>
+        </div>
       </motion.div>
 
       {/* Debug checklist */}
@@ -283,8 +288,8 @@ export default function WolContent({
         </h2>
         <div className="space-y-2">
           {items.map((item, i) => (
-            <Accordion key={i} title={item.trim()}>
-              <div className="flex items-center gap-2 text-chill-text-muted">
+            <div key={i} className="border border-chill-border rounded-chill bg-chill-elevated overflow-hidden">
+              <div className="flex items-center gap-2 text-chill-text-muted px-4 py-3">
                 <svg
                   width="16"
                   height="16"
@@ -300,7 +305,7 @@ export default function WolContent({
                 </svg>
                 <span className="text-body-sm">{item.trim()}</span>
               </div>
-            </Accordion>
+            </div>
           ))}
         </div>
       </motion.div>

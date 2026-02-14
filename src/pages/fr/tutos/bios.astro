@@ -1,6 +1,5 @@
 ---
 import TutoLayout from '../../../components/tutos/TutoLayout.astro';
-import Accordion from '../../../components/ui/Accordion.tsx';
 import BiosAsusContent from '../../../components/tutos/BiosAsusContent.tsx';
 import { getLangFromUrl, t } from '../../../i18n/utils';
 
@@ -31,6 +30,7 @@ const asusSteps = [
 <TutoLayout
   title={t(lang, 'tutos.bios.title')}
   intro={t(lang, 'tutos.bios.intro')}
+  description="Configurer les paramètres BIOS pour le Wake-on-LAN. Activer Power On By PCI-E, désactiver ErP Ready et Native ASPM sur cartes mères ASUS/ROG."
   showOsTabs={false}
   howToSteps={[
     { name: t(lang, 'tutos.bios.asus.step1'), text: t(lang, 'tutos.bios.asus.step1') },
@@ -42,7 +42,7 @@ const asusSteps = [
   ]}
   breadcrumbs={[
     { name: 'Accueil', url: 'https://chill.app/fr/' },
-    { name: 'Tutos', url: 'https://chill.app/fr/tutos/config-os' },
+    { name: 'Tutoriels', url: 'https://chill.app/fr/tutos' },
     { name: t(lang, 'tutos.bios.title'), url: 'https://chill.app/fr/tutos/bios' },
   ]}
 >
@@ -56,13 +56,25 @@ const asusSteps = [
     </p>
   </div>
 
-  <!-- Brand accordions -->
-  <div data-animate="150" class="space-y-4">
-    <Accordion client:visible title={t(lang, 'tutos.bios.asus.title')} defaultOpen>
+  <!-- ASUS/ROG guide -->
+  <div data-animate="150">
+    <h2 class="text-h3 font-heading font-bold text-chill-text mb-3">
+      {t(lang, 'tutos.bios.asus.title')}
+    </h2>
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-4">
       <BiosAsusContent
         warning={t(lang, 'tutos.bios.asus.warning')}
         steps={asusSteps}
       />
-    </Accordion>
+    </div>
+  </div>
+
+  <!-- Tutoriels associés -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Étapes suivantes</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/fr/tutos/wol" class="text-body-sm text-chill-accent hover:underline">Wake-on-LAN &rarr;</a>
+      <a href="/fr/tutos/config-os" class="text-body-sm text-chill-accent hover:underline">Config OS &rarr;</a>
+    </div>
   </div>
 </TutoLayout>

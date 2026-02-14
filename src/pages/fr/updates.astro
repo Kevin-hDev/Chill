@@ -1,12 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Accordion from '../../components/ui/Accordion.tsx';
+import SchemaArticle from '../../components/seo/SchemaArticle.astro';
+import AuthorDate from '../../components/ui/AuthorDate.astro';
 import { getLangFromUrl, t } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 ---
 
 <BaseLayout title={t(lang, 'updates.pageTitle')} description={t(lang, 'updates.description')}>
+  <SchemaArticle
+    headline="ChillShell v1.0.0 — Notes de version"
+    description="Première version de ChillShell, terminal SSH mobile. SSH, Wake-on-LAN, Tailscale, 12 thèmes, 5 langues."
+    url="https://chill.app/fr/updates"
+    datePublished="2026-02-09"
+    dateModified="2026-02-14"
+  />
+
   <section class="py-[var(--spacing-section)]">
     <!-- Title -->
     <h1 data-animate="0" class="text-hero-h1 font-heading font-bold text-chill-text mb-12">
@@ -79,6 +88,7 @@ const lang = getLangFromUrl(Astro.url);
 
       <a
         href="https://play.google.com/store/apps/details?id=com.chill.shell"
+        rel="noopener noreferrer"
         class="inline-flex items-center gap-2 rounded-chill bg-chill-accent px-6 py-3 text-body-sm font-heading font-bold text-white transition-colors hover:bg-chill-accent-hover"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -96,11 +106,16 @@ const lang = getLangFromUrl(Astro.url);
     </h2>
 
     <div data-animate="100" class="space-y-4">
-      <Accordion client:visible title="Pas encore de versions precedentes">
-        <p class="text-body-sm text-chill-text-muted leading-relaxed">
-          Ceci est la premiere version de ChillShell. Les versions precedentes apparaitront ici au fur et a mesure des mises a jour.
-        </p>
-      </Accordion>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+        <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Pas encore de versions precedentes</h3>
+        <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+          <p class="text-body-sm text-chill-text-muted leading-relaxed">
+            Ceci est la premiere version de ChillShell. Les versions precedentes apparaitront ici au fur et a mesure des mises a jour.
+          </p>
+        </div>
+      </div>
     </div>
+
+    <AuthorDate datePublished="2026-02-09" dateModified="2026-02-14" />
   </section>
 </BaseLayout>

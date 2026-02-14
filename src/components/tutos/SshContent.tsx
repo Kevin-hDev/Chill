@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import TabsOS from '../ui/TabsOS';
-import Accordion from '../ui/Accordion';
 import CodeBlock from '../ui/CodeBlock';
 
 interface StepData {
@@ -20,20 +19,25 @@ function StepList({ steps }: { steps: StepData[] }) {
   return (
     <div className="space-y-4">
       {steps.map((step, i) => (
-        <Accordion key={i} title={`${i + 1}. ${step.title}`} defaultOpen={i === 0}>
-          <div className="space-y-3">
-            {step.content && <p>{step.content}</p>}
-            {step.code && (
-              <CodeBlock code={step.code} language="bash" />
-            )}
-            {step.extra && step.extra.map((item, j) => (
-              <div key={j} className="space-y-2">
-                <p className="text-chill-text text-body-sm font-medium">{item.label}</p>
-                <CodeBlock code={item.code} language="bash" />
-              </div>
-            ))}
+        <div key={i} className="border border-chill-border rounded-chill bg-chill-elevated overflow-hidden">
+          <h3 className="font-heading text-body-sm text-chill-text px-4 py-3">
+            {i + 1}. {step.title}
+          </h3>
+          <div className="px-4 pb-4 border-t border-chill-border bg-chill-surface pt-3 text-body-sm text-chill-text-secondary">
+            <div className="space-y-3">
+              {step.content && <p>{step.content}</p>}
+              {step.code && (
+                <CodeBlock code={step.code} language="bash" />
+              )}
+              {step.extra && step.extra.map((item, j) => (
+                <div key={j} className="space-y-2">
+                  <p className="text-chill-text text-body-sm font-medium">{item.label}</p>
+                  <CodeBlock code={item.code} language="bash" />
+                </div>
+              ))}
+            </div>
           </div>
-        </Accordion>
+        </div>
       ))}
     </div>
   );

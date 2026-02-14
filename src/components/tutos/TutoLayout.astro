@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SchemaHowTo from '../seo/SchemaHowTo.astro';
 import SchemaBreadcrumb from '../seo/SchemaBreadcrumb.astro';
+import AuthorDate from '../ui/AuthorDate.astro';
 import { getLangFromUrl, getLocalePath } from '../../i18n/utils';
 
 interface HowToStep {
@@ -12,18 +13,21 @@ interface HowToStep {
 interface Props {
   title: string;
   intro: string;
+  description?: string;
   showOsTabs?: boolean;
   showChillCta?: boolean;
   howToSteps?: HowToStep[];
   breadcrumbs?: { name: string; url: string }[];
+  datePublished?: string;
+  dateModified?: string;
 }
 
-const { title, intro, showOsTabs = true, showChillCta = false, howToSteps, breadcrumbs } = Astro.props;
+const { title, intro, description, showOsTabs = true, showChillCta = false, howToSteps, breadcrumbs, datePublished = '2026-02-09', dateModified = '2026-02-14' } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const chillPath = getLocalePath(lang, '/chill');
 ---
 
-<BaseLayout title={`${title} — Chill`}>
+<BaseLayout title={`${title} — Chill`} description={description}>
   {howToSteps && howToSteps.length > 0 && (
     <SchemaHowTo name={title} description={intro} steps={howToSteps} />
   )}
@@ -49,5 +53,7 @@ const chillPath = getLocalePath(lang, '/chill');
     </p>
 
     <slot />
+
+    <AuthorDate datePublished={datePublished} dateModified={dateModified} />
   </section>
 </BaseLayout>

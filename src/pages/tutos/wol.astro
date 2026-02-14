@@ -9,6 +9,7 @@ const lang = getLangFromUrl(Astro.url);
 <TutoLayout
   title={t(lang, 'tutos.wol.title')}
   intro={t(lang, 'tutos.wol.intro')}
+  description="Set up Wake-on-LAN to power on your PC remotely from Chill. Configure Windows and Linux, find your MAC address, and troubleshoot."
   showChillCta
   showOsTabs={false}
   howToSteps={[
@@ -18,7 +19,7 @@ const lang = getLangFromUrl(Astro.url);
   ]}
   breadcrumbs={[
     { name: 'Home', url: 'https://chill.app/' },
-    { name: 'Tutos', url: 'https://chill.app/tutos/config-os' },
+    { name: 'Tutorials', url: 'https://chill.app/tutos' },
     { name: t(lang, 'tutos.wol.title'), url: 'https://chill.app/tutos/wol' },
   ]}
 >
@@ -57,4 +58,60 @@ const lang = getLangFromUrl(Astro.url);
     methodGraphicalLabel={t(lang, 'tutos.wol.methodGraphical')}
     methodTerminalLabel={t(lang, 'tutos.wol.methodTerminal')}
   />
+
+  <!-- WOL info -->
+  <div data-animate="50" class="mt-10 space-y-6">
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">How Wake-on-LAN works</h2>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed mb-3">
+        Wake-on-LAN (WoL) is a networking standard that allows you to power on a computer remotely by sending a special network packet called a "magic packet." The magic packet contains the target machine's MAC address repeated 16 times, which the network adapter recognizes even when the PC is powered off.
+      </p>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+        For WoL to work, three conditions must be met: the BIOS must support and enable WoL, the operating system must configure the network adapter to listen for magic packets, and the PC must be connected via Ethernet cable (WiFi adapters power off completely when the PC shuts down).
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">&lt; 10 sec</p>
+        <p class="text-micro text-chill-text-muted">Boot time after magic packet</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">102 bytes</p>
+        <p class="text-micro text-chill-text-muted">Magic packet size</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">Ethernet</p>
+        <p class="text-micro text-chill-text-muted">Required connection</p>
+      </div>
+    </div>
+
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Good to know</h2>
+      <ul class="space-y-2 text-body-sm text-chill-text-secondary">
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+          Wake-on-LAN works on your local network. To wake your PC from anywhere in the world, combine WoL with Tailscale VPN.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+          Fast Startup on Windows can prevent WoL from working because it puts the PC in a hybrid shutdown state. Always disable it.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+          Your MAC address never changes — you only need to configure it once in ChillShell.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Related tutorials -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Related</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/tutos/bios" class="text-body-sm text-chill-accent hover:underline">BIOS Setup &rarr;</a>
+      <a href="/tutos/ssh" class="text-body-sm text-chill-accent hover:underline">SSH Connection &rarr;</a>
+      <a href="/tutos/tailscale" class="text-body-sm text-chill-accent hover:underline">Tailscale VPN &rarr;</a>
+    </div>
+  </div>
 </TutoLayout>

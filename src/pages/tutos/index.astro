@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '../../components/seo/SchemaBreadcrumb.astro';
+import { getLangFromUrl, t, getLocalePath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const tutorials = [
+  {
+    title: t(lang, 'tutos.configOs.title'),
+    description: 'Enable SSH on Windows, Linux, and macOS so your phone can connect to your PC.',
+    href: '/tutos/config-os',
+    icon: '⚙️',
+  },
+  {
+    title: t(lang, 'tutos.ssh.title'),
+    description: 'Find your IP address, test SSH, and set up Ed25519 key authentication.',
+    href: '/tutos/ssh',
+    icon: '🔑',
+  },
+  {
+    title: t(lang, 'tutos.tailscale.title'),
+    description: 'Set up Tailscale VPN for remote access from anywhere — no port forwarding needed.',
+    href: '/tutos/tailscale',
+    icon: '🌐',
+  },
+  {
+    title: t(lang, 'tutos.bios.title'),
+    description: 'Configure BIOS settings for Wake-on-LAN on ASUS/ROG and other motherboards.',
+    href: '/tutos/bios',
+    icon: '🖥️',
+  },
+  {
+    title: t(lang, 'tutos.wol.title'),
+    description: 'Power on your PC remotely by sending a magic packet over the network.',
+    href: '/tutos/wol',
+    icon: '⚡',
+  },
+  {
+    title: t(lang, 'tutos.agents.title'),
+    description: 'Run AI coding agents like Claude Code, Gemini CLI, and Codex from your phone.',
+    href: '/tutos/agents-cli',
+    icon: '🤖',
+  },
+];
+---
+
+<BaseLayout title="Tutorials — Chill & ChillShell Setup Guides" description="Step-by-step guides to set up SSH, Tailscale VPN, Wake-on-LAN, BIOS configuration, and AI coding agents with ChillShell.">
+  <SchemaBreadcrumb items={[
+    { name: 'Home', url: 'https://chill.app/' },
+    { name: 'Tutorials', url: 'https://chill.app/tutos' },
+  ]} />
+
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:py-24">
+    <div data-animate="0" class="mb-10 text-center">
+      <h1 class="text-h1 font-heading font-bold text-chill-text mb-4">Tutorials</h1>
+      <p class="text-body text-chill-text-secondary max-w-xl mx-auto">
+        Everything you need to connect your phone to your PC with ChillShell. Follow the guides in order or jump to what you need.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {tutorials.map((tuto, i) => (
+        <a
+          href={tuto.href}
+          data-animate={String(i * 50)}
+          class="block rounded-chill border border-chill-border bg-chill-elevated p-5 hover:border-chill-accent/50 transition-colors group"
+        >
+          <div class="flex items-start gap-4">
+            <span class="text-2xl shrink-0 mt-0.5">{tuto.icon}</span>
+            <div>
+              <h2 class="text-body font-heading font-semibold text-chill-text group-hover:text-chill-accent transition-colors">
+                {tuto.title}
+              </h2>
+              <p class="text-body-sm text-chill-text-secondary mt-1">{tuto.description}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

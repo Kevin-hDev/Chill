@@ -50,12 +50,14 @@ const lang = getLangFromUrl(Astro.url);
           {t(lang, 'contact.stores.content')}
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="https://play.google.com/store" class="inline-flex items-center gap-2 rounded-chill bg-chill-bg border border-chill-border px-4 py-2 text-body-sm text-chill-text hover:border-chill-accent transition-colors">
+          <a href="https://play.google.com/store" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-chill bg-chill-bg border border-chill-border px-4 py-2 text-body-sm text-chill-text hover:border-chill-accent transition-colors">
             Google Play
           </a>
-          <a href="https://apps.apple.com" class="inline-flex items-center gap-2 rounded-chill bg-chill-bg border border-chill-border px-4 py-2 text-body-sm text-chill-text hover:border-chill-accent transition-colors">
+          <!-- App Store — masqué temporairement, réactiver quand iOS sera testé
+          <a href="https://apps.apple.com" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-chill bg-chill-bg border border-chill-border px-4 py-2 text-body-sm text-chill-text hover:border-chill-accent transition-colors">
             App Store
           </a>
+          -->
         </div>
       </div>
 

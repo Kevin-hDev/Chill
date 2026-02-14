@@ -9,6 +9,7 @@ const lang = getLangFromUrl(Astro.url);
 <TutoLayout
   title={t(lang, 'tutos.wol.title')}
   intro={t(lang, 'tutos.wol.intro')}
+  description="Allumer votre PC à distance depuis votre téléphone avec le Wake-on-LAN. Guide complet Windows et Linux : adresse MAC, configuration réseau et dépannage."
   showChillCta
   showOsTabs={false}
   howToSteps={[
@@ -18,7 +19,7 @@ const lang = getLangFromUrl(Astro.url);
   ]}
   breadcrumbs={[
     { name: 'Accueil', url: 'https://chill.app/fr/' },
-    { name: 'Tutos', url: 'https://chill.app/fr/tutos/config-os' },
+    { name: 'Tutoriels', url: 'https://chill.app/fr/tutos' },
     { name: t(lang, 'tutos.wol.title'), url: 'https://chill.app/fr/tutos/wol' },
   ]}
 >
@@ -57,4 +58,60 @@ const lang = getLangFromUrl(Astro.url);
     methodGraphicalLabel={t(lang, 'tutos.wol.methodGraphical')}
     methodTerminalLabel={t(lang, 'tutos.wol.methodTerminal')}
   />
+
+  <!-- Infos WOL -->
+  <div data-animate="50" class="mt-10 space-y-6">
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Comment fonctionne le Wake-on-LAN</h2>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed mb-3">
+        Le Wake-on-LAN (WoL) est un standard réseau qui permet d'allumer un ordinateur à distance en envoyant un paquet réseau spécial appelé « paquet magique ». Ce paquet contient l'adresse MAC de la machine cible répétée 16 fois, que la carte réseau reconnaît même quand le PC est éteint.
+      </p>
+      <p class="text-body-sm text-chill-text-secondary leading-relaxed">
+        Pour que le WoL fonctionne, trois conditions doivent être réunies : le BIOS doit supporter et activer le WoL, le système d'exploitation doit configurer la carte réseau pour écouter les paquets magiques, et le PC doit être connecté en Ethernet (les cartes WiFi s'éteignent complètement quand le PC est éteint).
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">&lt; 10 sec</p>
+        <p class="text-micro text-chill-text-muted">Temps de démarrage</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">102 octets</p>
+        <p class="text-micro text-chill-text-muted">Taille du paquet magique</p>
+      </div>
+      <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
+        <p class="text-h3 font-heading font-bold text-chill-accent">Ethernet</p>
+        <p class="text-micro text-chill-text-muted">Connexion requise</p>
+      </div>
+    </div>
+
+    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
+      <h2 class="text-h3 font-heading font-semibold text-chill-text mb-3">Bon à savoir</h2>
+      <ul class="space-y-2 text-body-sm text-chill-text-secondary">
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+          Le Wake-on-LAN fonctionne sur ton réseau local. Pour allumer ton PC de n'importe où dans le monde, combine le WoL avec le VPN Tailscale.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+          Le démarrage rapide de Windows peut empêcher le WoL de fonctionner car il met le PC dans un état d'arrêt hybride. Désactive-le toujours.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-chill-accent"></span>
+          Ton adresse MAC ne change jamais — tu n'as besoin de la configurer qu'une seule fois dans ChillShell.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tutoriels associés -->
+  <div data-animate="100" class="mt-10 rounded-chill border border-chill-border bg-chill-elevated p-5">
+    <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">Voir aussi</h3>
+    <div class="flex flex-wrap gap-3">
+      <a href="/fr/tutos/bios" class="text-body-sm text-chill-accent hover:underline">Configuration BIOS &rarr;</a>
+      <a href="/fr/tutos/ssh" class="text-body-sm text-chill-accent hover:underline">Connexion SSH &rarr;</a>
+      <a href="/fr/tutos/tailscale" class="text-body-sm text-chill-accent hover:underline">VPN Tailscale &rarr;</a>
+    </div>
+  </div>
 </TutoLayout>

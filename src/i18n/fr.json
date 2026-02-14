@@ -45,7 +45,7 @@
   "footer.contact": "Contact",
 
   "home.title": "ChillShell — Terminal SSH Mobile pour iOS & Android",
-  "home.description": "ChillShell est un terminal SSH mobile professionnel pour iOS et Android. Lancez des agents CLI, gérez vos serveurs à distance et codez de partout. Essai gratuit disponible.",
+  "home.description": "ChillShell — terminal SSH mobile gratuit pour iOS et Android. Codez depuis votre téléphone, gérez vos serveurs à distance et lancez des agents IA comme Claude Code.",
 
   "faq.pageTitle": "FAQ — Chill & ChillShell | Questions fréquentes",
   "faq.description": "Trouvez les réponses aux questions fréquentes sur Chill et ChillShell. Fonctionnalités, compatibilité, sécurité, VPN Tailscale, Wake-on-LAN et agents CLI.",
@@ -61,15 +61,15 @@
   "tutos.configOs.pageTitle": "Guide Config OS — Activer SSH sur Windows, Linux & macOS",
   "tutos.configOs.description": "Guide étape par étape pour activer SSH sur votre PC avec ChillShell. Couvre Windows OpenSSH, serveur SSH Linux et accès distant macOS en moins de 5 minutes.",
   "tutos.ssh.pageTitle": "Guide Connexion SSH — Se Connecter avec ChillShell",
-  "tutos.ssh.description": "Apprenez à vous connecter à votre PC via SSH depuis ChillShell. Trouvez votre IP, testez la connexion et configurez l'authentification par clé Ed25519.",
+  "tutos.ssh.description": "Se connecter en SSH à votre PC depuis votre téléphone avec un terminal SSH mobile gratuit. Trouvez votre IP, testez la connexion et configurez les clés Ed25519.",
   "tutos.tailscale.pageTitle": "Config VPN Tailscale — Accès SSH Distant avec ChillShell",
   "tutos.tailscale.description": "Configurez le VPN Tailscale pour accéder à votre PC à distance via SSH. Pas de redirection de ports. Fonctionne en WiFi, 5G et à l'étranger avec ChillShell.",
   "tutos.bios.pageTitle": "Configuration BIOS Wake-on-LAN — Guide ChillShell",
   "tutos.bios.description": "Configurez les paramètres BIOS pour activer le Wake-on-LAN et allumer votre PC à distance avec ChillShell. Couvre ASUS, ROG et configurations génériques.",
   "tutos.wol.pageTitle": "Config Wake-on-LAN — Allumer son PC avec ChillShell",
-  "tutos.wol.description": "Activez le Wake-on-LAN pour allumer votre PC à distance depuis ChillShell. Configuration BIOS, Windows et Linux étape par étape avec checklist de dépannage.",
+  "tutos.wol.description": "Allumer votre PC à distance depuis votre téléphone avec le Wake-on-LAN. Guide complet Windows et Linux : adresse MAC, configuration réseau et dépannage.",
   "tutos.agents.pageTitle": "Guide Agents CLI — Lancer des Outils IA via ChillShell",
-  "tutos.agents.description": "Lancez Claude Code, Cursor, Gemini et Codex depuis votre téléphone via SSH. Tableau de compatibilité complet et instructions pour tous les agents CLI majeurs.",
+  "tutos.agents.description": "Coder depuis votre téléphone avec des agents IA via SSH. Claude Code, Gemini CLI, Codex — vibe coding mobile gratuit avec ChillShell. Guide et compatibilité.",
 
   "legal.mentions.pageTitle": "Mentions Légales — Chill",
   "legal.mentions.description": "Mentions légales du site Chill. Informations sur l'éditeur, l'hébergement et le contact.",
@@ -327,6 +327,12 @@
   "chill.tailscale.description": "Connecte ton PC à Tailscale directement depuis Chill — pas besoin d'installer Tailscale séparément. Connecte-toi ou crée un compte, et accède à ton ordinateur depuis n'importe où dans le monde.",
   "chill.cta.title": "Prêt à configurer ton PC ?",
   "chill.cta.manual": "Tu préfères configurer manuellement ? Suis nos tutos pas à pas",
+
+  "author.name": "HUYNH Kevin",
+  "author.role": "Créateur de Chill",
+  "author.bio": "Créateur indépendant basé en France, qui construit des outils d'accès distant sécurisé.",
+  "meta.published": "Publié le",
+  "meta.updated": "Mis à jour le",
 
   "legal.mentions.title": "Mentions légales",
   "legal.mentions.editor": "Éditeur",

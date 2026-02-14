@@ -62,9 +62,9 @@ Security events logged locally with FIFO rotation at 500 entries. Tracked events
 - Root detection is bypassable on rooted devices
 
 ## Pricing
-- 7-day free trial with all features unlocked
-- One-time purchase: $2.99 USD / 2.99 EUR
-- Lifetime access — no subscription, no hidden fees
+- Completely free — all features unlocked from day one
+- No trial period, no purchase required
+- No subscription, no hidden fees
 - Available on Google Play Store and Apple App Store
 
 ## Tutorials
@@ -129,8 +129,8 @@ Absolutely. Wake-on-LAN is optional. You can use ChillShell purely for SSH conne
 ### Is my data sent anywhere?
 No. All data stays on your phone. ChillShell does not collect any user data. See the Security page for full details.
 
-### Is the payment one-time or recurring?
-One-time purchase. $2.99 for lifetime access. No subscription, no hidden fees.
+### Is ChillShell really free?
+Yes. ChillShell is completely free with all features unlocked. No subscription, no hidden fees.
 
 ### Can I get a refund?
 Refunds follow Google Play and App Store policies. Contact within the refund window of your platform.
