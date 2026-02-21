@@ -131,12 +131,12 @@ function BuildCard() {
           <div key={line.id}>
             <p className="text-micro font-mono text-chill-text-muted mb-2">{line.comment}</p>
             <div className="flex items-start justify-between gap-3">
-              <pre className="font-mono text-sm text-white whitespace-pre-wrap break-all m-0 flex-1 leading-relaxed">
+              <pre className="font-mono text-sm text-chill-text whitespace-pre-wrap break-all m-0 flex-1 leading-relaxed">
                 <span className="text-chill-text-muted select-none">$ </span>{line.command}
               </pre>
               <button
                 onClick={() => handleCopy(line.command, line.id)}
-                className="shrink-0 p-1.5 text-chill-text-muted hover:text-white transition-colors cursor-pointer"
+                className="shrink-0 p-1.5 text-chill-text-muted hover:text-chill-text transition-colors cursor-pointer"
                 aria-label="Copy"
               >
                 {copiedLine === line.id ? (
