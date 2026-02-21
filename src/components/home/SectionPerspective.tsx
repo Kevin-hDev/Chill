@@ -46,7 +46,7 @@ export default function SectionPerspective({
   const perspectiveClass = side === 'left' ? 'perspective-right' : 'perspective-left';
 
   const ImageColumn = (
-    <div className="perspective-wrapper overflow-visible flex justify-center">
+    <div className="perspective-wrapper overflow-hidden md:overflow-visible flex justify-center">
       <div
         className={`rounded-chill-xl overflow-hidden border border-chill-border shadow-2xl max-h-[600px] w-auto ${perspectiveClass}`}
         style={{ aspectRatio: '1344/2992' }}
@@ -89,10 +89,10 @@ export default function SectionPerspective({
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={containerVariants}
-      className="py-12 md:py-20 overflow-visible"
+      className="py-12 md:py-20 overflow-hidden md:overflow-visible"
     >
       <div
-        className={`grid grid-cols-1 gap-8 md:gap-0 items-center overflow-visible ${
+        className={`grid grid-cols-1 gap-8 md:gap-0 items-center overflow-hidden md:overflow-visible ${
           side === 'left'
             ? 'md:grid-cols-[50%_50%]'
             : 'md:grid-cols-[50%_50%]'

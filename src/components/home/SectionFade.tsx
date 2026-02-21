@@ -29,25 +29,24 @@ export default function SectionFade({
   const isSingleImage = images.length === 1;
 
   return (
-    <section className="py-20 overflow-visible">
+    <section className="py-20 overflow-hidden md:overflow-visible">
       <div
-        className={`grid grid-cols-1 md:grid-cols-[50%_50%] gap-8 md:gap-0 items-center overflow-visible ${
+        className={`grid grid-cols-1 md:grid-cols-[50%_50%] gap-8 md:gap-0 items-center overflow-hidden md:overflow-visible ${
           !isImageLeft ? 'direction-rtl' : ''
         }`}
       >
         {/* Image with perspective */}
         <motion.div
-          className={`overflow-visible perspective-wrapper flex justify-center md:my-24 ${!isImageLeft ? 'md:order-2' : ''}`}
+          className={`overflow-hidden md:overflow-visible perspective-wrapper flex justify-center md:my-24 ${!isImageLeft ? 'md:order-2' : ''}`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div
-            className={`rounded-chill-xl overflow-hidden border border-chill-border shadow-2xl w-auto ${perspectiveClass}`}
+            className={`rounded-chill-xl overflow-hidden border border-chill-border shadow-2xl w-auto md:scale-[1.8] ${perspectiveClass}`}
             style={{
               aspectRatio,
-              scale: '1.8',
               ...(fadeBottomLeft && {
                 maskImage: 'linear-gradient(to bottom left, black 45%, rgba(0,0,0,0.5) 70%, transparent 95%)',
                 WebkitMaskImage: 'linear-gradient(to bottom left, black 40%, rgba(0,0,0,0.5) 70%, transparent 95%)'
