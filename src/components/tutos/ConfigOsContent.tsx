@@ -72,7 +72,7 @@ function StepList({ steps }: { steps: StepData[] }) {
                     <line x1="12" y1="9" x2="12" y2="13" />
                     <line x1="12" y1="17" x2="12.01" y2="17" />
                   </svg>
-                  <p className="text-body-sm text-amber-900 dark:text-amber-200/90 leading-relaxed">{step.warning}</p>
+                  <p className="text-body-sm text-black dark:text-amber-200/90 leading-relaxed">{step.warning}</p>
                 </div>
               )}
 
