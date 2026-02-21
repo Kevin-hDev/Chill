@@ -5,6 +5,9 @@
 @import "@fontsource/space-mono";
 @import "@fontsource/space-mono/700.css";
 
+/* Use class-based dark mode (.dark on <html>) instead of OS prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ─── Design Tokens as CSS Custom Properties ─── */
 
 /* Light mode (default) */
