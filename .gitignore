@@ -19,6 +19,7 @@ pnpm-debug.log*
 
 # internal docs (private)
 docs/
+CLAUDE.md
 
 # macOS-specific files
 .DS_Store
