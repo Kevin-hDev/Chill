@@ -21,7 +21,7 @@ interface AgentCompat {
 
 const agents: AgentCompat[] = [
   { name: 'Claude Code', win: 'ok', linux: 'ok', ios: 'testing' },
-  { name: 'Codex CLI', win: 'ok', linux: 'bug', ios: 'testing' },
+  { name: 'Codex CLI', win: 'ok', linux: 'ok', ios: 'testing' },
   { name: 'Cursor CLI', win: 'ok', linux: 'ok', ios: 'testing' },
   { name: 'Kimi Code', win: 'ok', linux: 'ok', ios: 'testing' },
   { name: 'Gemini CLI', win: 'ok', linux: 'ok', ios: 'testing' },
@@ -29,7 +29,7 @@ const agents: AgentCompat[] = [
   { name: 'Mistral Vibe', win: 'ok', linux: 'ok', ios: 'testing' },
   { name: 'Crush', win: 'testing', linux: 'testing', ios: 'testing' },
   { name: 'Grok CLI', win: 'ok', linux: 'ok', ios: 'testing' },
-  { name: 'OpenCode', win: 'bug', linux: 'bug', ios: 'testing' },
+  { name: 'OpenCode', win: 'bug', linux: 'bug', ios: 'bug' },
 ];
 
 function StatusDot({ status, label }: { status: Status; label: string }) {

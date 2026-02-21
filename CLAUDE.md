@@ -2,10 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Communication
+## User Preferences
 
 - **Toujours répondre en français.** L'utilisateur ne parle pas anglais.
 - **Expliquer simplement, sans jargon technique.** L'utilisateur n'est pas développeur. Éviter les termes comme "hydration", "island", "build", "runtime", etc. sans les expliquer en mots simples. Privilégier des phrases courtes et concrètes (ex: "ce fichier gère les couleurs du site" plutôt que "ce module exporte les design tokens").
+- `superpowers:brainstorming` - Avant tout travail créatif (nouvelles features, composants)
+- `superpowers:test-driven-development` - Pour implémenter features/bugfixes
+- `superpowers:systematic-debugging` - Face à un bug ou comportement inattendu, quand tu n'arrives pas à résoudre un problème/BUG au bout de deux essaies tu utilises systematiquement systematic-debugging
+- `interface-design` - Pour le design d'interfaces (dashboards, apps)
+- `Front-end design` - pour éviter les designs classiques qui font trop IA
+- `Claudeception` - Pour que tu prennes des notes des que tu apprends quelques chose de pertinents 
 
 ## Project Overview
 
@@ -75,3 +81,10 @@ All Tailwind color utilities use the `chill-*` prefix (e.g., `text-chill-text`, 
 - `public/images/badges/` — Store badges
 - `public/images/screenshots/` — App screenshots
 - `public/images/tutos/` — Tutorial step images
+
+## RAPPEL
+1. Répond moi ou commence toujours par me parlé en Français, je ne parle pas anglais.
+2. Pense à utiliser le PLUGIN et les skills adapter skills en fonction de la taches.
+3.  On corrige les problèmes, on ne se contentent jamais de les camouflé comme si nous cachions de la poussière sous un tapis
+4. Tu codes toujours en pensent à la cybersécurité et aux différentes failles possibles.
+5. On construit le site en travaillent toujours le SEO, des skills et MCP sont disponible pour ça

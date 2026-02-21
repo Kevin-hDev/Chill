@@ -47,7 +47,7 @@ const lang = getLangFromUrl(Astro.url);
           Toutes les données sont stockées localement sur votre appareil via des mécanismes sécurisés :
         </p>
         <ul class="list-disc list-inside space-y-2 pl-2 mt-3">
-          <li>Les clés SSH sont chiffrées en AES-CBC (Android) ou stockées dans le Keychain (iOS)</li>
+          <li>Les clés SSH sont chiffrées en AES-GCM (Android) ou stockées dans le Keychain (iOS)</li>
           <li>La clé de chiffrement principale est stockée dans le keystore matériel de l'appareil</li>
           <li>Les codes PIN sont hashés avec PBKDF2-HMAC-SHA256 (100 000 itérations) et jamais stockés en clair</li>
           <li>Les identifiants de session restent sur votre appareil et ne sont jamais transmis</li>

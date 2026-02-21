@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useTheme } from '../../hooks/useTheme';
 
@@ -6,8 +7,7 @@ interface ChillContentProps {
   tagline: string;
   subtitle: string;
   badge: string;
-  downloadWindows: string;
-  downloadLinux: string;
+  warning: string;
   sshTitle: string;
   sshDescription: string;
   wolTitle: string;
@@ -24,8 +24,7 @@ export default function ChillContent({
   tagline,
   subtitle,
   badge,
-  downloadWindows,
-  downloadLinux,
+  warning,
   sshTitle,
   sshDescription,
   wolTitle,
@@ -62,20 +61,21 @@ export default function ChillContent({
             {badge}
           </span>
 
-          {/* Download buttons (disabled placeholders) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
-            <button
-              disabled
-              className="px-6 py-3 rounded-chill border border-chill-border bg-chill-elevated text-body-sm text-chill-text-secondary cursor-not-allowed opacity-50"
+          {/* CTA — GitHub open source */}
+          <div className="flex flex-col items-center justify-center gap-3 mb-6">
+            <a
+              href="https://github.com/Kevin-hDev/ChillApp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-80 transition-opacity"
             >
-              {downloadWindows}
-            </button>
-            <button
-              disabled
-              className="px-6 py-3 rounded-chill border border-chill-border bg-chill-elevated text-body-sm text-chill-text-secondary cursor-not-allowed opacity-50"
-            >
-              {downloadLinux}
-            </button>
+              <img src="/images/icons_github.png" alt="GitHub" width={87} height={87} className="h-[87px] w-auto" />
+            </a>
+          </div>
+
+          {/* Install & Clone terminal card */}
+          <div className="w-full max-w-4xl mx-auto mb-12 text-left">
+            <InstallCard />
           </div>
         </motion.div>
 
@@ -143,20 +143,20 @@ export default function ChillContent({
             {ctaTitle}
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-            <button
-              disabled
-              className="px-6 py-3 rounded-chill border border-chill-border bg-chill-elevated text-body-sm text-chill-text-secondary cursor-not-allowed opacity-50"
+          <div className="flex flex-col items-center justify-center gap-3 mb-4">
+            <a
+              href="https://github.com/Kevin-hDev/ChillApp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-80 transition-opacity"
             >
-              {downloadWindows}
-            </button>
-            <button
-              disabled
-              className="px-6 py-3 rounded-chill border border-chill-border bg-chill-elevated text-body-sm text-chill-text-secondary cursor-not-allowed opacity-50"
-            >
-              {downloadLinux}
-            </button>
+              <img src="/images/icons_github.png" alt="GitHub" width={87} height={87} className="h-[87px] w-auto" />
+            </a>
           </div>
+
+          <p className="text-body-sm text-chill-text-muted max-w-xl mx-auto leading-relaxed mb-6">
+            {warning}
+          </p>
 
           <a
             href={tutosHref}
@@ -166,6 +166,135 @@ export default function ChillContent({
           </a>
         </motion.div>
       </section>
+    </div>
+  );
+}
+
+/* Terminal-style card with method + OS selectors */
+function InstallCard() {
+  const [method, setMethod] = useState<'install' | 'build'>('install');
+  const [os, setOs] = useState<'unix' | 'windows'>('unix');
+  const [copiedLine, setCopiedLine] = useState<string | null>(null);
+
+  const shell = os === 'unix' ? 'bash' : 'powershell';
+
+  const lines: { comment: string; command: string; id: string }[] =
+    method === 'install'
+      ? [
+          {
+            comment: '# Install',
+            command:
+              os === 'unix'
+                ? 'curl -fsSL https://raw.githubusercontent.com/Kevin-hDev/ChillApp/main/scripts/install.sh | bash'
+                : 'irm https://raw.githubusercontent.com/Kevin-hDev/ChillApp/main/scripts/install.ps1 | iex',
+            id: 'install',
+          },
+          {
+            comment: '# Clone',
+            command: 'git clone https://github.com/Kevin-hDev/ChillApp.git',
+            id: 'clone',
+          },
+        ]
+      : [
+          {
+            comment: '# Run',
+            command:
+              os === 'unix' ? 'flutter run -d linux' : 'flutter run -d windows',
+            id: 'run',
+          },
+          {
+            comment: '# Build',
+            command:
+              os === 'unix' ? 'flutter build linux' : 'flutter build windows',
+            id: 'build',
+          },
+        ];
+
+  const handleCopy = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedLine(id);
+      setTimeout(() => setCopiedLine(null), 2000);
+    } catch { /* Clipboard API not available */ }
+  };
+
+  const tabClass = (active: boolean) =>
+    `px-3 py-1 text-micro font-mono rounded transition-colors cursor-pointer ${
+      active
+        ? 'bg-chill-surface text-white'
+        : 'text-chill-text-muted hover:text-chill-text-secondary'
+    }`;
+
+  return (
+    <div className="bg-chill-elevated border border-chill-border rounded-lg overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between px-5 py-3 border-b border-chill-border">
+        <div className="flex items-center gap-3">
+          {/* macOS dots */}
+          <div className="flex items-center gap-2">
+            <span className="block w-3 h-3 rounded-full" style={{ backgroundColor: '#eb5757' }} />
+            <span className="block w-3 h-3 rounded-full" style={{ backgroundColor: '#f5c542' }} />
+            <span className="block w-3 h-3 rounded-full" style={{ backgroundColor: '#4cb782' }} />
+          </div>
+          <span className="text-micro font-mono text-chill-text-muted">{shell}</span>
+        </div>
+
+        {/* Selectors */}
+        <div className="flex items-center gap-4">
+          {/* Method selector */}
+          <div className="flex items-center gap-1">
+            <button onClick={() => setMethod('install')} className={tabClass(method === 'install')}>
+              Install
+            </button>
+            <button onClick={() => setMethod('build')} className={tabClass(method === 'build')}>
+              Build
+            </button>
+          </div>
+
+          {/* Separator */}
+          <span className="w-px h-5 bg-chill-border" />
+
+          {/* OS selector */}
+          <div className="flex items-center gap-1">
+            <button onClick={() => setOs('unix')} className={tabClass(os === 'unix')}>
+              Linux / macOS
+            </button>
+            <button onClick={() => setOs('windows')} className={tabClass(os === 'windows')}>
+              Windows
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Commands area */}
+      <div className="px-5 py-5 space-y-4">
+        {lines.map((line) => (
+          <div key={line.id}>
+            <p className="text-micro font-mono text-chill-text-muted mb-2">{line.comment}</p>
+            <div className="flex items-start justify-between gap-3">
+              <pre className="font-mono text-sm text-white whitespace-pre-wrap break-all m-0 flex-1 leading-relaxed">
+                <span className="text-chill-text-muted select-none">$ </span>{line.command}
+              </pre>
+              <button
+                onClick={() => handleCopy(line.command, line.id)}
+                className="shrink-0 p-1.5 text-chill-text-muted hover:text-white transition-colors cursor-pointer"
+                aria-label="Copy"
+              >
+                {copiedLine === line.id ? (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                ) : (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

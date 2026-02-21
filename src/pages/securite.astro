@@ -10,10 +10,10 @@ const lang = getLangFromUrl(Astro.url);
 <BaseLayout title={t(lang, 'security.pageTitle')} description={t(lang, 'security.description')}>
   <SchemaWebPage
     name="Security — How Chill Protects Your Data"
-    description="Detailed security measures in ChillShell and Chill. AES-CBC encryption, PBKDF2, zero data collection."
+    description="Detailed security measures in ChillShell and Chill. AES-GCM encryption, PBKDF2, zero data collection."
     url="https://chill.app/securite"
-    datePublished="2026-02-09"
-    dateModified="2026-02-14"
+    datePublished="2026-02-21"
+    dateModified="2026-02-21"
   />
 
   <section class="py-[var(--spacing-section)]">
@@ -50,7 +50,7 @@ const lang = getLangFromUrl(Astro.url);
           <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
-          <p class="text-micro text-chill-text-secondary leading-relaxed">SSH keys encrypted via AES-CBC (Android) and Keychain (iOS). Never transmitted.</p>
+          <p class="text-micro text-chill-text-secondary leading-relaxed">SSH keys encrypted via AES-GCM (Android) and Keychain (iOS). Never transmitted.</p>
         </div>
         <div data-animate="150" class="rounded-chill border border-chill-border bg-chill-elevated p-4 flex items-start gap-3">
           <svg class="w-6 h-6 shrink-0 text-chill-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -85,7 +85,7 @@ const lang = getLangFromUrl(Astro.url);
         <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden" data-animate="300">
           <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Sensitive data storage</h3>
           <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
-            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All sensitive data is stored via Flutter Secure Storage: AES-CBC encryption on Android (hardware Android Keystore) and Keychain on iOS. The master encryption key is stored in the device's hardware keystore, making extraction impossible even with root access.
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">All sensitive data is stored via Flutter Secure Storage: AES-GCM encryption on Android (hardware Android Keystore) and Keychain on iOS. The master encryption key is stored in the device's hardware keystore, making extraction impossible even with root access.
 
 Protected data: SSH private keys, PIN hash, SSH server fingerprints, audit log, Wake-on-LAN configurations, and command history.
 
@@ -101,6 +101,8 @@ No secrets are hardcoded in the source code — a full codebase scan confirms th
             <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Standard SSH2 protocol. Preferred key algorithm: Ed25519 (256 bits).
 
 On first connection, the server's SHA-256 fingerprint is displayed. The user must manually confirm it. The fingerprint is then stored and automatically verified. If it changes: red alert with an explanation of the interception risk (MITM). Fingerprint comparison is performed in constant time (bitwise XOR) to prevent timing attacks.
+
+16 weak SSH algorithms are blocked at the software level (SHA-1, CBC, arcfour, 3DES and their variants). Only modern, recommended algorithms are accepted.
 
 Private keys are loaded into a dedicated SecureBuffer. After use, memory is zeroed out. The SSH worker re-reads the key from secure storage on each new connection — no persistence in memory between sessions. Cryptographic operations run in a separate isolate (background thread).</p>
           </div>
@@ -146,12 +148,23 @@ iOS: automatic masking screen when the app goes to background. Prevents content 
           </div>
         </div>
 
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden" data-animate="520">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Anti-tampering protection</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Integrated runtime protection detects 12 types of threats: root/jailbreak, attached debugger, code injection hooks, emulator, APK tampering, unofficial store installation, missing obfuscation, no device screen lock, developer mode enabled, and ADB connection.
+
+Two configurable modes: "Warn" (event logged in the encrypted audit journal) or "Block" (alert screen preventing app usage). Automatically disabled in debug mode to avoid false positives during development. Configurable by the user in Settings > Security.</p>
+          </div>
+        </div>
+
         <h2 class="text-h3 font-heading font-semibold text-chill-text mt-10 mb-4">Features & Integrations</h2>
 
         <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden" data-animate="540">
           <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Audit log</h3>
           <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
             <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Automatically recorded events: SSH connection (success/failure), disconnection, reconnection, authentication failure, SSH key import/deletion, PIN creation/deletion, server fingerprint change.
+
+Each entry is chained with a SHA-256 hash of the previous entry. Tampering with any single entry invalidates all subsequent entries — integrity is verifiable at any time.
 
 Stored encrypted in secure storage, compact JSON format with timestamps. FIFO rotation at 500 entries. Never leaves the device.</p>
           </div>
@@ -172,6 +185,15 @@ SSH key import: format validated, size limited to 16 KB (a normal key is under 5
             <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">WireGuard VPN connection via libtailscale (native Go library, Kotlin channel). OAuth authentication URLs are never logged in plaintext — only their length is recorded in debug mode. Peer public keys are truncated in logs. Error messages are generic.
 
 URL validation: HTTPS scheme only before opening in the browser. No Tailscale token stored on the Flutter side — all token-related code has been removed.</p>
+          </div>
+        </div>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden" data-animate="650">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Supply chain security</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">6 security-critical packages are locked to exact versions (no automatic updates via the ^ operator): SSH library, cryptographic primitives, secure storage, biometric authentication, and anti-tampering framework.
+
+APK signing is mandatory for release builds — the build fails without a production keystore. Code obfuscation is enabled on every release build: class names, methods, and variables are made unreadable, and debug symbols are separated and never included in the distributed binary.</p>
           </div>
         </div>
 
@@ -211,7 +233,8 @@ The PIN hash is stored in SharedPreferences (locally accessible). Mitigated by P
 White-box audit V1.5.1 (February 2026): score improved from 6.5 to 8.5/10, 9 fixes applied.
 STRIDE analysis (February 2026): 22 threats identified, 8 risks validated, 12 mitigations implemented at 100%.
 Quality audit (February 2026): 4 critical bugs fixed, dead code removed, 92/92 tests pass.
-Advanced security audit (February 2026): 62 findings, 0 remotely exploitable vulnerability. 27 fixed, 11 mitigated/documented.</p>
+Advanced security audit (February 2026): 62 findings, 0 remotely exploitable vulnerability. 27 fixed, 11 mitigated/documented.
+Red Team + defensive hardening (February 2026): 25 attack vectors identified and analyzed, 26 security modules created, 30 existing files hardened. 738 automated tests — 0 regressions.</p>
           </div>
         </div>
 
@@ -279,6 +302,20 @@ Default 120-second timeout on all commands. Exception handling: timeouts and pro
         </div>
 
         <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Fail-closed circuit breaker</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">If 3 consecutive errors occur on a critical service, it is automatically shut down rather than allowed to continue in a degraded state. This follows the security-by-default-denial principle: when in doubt, block rather than pass.</p>
+          </div>
+        </div>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Startup integrity checks</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">At every launch, Chill runs integrity checks to detect the presence of code injection tools or debuggers attached to the process. If a threat is detected, the app shuts down immediately (fail closed). These protections are automatically disabled in debug mode to avoid false positives during development.</p>
+          </div>
+        </div>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
           <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Privilege escalation</h3>
           <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
             <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Single mechanism adapted to each operating system:
@@ -327,11 +364,49 @@ Systemd service created on Linux for persistence. All admin commands grouped in 
         <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
           <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Tailscale integration</h3>
           <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
-            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Communication with the Go daemon (chill-tailscale) via JSON over stdin/stdout. URL validation (HTTPS only) before opening in the browser. Guard against concurrent calls during daemon restarts.
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Communication with the Go daemon (chill-tailscale) via JSON over stdin/stdout. The daemon binary's SHA-256 hash is verified at startup — if the hash doesn't match, the daemon is not launched (fail closed). Every IPC message is authenticated with HMAC-SHA256 and includes a timestamp to reject replayed messages.
 
-Clean shutdown with 3-second timeout and forced kill as fallback. Defensive JSON parsing: try-catch on every response, invalid peers filtered. Binary permissions verified at startup. Debug logs only, inactive in production.</p>
+URL validation (HTTPS only) before opening in the browser. Guard against concurrent calls during daemon restarts. Clean shutdown with 3-second timeout and forced kill as fallback. Defensive JSON parsing: try-catch on every response, invalid peers filtered. Debug logs only, inactive in production.</p>
           </div>
         </div>
+
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mt-10 mb-4">OS Security & Hardening</h2>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">OS security toggles</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Built-in interface for hardening your operating system without using a terminal. One-click toggles to enable security protections: 8 toggles on Windows (firewall, disable RDP, disable SMBv1, anti-ransomware, BitLocker...), 7 on Linux (UFW firewall, Fail2Ban, secure network settings, disable root login...), 8 on macOS (application firewall, stealth mode, FileVault, Gatekeeper...).
+
+Disabling a critical protection requires progressive confirmation: a reflection delay before the button activates, plus manual entry of a confirmation word. This prevents accidental one-click deactivation of important protections.</p>
+          </div>
+        </div>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">System security checkup</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Read-only 12-point scan analyzing your PC's security posture with a score. Checks include: firewall active, pending updates, disk encryption, antivirus signatures, quick malware scan, startup programs, suspicious scheduled tasks, active network connections, failed login attempts, user accounts, disk space, and OS-specific settings.
+
+Result: score out of 12 with personalized recommendations. Everything is 100% local — no data is sent over the network.</p>
+          </div>
+        </div>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Sandbox and minimal permissions</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">Each platform uses its native sandboxing mechanism to restrict Chill's access to only what is strictly necessary. Linux: AppArmor profile restricting file, network, and system capability access. macOS: minimal entitlements with Hardened Runtime enabled, preventing dynamic code injection. Windows: application control policy verifying component signatures.
+
+Only explicitly authorized directories and sockets are accessible.</p>
+          </div>
+        </div>
+
+        <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
+          <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">SSH key rotation</h3>
+          <div class="px-5 pb-4 pt-1 border-t border-chill-border bg-chill-surface">
+            <p class="text-micro text-chill-text-secondary leading-relaxed whitespace-pre-line">SSH keys generated by Chill have a configurable lifespan (30 days by default). As expiration approaches, the user is notified. Manual rotation is available at any time from the interface.</p>
+          </div>
+        </div>
+
+        <h2 class="text-h3 font-heading font-semibold text-chill-text mt-10 mb-4">Injection & Leak Protection</h2>
 
         <div class="rounded-chill border border-chill-border bg-chill-elevated overflow-hidden">
           <h3 class="px-5 py-3 text-body-sm font-medium text-chill-text font-heading">Command injection protection</h3>
@@ -381,7 +456,8 @@ The Tailscale daemon binary may be resolved via the system PATH as fallback. A w
 
 Architectural context audit (February 2026): complete mapping of 12 modules, 7 actors, 13 trust boundaries, 6 end-to-end workflows.
 Full security audit (February 2026): 38 findings (4 critical, 8 high, 14 medium, 12 low). 27 fixed, 11 mitigated/documented. 61/61 tests.
-Quality audit (February 2026): 34 findings (6 critical, 14 important, 14 minor). All fixed. 42/42 tests.</p>
+Quality audit (February 2026): 34 findings (6 critical, 14 important, 14 minor). All fixed. 42/42 tests.
+Red Team + defensive hardening (February 2026): 58 attack vectors identified and analyzed, 44 security modules created, 3 existing files hardened. 869 automated tests — 0 regressions.</p>
           </div>
         </div>
 
@@ -397,7 +473,7 @@ Quality audit (February 2026): 34 findings (6 critical, 14 important, 14 minor).
       </div>
     </div>
 
-    <AuthorDate datePublished="2026-02-09" dateModified="2026-02-14" />
+    <AuthorDate datePublished="2026-02-21" dateModified="2026-02-21" />
   </section>
 </BaseLayout>
 

@@ -9,8 +9,8 @@ const lang = getLangFromUrl(Astro.url);
 
 <BaseLayout title={t(lang, 'updates.pageTitle')} description={t(lang, 'updates.description')}>
   <SchemaArticle
-    headline="ChillShell v1.0.0 Release Notes"
-    description="First release of ChillShell mobile SSH terminal. SSH, Wake-on-LAN, Tailscale, 12 themes, 5 languages."
+    headline="ChillShell v1.0.0 (BÉTA) Release Notes"
+    description="First beta release of ChillShell mobile SSH terminal. SSH, Wake-on-LAN, Tailscale, 12 themes, 5 languages."
     url="https://chill.app/updates"
     datePublished="2026-02-09"
     dateModified="2026-02-14"
@@ -31,7 +31,7 @@ const lang = getLangFromUrl(Astro.url);
       </div>
 
       <h2 class="text-h2 font-heading font-bold text-chill-text mb-2">
-        v1.0.0
+        v1.0.0 <span class="text-chill-accent">(BÉTA)</span>
       </h2>
       <p class="text-body-sm text-chill-text-muted mb-2 font-mono">
         2026-02-09
@@ -87,15 +87,12 @@ const lang = getLangFromUrl(Astro.url);
       </div>
 
       <a
-        href="https://play.google.com/store/apps/details?id=com.chill.shell"
+        href="https://github.com/Kevin-hDev"
+        target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-chill bg-chill-accent px-6 py-3 text-body-sm font-heading font-bold text-white transition-colors hover:bg-chill-accent-hover"
+        class="inline-flex items-center gap-3 rounded-chill bg-chill-accent px-6 py-3 text-body-sm font-heading font-bold text-white transition-colors hover:bg-chill-accent-hover"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" y1="15" x2="12" y2="3" />
-        </svg>
+        <img src="/images/icons_github.png" alt="GitHub" width="34" height="34" class="h-[34px] w-auto" />
         {t(lang, 'updates.download')}
       </a>
     </div>

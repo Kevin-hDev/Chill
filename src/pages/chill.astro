@@ -13,8 +13,7 @@ const lang = getLangFromUrl(Astro.url);
     tagline={t(lang, 'chill.tagline')}
     subtitle={t(lang, 'chill.subtitle')}
     badge={t(lang, 'chill.badge')}
-    downloadWindows={t(lang, 'chill.download.windows')}
-    downloadLinux={t(lang, 'chill.download.linux')}
+    warning={t(lang, 'chill.warning')}
     sshTitle={t(lang, 'chill.ssh.title')}
     sshDescription={t(lang, 'chill.ssh.description')}
     wolTitle={t(lang, 'chill.wol.title')}
@@ -26,38 +25,4 @@ const lang = getLangFromUrl(Astro.url);
     tutosHref={getLocalePath(lang, '/tutos')}
   />
 
-  <!-- Download integrity -->
-  <section data-animate="0" class="mx-auto max-w-3xl px-4 pb-16 space-y-6">
-    <div class="rounded-chill border border-yellow-500/30 bg-yellow-500/5 p-5">
-      <div class="flex items-start gap-3">
-        <svg class="w-5 h-5 shrink-0 mt-0.5 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-          <line x1="12" y1="9" x2="12" y2="13" />
-          <line x1="12" y1="17" x2="12.01" y2="17" />
-        </svg>
-        <div>
-          <p class="text-body-sm font-heading font-semibold text-chill-text mb-1">Only download Chill from this website</p>
-          <p class="text-body-sm text-chill-text-secondary leading-relaxed">
-            To protect yourself from tampered versions, always download Chill from <strong class="text-chill-text">chill.app</strong>. If you downloaded it from another source, delete it and get it here. You can verify file integrity using the checksums below.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="rounded-chill border border-chill-border bg-chill-elevated p-5">
-      <h3 class="text-body-sm font-heading font-semibold text-chill-text mb-3">SHA-256 Checksums</h3>
-      <p class="text-micro text-chill-text-muted mb-3">Compare these hashes with the file you downloaded to verify its integrity.</p>
-      <div class="space-y-2 font-mono text-micro text-chill-text-secondary">
-        <!-- Update these hashes when builds are ready -->
-        <div class="flex flex-col gap-1 rounded-lg bg-chill-bg p-3 border border-chill-border">
-          <span class="text-chill-text-muted">Windows (.exe)</span>
-          <span class="break-all select-all">Available at release</span>
-        </div>
-        <div class="flex flex-col gap-1 rounded-lg bg-chill-bg p-3 border border-chill-border">
-          <span class="text-chill-text-muted">Linux (.AppImage)</span>
-          <span class="break-all select-all">Available at release</span>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

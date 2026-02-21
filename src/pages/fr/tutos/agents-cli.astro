@@ -21,82 +21,88 @@ const statusLabels = {
 const agents = [
   {
     name: 'Claude Code',
-    description: 'Agent CLI d\'Anthropic pour les tâches de développement.',
+    subtitle: "d'Anthropic",
     prereqs: 'Node.js 18+',
-    installCode: 'npm install -g @anthropic-ai/claude-code',
-    runCode: 'claude',
-    upgradeCode: 'npm update -g @anthropic-ai/claude-code',
+    platforms: [
+      { label: 'macOS/Linux', install: 'curl -fsSL https://claude.ai/install.sh | bash', run: 'claude', upgrade: 'curl -fsSL https://claude.ai/install.sh | bash' },
+      { label: 'Windows', install: 'irm https://claude.ai/install.ps1 | iex', run: 'claude', upgrade: 'irm https://claude.ai/install.ps1 | iex' },
+    ],
   },
   {
     name: 'Codex CLI',
-    description: 'Agent CLI d\'OpenAI pour la génération de code.',
+    subtitle: "d'OpenAI (ChatGPT)",
     prereqs: 'Node.js 22+',
-    installCode: 'npm install -g @openai/codex',
-    runCode: 'codex',
-    upgradeCode: 'npm update -g @openai/codex',
+    platforms: [
+      { label: 'Tous', install: 'npm i -g @openai/codex', run: 'codex', upgrade: 'npm i -g @openai/codex@latest' },
+    ],
   },
   {
     name: 'Cursor CLI',
-    description: 'Agent de développement Cursor en terminal.',
     prereqs: 'Node.js 18+',
-    installCode: 'npm install -g @anthropic-ai/cursor-cli',
-    runCode: 'cursor-cli',
-    upgradeCode: 'npm update -g @anthropic-ai/cursor-cli',
+    platforms: [
+      { label: 'macOS/Linux', install: 'curl https://cursor.com/install -fsS | bash', run: 'agent', upgrade: 'agent update' },
+      { label: 'Windows', install: "irm 'https://cursor.com/install?win32=true' | iex", run: 'agent', upgrade: 'agent update' },
+    ],
   },
   {
     name: 'Kimi Code',
-    description: 'Assistant CLI de Moonshot AI pour le code.',
-    prereqs: 'Node.js 18+',
-    installCode: 'npm install -g kimi-code',
-    runCode: 'kimi',
-    upgradeCode: 'npm update -g kimi-code',
+    subtitle: 'de Moonshot AI',
+    prereqs: 'Python 3.12+',
+    platforms: [
+      { label: 'macOS/Linux', install: 'curl -LsSf https://code.kimi.com/install.sh | bash', run: 'kimi', upgrade: 'uv tool upgrade kimi-cli --no-cache' },
+      { label: 'Windows', install: 'Invoke-RestMethod https://code.kimi.com/install.ps1 | Invoke-Expression', run: 'kimi', upgrade: 'uv tool upgrade kimi-cli --no-cache' },
+    ],
   },
   {
     name: 'Gemini CLI',
-    description: 'Agent CLI de Google propulsé par Gemini.',
+    subtitle: 'de Google',
     prereqs: 'Node.js 18+',
-    installCode: 'npm install -g @anthropic-ai/gemini-cli',
-    runCode: 'gemini',
-    upgradeCode: 'npm update -g @anthropic-ai/gemini-cli',
+    platforms: [
+      { label: 'Tous', install: 'npm install -g @google/gemini-cli', run: 'gemini', upgrade: 'npm update -g @google/gemini-cli' },
+    ],
   },
   {
     name: 'Droid CLI',
-    description: 'Agent CLI léger pour des tâches rapides.',
+    subtitle: 'de Factory AI',
     prereqs: 'Node.js 18+',
-    installCode: 'npm install -g droid-cli',
-    runCode: 'droid',
-    upgradeCode: 'npm update -g droid-cli',
+    platforms: [
+      { label: 'macOS/Linux', install: 'curl -fsSL https://app.factory.ai/cli | sh', run: 'droid', upgrade: 'curl -fsSL https://app.factory.ai/cli | sh' },
+      { label: 'Windows', install: 'irm https://app.factory.ai/cli/windows | iex', run: 'droid', upgrade: 'irm https://app.factory.ai/cli/windows | iex' },
+      { label: 'Homebrew', install: 'brew install --cask droid', run: 'droid', upgrade: 'brew upgrade droid' },
+    ],
   },
   {
     name: 'Mistral Vibe',
-    description: 'Agent de vibe coding par Mistral AI.',
+    subtitle: 'par Mistral AI',
     prereqs: 'Python 3.10+',
-    installCode: 'pip install mistral-vibe',
-    runCode: 'mistral-vibe',
-    upgradeCode: 'pip install --upgrade mistral-vibe',
+    platforms: [
+      { label: 'macOS/Linux', install: 'curl -LsSf https://mistral.ai/vibe/install.sh | bash', run: 'vibe', upgrade: 'pip install --upgrade mistral-vibe' },
+      { label: 'Windows', install: 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"\nuv tool install mistral-vibe', run: 'vibe', upgrade: 'pip install --upgrade mistral-vibe' },
+    ],
   },
   {
     name: 'Crush',
-    description: 'Agent CLI expérimental — détails à venir.',
-    installCode: 'TBD',
-    runCode: 'TBD',
-    upgradeCode: 'TBD',
+    subtitle: 'de Z.AI',
+    platforms: [
+      { label: 'Homebrew', install: 'brew install charmbracelet/tap/crush', run: 'crush', upgrade: 'brew upgrade crush' },
+      { label: 'npm', install: 'npm install -g @charmland/crush', run: 'crush', upgrade: 'npm update -g @charmland/crush' },
+    ],
   },
   {
     name: 'Grok CLI',
-    description: 'Agent CLI de xAI propulsé par Grok.',
+    subtitle: 'de xAI',
     prereqs: 'Node.js 18+',
-    installCode: 'npm install -g grok-cli',
-    runCode: 'grok',
-    upgradeCode: 'npm update -g grok-cli',
+    platforms: [
+      { label: 'Tous', install: 'npm install -g @vibe-kit/grok-cli', run: 'grok', upgrade: 'npm update -g @vibe-kit/grok-cli' },
+    ],
   },
   {
     name: 'OpenCode',
-    description: 'Agent CLI open-source écrit en Go.',
+    subtitle: 'Open Source',
     prereqs: 'Go 1.21+',
-    installCode: 'go install github.com/opencode-ai/opencode@latest',
-    runCode: 'opencode',
-    upgradeCode: 'go install github.com/opencode-ai/opencode@latest',
+    platforms: [
+      { label: 'Tous', install: 'go install github.com/opencode-ai/opencode@latest', run: 'opencode', upgrade: 'go install github.com/opencode-ai/opencode@latest' },
+    ],
   },
 ];
 ---
@@ -126,7 +132,7 @@ const agents = [
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
-        <p class="text-h3 font-heading font-bold text-chill-accent">10+</p>
+        <p class="text-h3 font-heading font-bold text-chill-accent">10</p>
         <p class="text-micro text-chill-text-muted">Agents CLI supportés</p>
       </div>
       <div class="rounded-chill border border-chill-border bg-chill-elevated p-4 text-center">
@@ -162,16 +168,14 @@ const agents = [
   </div>
 
   <!-- Grille de cartes agents -->
-  <div data-animate="200" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div data-animate="200" class="grid grid-cols-1 gap-4">
     {agents.map((agent) => (
       <AgentCard
         client:visible
         name={agent.name}
-        description={agent.description}
+        subtitle={agent.subtitle}
         prereqs={agent.prereqs}
-        installCode={agent.installCode}
-        runCode={agent.runCode}
-        upgradeCode={agent.upgradeCode}
+        platforms={agent.platforms}
         tabLabels={tabLabels}
       />
     ))}

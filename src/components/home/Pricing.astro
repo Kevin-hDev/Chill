@@ -8,31 +8,22 @@ const lang = getLangFromUrl(Astro.url);
   <h2 data-animate="0" class="text-h2 font-heading font-bold text-chill-text">
     {t(lang, 'pricing.title')}
   </h2>
-  <p data-animate="100" class="text-body text-chill-text-secondary mt-3">
-    {t(lang, 'pricing.subtitle')}
-  </p>
 
-  <!-- CTA buttons — Official store badges -->
+  <!-- CTA — GitHub open source -->
   <div data-animate="200" class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-    <a href="https://play.google.com/store/apps/details?id=com.chill.shell" rel="noopener noreferrer" class="inline-block hover:opacity-80 transition-opacity">
+    <a href="https://github.com/Kevin-hDev" target="_blank" rel="noopener noreferrer" class="inline-block hover:opacity-80 transition-opacity">
       <img
-        src="/images/badges/google-play-badge.png"
-        alt="Get it on Google Play"
-        width="210"
-        height="62"
-        class="h-[62px] w-auto"
+        src="/images/icons_github.png"
+        alt="GitHub"
+        width="87"
+        height="87"
+        class="h-[87px] w-auto"
       />
     </a>
-    <!-- App Store — masqué temporairement, réactiver quand prêt
-    <a href="https://apps.apple.com/app/chillshell/id0000000000" class="inline-block hover:opacity-80 transition-opacity">
-      <img
-        src="/images/badges/app-store-badge.svg"
-        alt="Download on the App Store"
-        width="162"
-        height="48"
-        class="h-[48px] w-auto"
-      />
-    </a>
-    -->
   </div>
+
+  <!-- Warning — fichiers à lire -->
+  <p data-animate="300" class="mt-6 text-body-sm text-chill-text-muted max-w-xl mx-auto leading-relaxed">
+    {t(lang, 'pricing.warning')}
+  </p>
 </section>
